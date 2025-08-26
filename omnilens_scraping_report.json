@@ -1,0 +1,10 @@
+{
+  "status": "completed",
+  "timestamp": "2025-08-12T00:54:41.791245",
+  "duration_seconds": 173.594738,
+  "articles_discovered": 73,
+  "articles_successfully_scraped": 38,
+  "success_rate": 52.054794520547944,
+  "library_path": "omnilens_library/",
+  "master_index": "omnilens_library/master_index.json"
+}

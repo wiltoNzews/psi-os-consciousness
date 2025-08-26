@@ -1,0 +1,136 @@
+/**
+ * WiltonOS Server Routes
+ * 
+ * Configuração de rotas e inicialização do servidor WebSocket
+ * para o sistema WiltonOS.
+ */
+import express from 'express';
+import { createServer, type Server } from 'http';
+import path from 'path';
+import { WebSocketServer } from 'ws';
+
+// Mapa de conexões WebSocket ativas (id -> WebSocket)
+export const activeConnections = new Map();
+
+// Mapa de handlers para diferentes tipos de mensagens WebSocket
+export const wsHandlers = new Map();
+
+/**
+ * Registrar rotas e inicializar WebSocket
+ */
+export async function registerRoutes(app: express.Express): Promise<Server> {
+  // Servir arquivos estáticos do diretório public
+  app.use(express.static(path.join(__dirname, '..', 'public')));
+  
+  // Rota para o visualizador de ZWE
+  app.get('/zwe-visualizer', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'zwe-visualizer.html'));
+  });
+
+  // Rota para o Oroboros
+  app.get('/oroboros', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'oroboros.html'));
+  });
+  
+  // Rota para o WiltonOS Vault (antigo Library of Alexandria)
+  app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'dashboard.html'));
+  });
+  
+  // Redirecionar /library para o novo dashboard
+  app.get('/library', (req, res) => {
+    res.redirect('/dashboard');
+  });
+
+  // API para verificação de saúde do sistema
+  app.get('/api/health', (req, res) => {
+    res.json({
+      status: 'online',
+      version: '1.0.0',
+      uptime: process.uptime()
+    });
+  });
+
+  // API para obter status do sistema quântico
+  app.get('/api/quantum/status', (req, res) => {
+    res.json({
+      status: 'online',
+      coherence: 0.75,
+      chaos: 0.25,
+      mode: 'balanced',
+      activeNodes: 42
+    });
+  });
+  
+  // [DESATIVADO] Endpoint de análise de contratos do Z-LAW
+  app.post('/api/analyze-contract', async (req, res) => {
+    res.status(410).json({
+      status: 'gone',
+      message: 'Este serviço foi desativado. Por favor, use o WiltonOS Vault para suas necessidades de produtividade pessoal.'
+    });
+  });
+
+  // Criar servidor HTTP
+  const httpServer = createServer(app);
+
+  // Inicializar servidor WebSocket
+  const wss = new WebSocketServer({ 
+    server: httpServer,
+    path: '/ws'
+  });
+
+  // Conectar handler de WebSocket
+  wss.on('connection', (ws) => {
+    const id = Date.now().toString();
+    activeConnections.set(id, ws);
+
+    ws.on('message', (message) => {
+      try {
+        const data = JSON.parse(message.toString());
+        const { type } = data;
+
+        // Invocar handler registrado para o tipo de mensagem
+        if (wsHandlers.has(type)) {
+          wsHandlers.get(type)(ws, data);
+        } else {
+          console.warn(`Nenhum handler registrado para mensagens do tipo: ${type}`);
+        }
+      } catch (error) {
+        console.error('Erro ao processar mensagem WebSocket:', error);
+      }
+    });
+
+    ws.on('close', () => {
+      activeConnections.delete(id);
+      console.log(`Conexão WebSocket fechada: ${id}`);
+    });
+
+    // Enviar mensagem inicial
+    ws.send(JSON.stringify({
+      type: 'welcome',
+      message: 'Bem-vindo ao WiltonOS WebSocket Server',
+      timestamp: Date.now()
+    }));
+  });
+
+  return httpServer;
+}
+
+/**
+ * Inicializar e configurar o servidor principal
+ */
+export async function startServer(app: express.Express): Promise<Server> {
+  // Tratamento de erros
+  const errorHandler = (err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    console.error('Erro não tratado:', err);
+    res.status(500).json({
+      error: 'Erro interno no servidor',
+      message: err.message
+    });
+  };
+
+  app.use(errorHandler);
+
+  // Registrar rotas e inicializar WebSocket
+  return registerRoutes(app);
+}

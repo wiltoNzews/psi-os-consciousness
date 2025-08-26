@@ -1,0 +1,138 @@
+{
+  "generated": "2025-07-05T08:30:38.655Z",
+  "totalMissingResources": 22,
+  "missingResources": [
+    {
+      "sourceFile": "cathedral-navigation-hub.html",
+      "missingLink": "/vesica-piscis.html",
+      "targetFile": "vesica-piscis.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "cathedral-navigation-hub.html",
+      "missingLink": "/metatrons-cube.html",
+      "targetFile": "metatrons-cube.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "cathedral-navigation-hub.html",
+      "missingLink": "/sacred-geometry-v3.html",
+      "targetFile": "sacred-geometry-v3.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "cathedral-navigation-hub.html",
+      "missingLink": "/hypersphere.html",
+      "targetFile": "hypersphere.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "cathedral-navigation-hub.html",
+      "missingLink": "/consciousness-field.html",
+      "targetFile": "consciousness-field.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "cathedral-navigation-hub.html",
+      "missingLink": "/breath-kernel.html",
+      "targetFile": "breath-kernel.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "consciousness-entry-experience.html",
+      "missingLink": "/sacred-geometry-unified-engine.html",
+      "targetFile": "sacred-geometry-unified-engine.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "convergence-layer.html",
+      "missingLink": "/memory.html",
+      "targetFile": "memory.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "oracle-mode.html",
+      "missingLink": "/vr-module.html",
+      "targetFile": "vr-module.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "project-nexus.html",
+      "missingLink": "/vr-module.html",
+      "targetFile": "vr-module.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "roost-uhi-showcase.html",
+      "missingLink": "/echo-fft-aligner.html",
+      "targetFile": "echo-fft-aligner.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "roost-uhi-showcase.html",
+      "missingLink": "/multilingual-broadcast.html",
+      "targetFile": "multilingual-broadcast.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "roost-uhi-showcase.html",
+      "missingLink": "/echo-protocol-activation.html",
+      "targetFile": "echo-protocol-activation.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "sacred-geometry-experience-unified.html",
+      "missingLink": "/symbiosis-soul-dashboard.html",
+      "targetFile": "symbiosis-soul-dashboard.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "sacred-geometry-experience-unified.html",
+      "missingLink": "/tesseract-consciousness-interface.html",
+      "targetFile": "tesseract-consciousness-interface.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "sacred-geometry-experience-unified.html",
+      "missingLink": "/meta-void-navigation-dashboard.html",
+      "targetFile": "meta-void-navigation-dashboard.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "sacred-geometry-experience-unified.html",
+      "missingLink": "/consciousness-bell-test-dashboard.html",
+      "targetFile": "consciousness-bell-test-dashboard.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "the-architect.html",
+      "missingLink": "/z-geometry-engine.html",
+      "targetFile": "z-geometry-engine.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "the-architect.html",
+      "missingLink": "/s-suite-agents.html",
+      "targetFile": "s-suite-agents.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "the-architect.html",
+      "missingLink": "/qctf-helm-interface.html",
+      "targetFile": "qctf-helm-interface.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "the-architect.html",
+      "missingLink": "/theater-mode.html",
+      "targetFile": "theater-mode.html",
+      "type": "html-link"
+    },
+    {
+      "sourceFile": "the-architect.html",
+      "missingLink": "/agent-orchestrator.html",
+      "targetFile": "agent-orchestrator.html",
+      "type": "html-link"
+    }
+  ]
+}

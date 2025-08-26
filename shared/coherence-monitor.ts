@@ -1,0 +1,520 @@
+/**
+ * Coherence Monitoring System
+ * 
+ * This module provides utilities for monitoring and tracking coherence metrics
+ * over time, with integration to the WebSocket system for real-time updates.
+ * 
+ * It implements the core monitoring functionality for tracking the 0.7500 coherence
+ * attractor and the Ouroboros 3:1 ↔ 1:3 cycle.
+ * 
+ * [QUANTUM_STATE: BRIDGE_FLOW]
+ */
+
+import {
+  AgentPhaseState,
+  AgentVectorState,
+  calculatePhaseCoherence,
+  calculateVectorCoherence,
+  calculateQCTF,
+  CoherenceResult,
+  OUROBOROS_CONSTANTS
+} from './coherence-metrics.js';
+
+/**
+ * Coherence history entry
+ */
+export interface CoherenceHistoryEntry extends CoherenceResult {
+  cycleNumber: number;
+  ouroborosMode: 'stability' | 'exploration';
+  ouroborosCycleCounter: number;
+  perturbationActive?: boolean;
+  variantCount?: number;
+}
+
+/**
+ * Event for coherence changes
+ */
+export interface CoherenceChangeEvent {
+  previousCoherence: number;
+  newCoherence: number;
+  type: 'increasing' | 'decreasing' | 'stable' | 'threshold_crossed';
+  timestamp: number;
+  thresholdName?: string;
+  message?: string;
+}
+
+/**
+ * Options for coherence monitoring
+ */
+export interface CoherenceMonitorOptions {
+  targetCoherence?: number;
+  tolerance?: number;
+  historyLength?: number;
+  sendWebSocketUpdates?: boolean;
+  monitoringInterval?: number; // milliseconds
+}
+
+/**
+ * Coherence interceptor interface
+ */
+export interface CoherenceInterceptor {
+  interceptCoherence(calculatedCoherence: number): number;
+  isPerturbationActive(): boolean;
+  getPerturbationTarget(): number | null;
+}
+
+/**
+ * Coherence Monitor class
+ * 
+ * The coherence monitor tracks system coherence over time,
+ * detects threshold crossings, and manages the Ouroboros cycle.
+ */
+export class CoherenceMonitor<T extends AgentPhaseState | AgentVectorState> {
+  private agents: T[] = [];
+  private history: CoherenceHistoryEntry[] = [];
+  private listeners: ((event: CoherenceChangeEvent) => void)[] = [];
+  private cycleNumber: number = 0;
+  private currentCoherence: number = 0;
+  private monitoringInterval: NodeJS.Timeout | null = null;
+  private interceptors: CoherenceInterceptor[] = [];
+  
+  // Ouroboros cycle state
+  private ouroborosMode: 'stability' | 'exploration' = 'stability';
+  private ouroborosCycleCounter: number = 0;
+  private ouroborosCycleTarget: number = OUROBOROS_CONSTANTS.STABILITY_CYCLE_LENGTH;
+  
+  // Monitor options
+  private options: CoherenceMonitorOptions = {
+    targetCoherence: OUROBOROS_CONSTANTS.TARGET_COHERENCE,
+    tolerance: OUROBOROS_CONSTANTS.TARGET_TOLERANCE,
+    historyLength: 100,
+    sendWebSocketUpdates: true,
+    monitoringInterval: 1000
+  };
+  
+  // Variant tracking
+  private variantCount: number = 3; // Default starting variant count
+  
+  // Perturbation state
+  private perturbationActive: boolean = false;
+  private targetPerturbationCoherence: number | null = null;
+  
+  /**
+   * Create a new coherence monitor
+   */
+  constructor(options?: Partial<CoherenceMonitorOptions>) {
+    this.options = { ...this.options, ...options };
+  }
+  
+  /**
+   * Set the agents to monitor
+   */
+  public setAgents(agents: T[]): void {
+    this.agents = [...agents];
+    this.updateCoherence();
+  }
+  
+  /**
+   * Get the current coherence value
+   */
+  public getCurrentCoherence(): number {
+    return this.currentCoherence;
+  }
+  
+  /**
+   * Get coherence history
+   */
+  public getHistory(): CoherenceHistoryEntry[] {
+    return [...this.history];
+  }
+  
+  /**
+   * Start monitoring coherence at regular intervals
+   */
+  public startMonitoring(): void {
+    if (this.monitoringInterval) {
+      this.stopMonitoring();
+    }
+    
+    this.monitoringInterval = setInterval(() => {
+      this.cycleNumber++;
+      this.updateCoherence();
+      
+      // Update Ouroboros cycle
+      this.updateOuroborosCycle();
+      
+      // Send WebSocket update if enabled
+      if (this.options.sendWebSocketUpdates) {
+        this.sendCoherenceUpdate();
+      }
+    }, this.options.monitoringInterval);
+  }
+  
+  /**
+   * Stop monitoring coherence
+   */
+  public stopMonitoring(): void {
+    if (this.monitoringInterval) {
+      clearInterval(this.monitoringInterval);
+      this.monitoringInterval = null;
+    }
+  }
+  
+  /**
+   * Add a listener for coherence change events
+   */
+  public addListener(listener: (event: CoherenceChangeEvent) => void): void {
+    this.listeners.push(listener);
+  }
+  
+  /**
+   * Remove a listener
+   */
+  public removeListener(listener: (event: CoherenceChangeEvent) => void): void {
+    this.listeners = this.listeners.filter(l => l !== listener);
+  }
+  
+  /**
+   * Apply a perturbation to the system
+   */
+  public applyPerturbation(targetCoherence: number): void {
+    this.perturbationActive = true;
+    this.targetPerturbationCoherence = targetCoherence;
+    
+    // Fire event
+    this.fireEvent({
+      previousCoherence: this.currentCoherence,
+      newCoherence: this.currentCoherence, // Not changed yet
+      type: 'threshold_crossed',
+      timestamp: Date.now(),
+      thresholdName: 'perturbation_applied',
+      message: `Perturbation applied, targeting coherence: ${targetCoherence.toFixed(4)}`
+    });
+  }
+  
+  /**
+   * Release any active perturbation
+   */
+  public releasePerturbation(): void {
+    if (this.perturbationActive) {
+      this.perturbationActive = false;
+      this.targetPerturbationCoherence = null;
+      
+      // Fire event
+      this.fireEvent({
+        previousCoherence: this.currentCoherence,
+        newCoherence: this.currentCoherence, // Not changed yet
+        type: 'threshold_crossed',
+        timestamp: Date.now(),
+        thresholdName: 'perturbation_released',
+        message: 'Perturbation released, returning to natural coherence'
+      });
+    }
+  }
+  
+  /**
+   * Set the current variant count
+   */
+  public setVariantCount(count: number): void {
+    this.variantCount = count;
+  }
+  
+  /**
+   * Get the current variant count
+   */
+  public getVariantCount(): number {
+    return this.variantCount;
+  }
+  
+  /**
+   * Register a coherence interceptor
+   * This allows external components to intercept and modify coherence calculations
+   */
+  public registerInterceptor(interceptor: CoherenceInterceptor): void {
+    this.interceptors.push(interceptor);
+    console.log('[QUANTUM_STATE: VALIDATION_FLOW] Registered coherence interceptor');
+  }
+  
+  /**
+   * Get the current coherence value after applying all interceptors
+   */
+  public getCoherence(): number {
+    let coherence = this.currentCoherence;
+    
+    for (const interceptor of this.interceptors) {
+      if (interceptor.isPerturbationActive()) {
+        coherence = interceptor.interceptCoherence(coherence);
+        break; // Only apply the first active interceptor
+      }
+    }
+    
+    return coherence;
+  }
+  
+  /**
+   * Update the coherence calculation
+   */
+  private updateCoherence(): void {
+    if (this.agents.length === 0) return;
+    
+    // Calculate new coherence based on agent type
+    let result: CoherenceResult;
+    
+    try {
+      if (this.isPhaseState(this.agents[0])) {
+        // Phase-based coherence using our advanced metrics
+        const phaseAgents = this.agents as AgentPhaseState[];
+        // Create a coherence object with the correct structure
+        const coherenceValue = calculatePhaseCoherence(phaseAgents, this.options.targetCoherence);
+        result = {
+          value: typeof coherenceValue === 'number' ? coherenceValue : coherenceValue.value,
+          raw: typeof coherenceValue === 'number' ? coherenceValue : coherenceValue.raw || coherenceValue.value,
+          timestamp: Date.now()
+        };
+      } else {
+        // Vector-based coherence using our advanced metrics
+        const vectorAgents = this.agents as AgentVectorState[];
+        // Create a coherence object with the correct structure
+        const coherenceValue = calculateVectorCoherence(vectorAgents, this.options.targetCoherence);
+        result = {
+          value: typeof coherenceValue === 'number' ? coherenceValue : coherenceValue.value,
+          raw: typeof coherenceValue === 'number' ? coherenceValue : coherenceValue.raw || coherenceValue.value,
+          timestamp: Date.now()
+        };
+      }
+    } catch (error) {
+      console.error('[QUANTUM_STATE: ERROR_FLOW] Error calculating coherence:', error);
+      // Fallback coherence calculation
+      result = {
+        value: 0.5, // Default fallback coherence
+        raw: 0.5,
+        timestamp: Date.now()
+      };
+    }
+    
+    // Apply perturbation if active
+    if (this.perturbationActive && this.targetPerturbationCoherence !== null) {
+      // Gradually move toward perturbation target
+      const perturbFactor = 0.05; // How quickly to move toward target
+      result.value = result.value * (1 - perturbFactor) + this.targetPerturbationCoherence * perturbFactor;
+    }
+    
+    const previousCoherence = this.currentCoherence;
+    this.currentCoherence = result.value;
+    
+    // Track significant changes
+    if (Math.abs(previousCoherence - this.currentCoherence) > 0.005) {
+      const type = this.currentCoherence > previousCoherence ? 'increasing' : 'decreasing';
+      
+      this.fireEvent({
+        previousCoherence,
+        newCoherence: this.currentCoherence,
+        type,
+        timestamp: Date.now()
+      });
+    }
+    
+    // Add to history
+    const historyEntry: CoherenceHistoryEntry = {
+      ...result,
+      cycleNumber: this.cycleNumber,
+      ouroborosMode: this.ouroborosMode,
+      ouroborosCycleCounter: this.ouroborosCycleCounter,
+      perturbationActive: this.perturbationActive,
+      variantCount: this.variantCount
+    };
+    
+    this.history.push(historyEntry);
+    
+    // Trim history if needed
+    if (this.history.length > this.options.historyLength!) {
+      this.history = this.history.slice(this.history.length - this.options.historyLength!);
+    }
+    
+    // Check for threshold crossings
+    this.checkThresholds(previousCoherence);
+  }
+  
+  /**
+   * Check for coherence threshold crossings
+   */
+  private checkThresholds(previousCoherence: number): void {
+    // Check if crossing into or out of target range
+    const prevInTarget = Math.abs(previousCoherence - this.options.targetCoherence!) <= this.options.tolerance!;
+    const currInTarget = Math.abs(this.currentCoherence - this.options.targetCoherence!) <= this.options.tolerance!;
+    
+    if (!prevInTarget && currInTarget) {
+      this.fireEvent({
+        previousCoherence,
+        newCoherence: this.currentCoherence,
+        type: 'threshold_crossed',
+        timestamp: Date.now(),
+        thresholdName: 'target_achieved',
+        message: `Coherence entered target range (${this.options.targetCoherence!.toFixed(4)} ± ${this.options.tolerance!.toFixed(4)})`
+      });
+    } else if (prevInTarget && !currInTarget) {
+      this.fireEvent({
+        previousCoherence,
+        newCoherence: this.currentCoherence,
+        type: 'threshold_crossed',
+        timestamp: Date.now(),
+        thresholdName: 'target_lost',
+        message: `Coherence left target range (${this.options.targetCoherence!.toFixed(4)} ± ${this.options.tolerance!.toFixed(4)})`
+      });
+    }
+    
+    // Check for transition thresholds (exploration/stability)
+    if (this.ouroborosMode === 'stability' && 
+        previousCoherence >= OUROBOROS_CONSTANTS.SWITCH_TO_EXPLORE_BELOW &&
+        this.currentCoherence < OUROBOROS_CONSTANTS.SWITCH_TO_EXPLORE_BELOW) {
+      
+      this.fireEvent({
+        previousCoherence,
+        newCoherence: this.currentCoherence,
+        type: 'threshold_crossed',
+        timestamp: Date.now(),
+        thresholdName: 'stability_to_exploration',
+        message: `Coherence dropped below ${OUROBOROS_CONSTANTS.SWITCH_TO_EXPLORE_BELOW.toFixed(4)}, potential mode switch to exploration`
+      });
+      
+    } else if (this.ouroborosMode === 'exploration' &&
+               previousCoherence <= OUROBOROS_CONSTANTS.SWITCH_TO_STABILITY_ABOVE &&
+               this.currentCoherence > OUROBOROS_CONSTANTS.SWITCH_TO_STABILITY_ABOVE) {
+      
+      this.fireEvent({
+        previousCoherence,
+        newCoherence: this.currentCoherence,
+        type: 'threshold_crossed',
+        timestamp: Date.now(),
+        thresholdName: 'exploration_to_stability',
+        message: `Coherence rose above ${OUROBOROS_CONSTANTS.SWITCH_TO_STABILITY_ABOVE.toFixed(4)}, potential mode switch to stability`
+      });
+    }
+  }
+  
+  /**
+   * Update the Ouroboros cycle state
+   */
+  private updateOuroborosCycle(): void {
+    // Increment cycle counter
+    this.ouroborosCycleCounter++;
+    
+    // Check if we need to switch modes
+    let modeSwitched = false;
+    
+    // Check if we should switch based on coherence thresholds
+    if (this.ouroborosMode === 'stability' && 
+        this.currentCoherence < OUROBOROS_CONSTANTS.SWITCH_TO_EXPLORE_BELOW) {
+      
+      this.ouroborosMode = 'exploration';
+      this.ouroborosCycleCounter = 0;
+      this.ouroborosCycleTarget = OUROBOROS_CONSTANTS.EXPLORATION_CYCLE_LENGTH;
+      modeSwitched = true;
+      
+    } else if (this.ouroborosMode === 'exploration' &&
+               this.currentCoherence > OUROBOROS_CONSTANTS.SWITCH_TO_STABILITY_ABOVE) {
+      
+      this.ouroborosMode = 'stability';
+      this.ouroborosCycleCounter = 0;
+      this.ouroborosCycleTarget = OUROBOROS_CONSTANTS.STABILITY_CYCLE_LENGTH;
+      modeSwitched = true;
+      
+    } 
+    // Otherwise check if we've reached the target cycle count
+    else if (this.ouroborosCycleCounter >= this.ouroborosCycleTarget) {
+      
+      this.ouroborosMode = this.ouroborosMode === 'stability' ? 'exploration' : 'stability';
+      this.ouroborosCycleCounter = 0;
+      this.ouroborosCycleTarget = this.ouroborosMode === 'stability' 
+        ? OUROBOROS_CONSTANTS.STABILITY_CYCLE_LENGTH 
+        : OUROBOROS_CONSTANTS.EXPLORATION_CYCLE_LENGTH;
+      modeSwitched = true;
+    }
+    
+    // If mode switched, fire an event
+    if (modeSwitched) {
+      this.fireEvent({
+        previousCoherence: this.currentCoherence,
+        newCoherence: this.currentCoherence,
+        type: 'threshold_crossed',
+        timestamp: Date.now(),
+        thresholdName: `mode_switch_to_${this.ouroborosMode}`,
+        message: `Ouroboros cycle mode switched to ${this.ouroborosMode} (${this.ouroborosMode === 'stability' ? '3:1' : '1:3'})`
+      });
+      
+      // Adjust variant count based on mode
+      if (this.ouroborosMode === 'stability') {
+        // In stability mode, reduce variants to 3-4
+        if (this.variantCount > 4) {
+          this.variantCount = 3;
+        }
+      } else {
+        // In exploration mode, increase variants
+        if (this.variantCount < 5) {
+          this.variantCount = 5;
+        }
+      }
+    }
+  }
+  
+  /**
+   * Fire a coherence change event to all listeners
+   */
+  private fireEvent(event: CoherenceChangeEvent): void {
+    for (const listener of this.listeners) {
+      try {
+        listener(event);
+      } catch (error) {
+        console.error('Error in coherence event listener:', error);
+      }
+    }
+  }
+  
+  /**
+   * Send coherence update via WebSocket (if available)
+   */
+  private sendCoherenceUpdate(): void {
+    // This function would integrate with your WebSocket infrastructure
+    // For now, let's assume we're just calling a global function
+    
+    try {
+      // Get latest history entry
+      const latest = this.history[this.history.length - 1];
+      
+      // Create update message
+      const updateMessage = {
+        type: 'coherence_update',
+        payload: {
+          coherence: this.currentCoherence,
+          target: this.options.targetCoherence,
+          cycleNumber: this.cycleNumber,
+          ouroborosMode: this.ouroborosMode,
+          ouroborosCycleCounter: this.ouroborosCycleCounter,
+          ouroborosCycleTarget: this.ouroborosCycleTarget,
+          perturbationActive: this.perturbationActive,
+          variantCount: this.variantCount,
+          inTarget: Math.abs(this.currentCoherence - this.options.targetCoherence!) <= this.options.tolerance!,
+          timestamp: Date.now()
+        }
+      };
+      
+      // In a real implementation, you would send this via your WebSocket
+      // For now, just expose it globally for debugging
+      (window as any).LAST_COHERENCE_UPDATE = updateMessage;
+      
+      // If a global sendCoherenceMessage function exists, call it
+      if (typeof (window as any).sendCoherenceMessage === 'function') {
+        (window as any).sendCoherenceMessage(updateMessage);
+      }
+    } catch (error) {
+      console.error('Error sending coherence update:', error);
+    }
+  }
+  
+  /**
+   * Type guard to check if agents are phase-based or vector-based
+   */
+  private isPhaseState(agent: any): agent is AgentPhaseState {
+    return 'phase' in agent;
+  }
+}

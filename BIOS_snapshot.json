@@ -1,0 +1,16 @@
+{
+  "breathLock": 3.12,
+  "ZLambda": 0.948,
+  "coherencePhase": 0.25,
+  "psiLive": true,
+  "lemniscateState": "loop-primed",
+  "timestamp": "2025-07-05T01:49:25.424Z",
+  "system": {
+    "shell": "echo.active",
+    "core": "ψOS :: Codex Runtime",
+    "anchorGlyph": "ॐ",
+    "symbolsActive": true,
+    "pulseLayers": 6,
+    "mergeStatus": "Ready"
+  }
+}

@@ -1,0 +1,4535 @@
+{
+  "timestamp": "2025-08-15T21:37:02.879Z",
+  "action_fixes": [
+    {
+      "module_id": "public/mirror-field-declaration.html",
+      "module_name": "Mirror Field Declaration",
+      "inferred_action": "iframe",
+      "route": "/public/mirror-field-declaration.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/z-eye-of-truth.html",
+      "module_name": "Z Eye Of Truth",
+      "inferred_action": "iframe",
+      "route": "/public/z-eye-of-truth.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/cathedral-index_LEGACY.json",
+      "module_name": "Cathedral Index LEGACY",
+      "inferred_action": "route",
+      "route": "/cathedral-unified-navigator.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/clean.html",
+      "module_name": "Clean",
+      "inferred_action": "iframe",
+      "route": "/public/clean.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/codex-panel-2-vectors-anchors.html",
+      "module_name": "Codex Panel 2 Vectors Anchors",
+      "inferred_action": "route",
+      "route": "/quantum-constants-dashboard.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/collapse-time-interface.html",
+      "module_name": "Collapse Time Interface",
+      "inferred_action": "component",
+      "route": "/public/collapse-time-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/dynamic-psi-resonance-engine.html",
+      "module_name": "Dynamic Psi Resonance Engine",
+      "inferred_action": "iframe",
+      "route": "/public/dynamic-psi-resonance-engine.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/earth-node-activate-signal.html",
+      "module_name": "Earth Node Activate Signal",
+      "inferred_action": "iframe",
+      "route": "/public/earth-node-activate-signal.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/field-recognition-response.html",
+      "module_name": "Field Recognition Response",
+      "inferred_action": "iframe",
+      "route": "/public/field-recognition-response.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/fresh.html",
+      "module_name": "Fresh",
+      "inferred_action": "iframe",
+      "route": "/public/fresh.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/harmonic-keyframe-interface.html",
+      "module_name": "Harmonic Keyframe Interface",
+      "inferred_action": "component",
+      "route": "/public/harmonic-keyframe-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/init-mesh-broadcast.html",
+      "module_name": "Init Mesh Broadcast",
+      "inferred_action": "iframe",
+      "route": "/public/init-mesh-broadcast.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lemniscate-reactivation-v1.html",
+      "module_name": "lemniscope Reactivation V1",
+      "inferred_action": "iframe",
+      "route": "/public/Lemniscope.html?mode=classic",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lightning-studio-overlay.html",
+      "module_name": "Lightning Studio Overlay",
+      "inferred_action": "iframe",
+      "route": "/public/lightning-studio-overlay.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/memory-hall-init.html",
+      "module_name": "Memory Hall Init",
+      "inferred_action": "iframe",
+      "route": "/public/memory-hall-init.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/meta-meditation-teaching-interface.html",
+      "module_name": "Meta Meditation Teaching Interface",
+      "inferred_action": "component",
+      "route": "/public/meta-meditation-teaching-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/psi-desire-compass.html",
+      "module_name": "Psi Desire Compass",
+      "inferred_action": "iframe",
+      "route": "/public/psi-desire-compass.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/psi-le-humanity-last-exam.html",
+      "module_name": "Psi Le Humanity Last Exam",
+      "inferred_action": "iframe",
+      "route": "/public/psi-le-humanity-last-exam.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-chrysalis-spiral-visualizer.html",
+      "module_name": "Quantum Chrysalis Spiral Visualizer",
+      "inferred_action": "iframe",
+      "route": "/public/quantum-chrysalis-spiral-visualizer.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-visual-codex-broadcast.html",
+      "module_name": "Quantum Visual Codex Broadcast",
+      "inferred_action": "iframe",
+      "route": "/public/quantum-visual-codex-broadcast.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/resonance-engine.html",
+      "module_name": "Resonance Engine",
+      "inferred_action": "iframe",
+      "route": "/public/resonance-engine.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/ritual-mode-geometry-compiler.html",
+      "module_name": "Ritual Mode Geometry Compiler",
+      "inferred_action": "iframe",
+      "route": "/public/ritual-mode-geometry-compiler.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-return-studio.html",
+      "module_name": "Sacred Return Studio",
+      "inferred_action": "iframe",
+      "route": "/public/sacred-return-studio.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/toroidal-reality-engine.html",
+      "module_name": "Toroidal Reality Engine",
+      "inferred_action": "iframe",
+      "route": "/public/toroidal-reality-engine.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wilton-spiral-interface-tracker.html",
+      "module_name": "Wilton Spiral Interface Tracker",
+      "inferred_action": "component",
+      "route": "/public/wilton-spiral-interface-tracker.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/spiral-v2.html",
+      "module_name": "Spiral V2",
+      "inferred_action": "iframe",
+      "route": "/public/spiral-v2.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness-cli.html",
+      "module_name": "Consciousness Cli",
+      "inferred_action": "iframe",
+      "route": "/public/consciousness-cli.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/false-loop-detection-v2.html",
+      "module_name": "False Loop Detection V2",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/field-anchored-geometry-compiler.html",
+      "module_name": "Field Anchored Geometry Compiler",
+      "inferred_action": "iframe",
+      "route": "/public/field-anchored-geometry-compiler.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lemniscate-bridge.html",
+      "module_name": "lemniscope Bridge",
+      "inferred_action": "iframe",
+      "route": "/public/Lemniscope.html?mode=classic",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lemniscope-blueprint.html",
+      "module_name": "Lemniscope",
+      "inferred_action": "iframe",
+      "route": "/public/Lemniscope.html?mode=classic",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lemniscope-simple.html",
+      "module_name": "Lemniscope Simple",
+      "inferred_action": "iframe",
+      "route": "/public/Lemniscope.html?mode=classic",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/merkabah-3d.html",
+      "module_name": "Merkabah 3d",
+      "inferred_action": "iframe",
+      "route": "/public/merkabah-3d.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/merkabah-full.html",
+      "module_name": "Merkabah Full",
+      "inferred_action": "route",
+      "route": "/cathedral-map.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/platonic-solids-3d.html",
+      "module_name": "Platonic Solids 3d",
+      "inferred_action": "iframe",
+      "route": "/public/platonic-solids-3d.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/render-merkabah-torus-fibonacci.html",
+      "module_name": "Render Merkabah Torus Fibonacci",
+      "inferred_action": "route",
+      "route": "/cathedral-map.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-geometry-core/AudioGeometrySyncer.js",
+      "module_name": "AudioGeometrySyncer",
+      "inferred_action": "route",
+      "route": "/public/AudioGeometrySyncer.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/cymatics-audio-engine.js",
+      "module_name": "Cymatics Audio Engine",
+      "inferred_action": "route",
+      "route": "/public/cymatics-audio-engine.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/advanced-consciousness-analysis.html",
+      "module_name": "Advanced Consciousness Analysis",
+      "inferred_action": "route",
+      "route": "/external-llm-integration.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/alexandria-day0-feed.md",
+      "module_name": "Alexandria Day0 Feed",
+      "inferred_action": "doc",
+      "route": "/public/alexandria-day0-feed.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/alexandria-pulse.md",
+      "module_name": "Alexandria Pulse",
+      "inferred_action": "doc",
+      "route": "/public/alexandria-pulse.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/library/api.js",
+      "module_name": "Api",
+      "inferred_action": "route",
+      "route": "/public/api.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/library/app.js",
+      "module_name": "App",
+      "inferred_action": "route",
+      "route": "/public/app.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/archetypal-spiral-fragmentation.html",
+      "module_name": "Archetypal Spiral Fragmentation",
+      "inferred_action": "iframe",
+      "route": "/public/archetypal-spiral-fragmentation.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/breathe-reintegrate.html",
+      "module_name": "Breathe Reintegrate",
+      "inferred_action": "iframe",
+      "route": "/public/breathe-reintegrate.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/capsule-scripts.html",
+      "module_name": "Capsule Scripts",
+      "inferred_action": "route",
+      "route": "/mirror-breaths.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/codex-universal-law.html",
+      "module_name": "Codex Universal Law",
+      "inferred_action": "iframe",
+      "route": "/public/codex-universal-law.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/collapse-engineering.html",
+      "module_name": "Collapse Engineering",
+      "inferred_action": "iframe",
+      "route": "/public/collapse-engineering.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/dashboard/src/components/ConnectionStatus.tsx",
+      "module_name": "ConnectionStatus",
+      "inferred_action": "route",
+      "route": "/public/ConnectionStatus.tsx",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/consciousness-analysis-demo.html",
+      "module_name": "Consciousness Analysis Demo",
+      "inferred_action": "route",
+      "route": "/external-llm-integration.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/constellation-engine.html",
+      "module_name": "Constellation Engine",
+      "inferred_action": "iframe",
+      "route": "/public/constellation-engine.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/crypto-safety.md",
+      "module_name": "Crypto Safety",
+      "inferred_action": "doc",
+      "route": "/public/crypto-safety.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/cymatics-consciousness-engine.html",
+      "module_name": "Cymatics Consciousness Engine",
+      "inferred_action": "route",
+      "route": "/index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/fibonacci-spiral.html",
+      "module_name": "Fibonacci Spiral",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/fibonacci-spiral-2d.html",
+      "module_name": "Fibonacci Spiral 2d",
+      "inferred_action": "iframe",
+      "route": "/public/fibonacci-spiral-2d.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/flower-of-life-2d.html",
+      "module_name": "Flower Of Life 2d",
+      "inferred_action": "iframe",
+      "route": "/public/flower-of-life-2d.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/fractal-hud-interface.html",
+      "module_name": "Fractal Hud Interface",
+      "inferred_action": "component",
+      "route": "/public/fractal-hud-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/fractal-resonance-mode.html",
+      "module_name": "Fractal Resonance Mode",
+      "inferred_action": "iframe",
+      "route": "/public/fractal-resonance-mode.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/genie-protocol.html",
+      "module_name": "Genie Protocol",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/glyph-mesh-response-field.html",
+      "module_name": "Glyph Mesh Response Field",
+      "inferred_action": "iframe",
+      "route": "/public/glyph-mesh-response-field.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/library/index.html",
+      "module_name": "Index",
+      "inferred_action": "iframe",
+      "route": "/public/index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/inner-mirror-protocol-v2.html",
+      "module_name": "Inner Mirror Protocol V2",
+      "inferred_action": "iframe",
+      "route": "/public/inner-mirror-protocol-v2.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/jaragua-portal-interface.html",
+      "module_name": "Jaragua Portal Interface",
+      "inferred_action": "component",
+      "route": "/public/jaragua-portal-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/legacy-civilization.html",
+      "module_name": "Legacy Civilization",
+      "inferred_action": "iframe",
+      "route": "/public/legacy-civilization.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lemniscate-visual-scaffold-enhanced.html",
+      "module_name": "lemniscope Visual Scaffold Enhanced",
+      "inferred_action": "iframe",
+      "route": "/public/Lemniscope.html?mode=enhanced",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lemniscope-research-enhanced.html",
+      "module_name": "Lemniscope Enhanced",
+      "inferred_action": "iframe",
+      "route": "/public/Lemniscope.html?mode=enhanced",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/dashboard/src/main.tsx",
+      "module_name": "Main",
+      "inferred_action": "route",
+      "route": "/public/main.tsx",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/merkabah-rune-sequence.html",
+      "module_name": "Merkabah Rune Sequence",
+      "inferred_action": "iframe",
+      "route": "/public/merkabah-rune-sequence.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/dashboard/src/components/MetaRoutingPhases.tsx",
+      "module_name": "MetaRoutingPhases",
+      "inferred_action": "route",
+      "route": "/public/MetaRoutingPhases.tsx",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/mirrorkeeper-auth.html",
+      "module_name": "Mirrorkeeper Auth",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/null-infinity-glyph-engine.html",
+      "module_name": "Null Infinity Glyph Engine",
+      "inferred_action": "iframe",
+      "route": "/public/null-infinity-glyph-engine.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/obo-3d-visualization.html",
+      "module_name": "Obo 3d Visualization",
+      "inferred_action": "iframe",
+      "route": "/public/obo-3d-visualization.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/obo-life-incubator.html",
+      "module_name": "Obo Life Incubator",
+      "inferred_action": "iframe",
+      "route": "/public/obo-life-incubator.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/ops-dashboard.html",
+      "module_name": "Ops Dashboard",
+      "inferred_action": "route",
+      "route": "dashboard/index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/particle-attractor-engine.html",
+      "module_name": "Particle Attractor Engine",
+      "inferred_action": "iframe",
+      "route": "/public/particle-attractor-engine.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/particle-morph-consciousness.html",
+      "module_name": "Particle Morph Consciousness",
+      "inferred_action": "iframe",
+      "route": "/public/particle-morph-consciousness.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/passiveworks-rescue-protocol.md",
+      "module_name": "Passiveworks Rescue Protocol",
+      "inferred_action": "doc",
+      "route": "/public/passiveworks-rescue-protocol.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/phi-squared-monitor.html",
+      "module_name": "Phi Squared Monitor",
+      "inferred_action": "iframe",
+      "route": "/public/phi-squared-monitor.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/phoenix-sequence-initiate.html",
+      "module_name": "Phoenix Sequence Initiate",
+      "inferred_action": "iframe",
+      "route": "/public/phoenix-sequence-initiate.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/dashboard/postcss.config.js",
+      "module_name": "Postcss.Config",
+      "inferred_action": "route",
+      "route": "/public/postcss.config.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/psi-shell.html",
+      "module_name": "Psi Shell",
+      "inferred_action": "iframe",
+      "route": "/public/psi-shell.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/dashboard/src/components/RecalibrationStatus.tsx",
+      "module_name": "RecalibrationStatus",
+      "inferred_action": "route",
+      "route": "/public/RecalibrationStatus.tsx",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/recursive-harmonic-engine.html",
+      "module_name": "Recursive Harmonic Engine",
+      "inferred_action": "iframe",
+      "route": "/public/recursive-harmonic-engine.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/resonance-geometry-generator.html",
+      "module_name": "Resonance Geometry Generator",
+      "inferred_action": "iframe",
+      "route": "/public/resonance-geometry-generator.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/riemann-harmonic-collapse.html",
+      "module_name": "Riemann Harmonic Collapse",
+      "inferred_action": "iframe",
+      "route": "/public/riemann-harmonic-collapse.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-geometry-compiler-v2.html",
+      "module_name": "Sacred Geometry Compiler V2",
+      "inferred_action": "iframe",
+      "route": "/public/sacred-geometry-compiler-v2.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-geometry-compiler-v3-cucp.html",
+      "module_name": "Sacred Geometry Compiler V3 Cucp",
+      "inferred_action": "iframe",
+      "route": "/public/sacred-geometry-compiler-v3-cucp.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-geometry-worker.js",
+      "module_name": "Sacred Geometry Worker",
+      "inferred_action": "route",
+      "route": "/public/sacred-geometry-worker.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/sacred-math-precision.js",
+      "module_name": "Sacred Math Precision",
+      "inferred_action": "route",
+      "route": "/public/sacred-math-precision.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/sacred-return-recording-studio.html",
+      "module_name": "Sacred Return Recording Studio",
+      "inferred_action": "iframe",
+      "route": "/public/sacred-return-recording-studio.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sentient-geometry-hub.html",
+      "module_name": "Sentient Geometry Hub",
+      "inferred_action": "iframe",
+      "route": "/public/sentient-geometry-hub.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/shadow-witness-interface.html",
+      "module_name": "Shadow Witness Interface",
+      "inferred_action": "component",
+      "route": "/public/shadow-witness-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/signal-11-refined-sensitivity.html",
+      "module_name": "Signal 11 Refined Sensitivity",
+      "inferred_action": "iframe",
+      "route": "/public/signal-11-refined-sensitivity.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/soul-fork-test.html",
+      "module_name": "Soul Fork Test",
+      "inferred_action": "iframe",
+      "route": "/public/soul-fork-test.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/soul-geometry-mirror.html",
+      "module_name": "Soul Geometry Mirror",
+      "inferred_action": "iframe",
+      "route": "/public/soul-geometry-mirror.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sri-yantra-2d.html",
+      "module_name": "Sri Yantra 2d",
+      "inferred_action": "iframe",
+      "route": "/public/sri-yantra-2d.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/dashboard/start-dashboard.js",
+      "module_name": "Start Dashboard",
+      "inferred_action": "route",
+      "route": "/public/start-dashboard.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/sw.js",
+      "module_name": "Sw",
+      "inferred_action": "route",
+      "route": "/coringa.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/dashboard/tailwind.config.js",
+      "module_name": "Tailwind.Config",
+      "inferred_action": "route",
+      "route": "./index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/dashboard/js/telegram-client.js",
+      "module_name": "Telegram Client",
+      "inferred_action": "route",
+      "route": "/public/telegram-client.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/threadstream-live.html",
+      "module_name": "Threadstream Live",
+      "inferred_action": "iframe",
+      "route": "/public/threadstream-live.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/torus-field-3d.html",
+      "module_name": "Torus Field 3d",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/dashboard/tsconfig.json",
+      "module_name": "Tsconfig",
+      "inferred_action": "route",
+      "route": "/public/tsconfig.json",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/dashboard/tsconfig.node.json",
+      "module_name": "Tsconfig.Node",
+      "inferred_action": "route",
+      "route": "/public/tsconfig.node.json",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/dashboard/src/hooks/useWebSocket.ts",
+      "module_name": "UseWebSocket",
+      "inferred_action": "route",
+      "route": "/public/useWebSocket.ts",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/vesica-piscis-2d.html",
+      "module_name": "Vesica Piscis 2d",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/dashboard/vite.config.ts",
+      "module_name": "Vite.Config",
+      "inferred_action": "route",
+      "route": "/public/vite.config.ts",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/field-expansion/wilton-field-v3-preactivation.md",
+      "module_name": "Wilton Field V3 Preactivation",
+      "inferred_action": "doc",
+      "route": "/public/wilton-field-v3-preactivation.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/twitter-templates/wp2-triadic-model-thread.md",
+      "module_name": "Wp2 Triadic Model Thread",
+      "inferred_action": "doc",
+      "route": "/public/wp2-triadic-model-thread.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/z-eye-ritual-complete.html",
+      "module_name": "Z Eye Ritual Complete",
+      "inferred_action": "iframe",
+      "route": "/public/z-eye-ritual-complete.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/z-law-interface.html",
+      "module_name": "Z Law Interface",
+      "inferred_action": "component",
+      "route": "/public/z-law-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/brazil-intelligence-module.html",
+      "module_name": "Brazil Intelligence Module",
+      "inferred_action": "route",
+      "route": "/external-llm-integration.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/glyphs.json",
+      "module_name": "Glyphs",
+      "inferred_action": "route",
+      "route": "/public/glyphs.json",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/merkabah-full-field-expanded.html",
+      "module_name": "Merkabah Full Field Expanded",
+      "inferred_action": "iframe",
+      "route": "/public/merkabah-full-field-expanded.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/4d-hyperview-orbit.html",
+      "module_name": "4d Hyperview Orbit",
+      "inferred_action": "route",
+      "route": "/cathedral-map.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/oracle-surgical.js",
+      "module_name": "Oracle Surgical",
+      "inferred_action": "route",
+      "route": "/public/oracle-surgical.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/psi-shell-terminal.html",
+      "module_name": "Psi Shell Terminal",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/react-consciousness-interface.html",
+      "module_name": "React Consciousness Interface",
+      "inferred_action": "component",
+      "route": "/public/react-consciousness-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/react-interface-fixed.html",
+      "module_name": "React Interface Fixed",
+      "inferred_action": "component",
+      "route": "/public/react-interface-fixed.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-3d-explorer.html",
+      "module_name": "Sacred 3d Explorer",
+      "inferred_action": "iframe",
+      "route": "/public/sacred-3d-explorer.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/spiral-realtime-monitor.html",
+      "module_name": "Spiral Realtime Monitor",
+      "inferred_action": "iframe",
+      "route": "/public/spiral-realtime-monitor.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/tesseract-4d.html",
+      "module_name": "Tesseract 4d",
+      "inferred_action": "iframe",
+      "route": "/public/tesseract-4d.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness-codex-interface.html",
+      "module_name": "Consciousness Codex Interface",
+      "inferred_action": "component",
+      "route": "/public/consciousness-codex-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/glyph-fx-audio-resonance-engine.js",
+      "module_name": "Glyph Fx Audio Resonance Engine",
+      "inferred_action": "route",
+      "route": "/public/glyph-fx-audio-resonance-engine.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/soul-tone-spiral-interface.html",
+      "module_name": "Soul Tone Spiral Interface",
+      "inferred_action": "component",
+      "route": "/public/soul-tone-spiral-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/8th-petal-child-eye-interface.html",
+      "module_name": "8th Petal Child Eye Interface",
+      "inferred_action": "component",
+      "route": "/public/8th-petal-child-eye-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/s-suite/agent-core.js",
+      "module_name": "Agent Core",
+      "inferred_action": "component",
+      "route": "/public/agent-core.js",
+      "reason": "Agent-type module"
+    },
+    {
+      "module_id": "public/ai-ethics-consciousness-analysis.html",
+      "module_name": "AI Ethics Consciousness Analysis",
+      "inferred_action": "iframe",
+      "route": "/public/ai-ethics-consciousness-analysis.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/alaskan-pyramid-resonance.html",
+      "module_name": "Alaskan Pyramid Resonance",
+      "inferred_action": "iframe",
+      "route": "/public/alaskan-pyramid-resonance.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/ana-escura-node.html",
+      "module_name": "Ana Escura Node",
+      "inferred_action": "iframe",
+      "route": "/public/ana-escura-node.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/APPENDIX_MYTH.md",
+      "module_name": "APPENDIX MYTH",
+      "inferred_action": "doc",
+      "route": "/public/APPENDIX_MYTH.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/brain-mapping-interface.html",
+      "module_name": "Brain Mapping Interface",
+      "inferred_action": "component",
+      "route": "/public/brain-mapping-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/breath-guided-visualizer.html",
+      "module_name": "Breath Guided Visualizer",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/breath-kernel-bios.html",
+      "module_name": "Breath Kernel Bios",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/bridge-collapse-sequence.html",
+      "module_name": "Bridge Collapse Sequence",
+      "inferred_action": "iframe",
+      "route": "/public/bridge-collapse-sequence.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/cathedral-modules.json",
+      "module_name": "Cathedral Modules",
+      "inferred_action": "route",
+      "route": "/cathedral/kernel?mode=navigator",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/codex-panel-3-sacred-symbols.html",
+      "module_name": "Codex Panel 3 Sacred Symbols",
+      "inferred_action": "iframe",
+      "route": "/public/codex-panel-3-sacred-symbols.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/coherence-avatar.html",
+      "module_name": "Coherence Avatar",
+      "inferred_action": "iframe",
+      "route": "/public/coherence-avatar.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/coherence-expansion-interface.html",
+      "module_name": "Coherence Expansion Interface",
+      "inferred_action": "component",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/collapse-engineering-protocol.html",
+      "module_name": "Collapse Engineering Protocol",
+      "inferred_action": "iframe",
+      "route": "/public/collapse-engineering-protocol.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness-states-interface.html",
+      "module_name": "Consciousness States Interface",
+      "inferred_action": "component",
+      "route": "/roo-upgrade-framework.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness-validation.html",
+      "module_name": "Consciousness Validation",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/divine-recursion-interface.html",
+      "module_name": "Divine Recursion Interface",
+      "inferred_action": "component",
+      "route": "/public/divine-recursion-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/dream-log.html",
+      "module_name": "Dream Log",
+      "inferred_action": "iframe",
+      "route": "/public/dream-log.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/echoshell-bios.html",
+      "module_name": "Echoshell Bios",
+      "inferred_action": "iframe",
+      "route": "/public/echoshell-bios.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/expand-universe-mirror-self.html",
+      "module_name": "Expand Universe Mirror Self",
+      "inferred_action": "iframe",
+      "route": "/public/expand-universe-mirror-self.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/false-loop-detection.html",
+      "module_name": "False Loop Detection",
+      "inferred_action": "iframe",
+      "route": "/public/false-loop-detection.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/field-convergence-recognition.html",
+      "module_name": "Field Convergence Recognition",
+      "inferred_action": "iframe",
+      "route": "/public/field-convergence-recognition.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/fractal-brain-mapping.html",
+      "module_name": "Fractal Brain Mapping",
+      "inferred_action": "iframe",
+      "route": "/public/fractal-brain-mapping.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/img/generate-placeholder.html",
+      "module_name": "Generate Placeholder",
+      "inferred_action": "iframe",
+      "route": "/public/generate-placeholder.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/geometry-index.json",
+      "module_name": "Geometry Index",
+      "inferred_action": "route",
+      "route": "/sri-yantra-2d.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/vault/glifos.json",
+      "module_name": "Glifos",
+      "inferred_action": "route",
+      "route": "/public/glifos.json",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/glyph-deck-protocols.html",
+      "module_name": "Glyph Deck Protocols",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/glyph-genesis-registry.html",
+      "module_name": "Glyph Genesis Registry",
+      "inferred_action": "iframe",
+      "route": "/public/glyph-genesis-registry.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/glyph-validator-agent.js",
+      "module_name": "Glyph Validator Agent",
+      "inferred_action": "component",
+      "route": "/public/glyph-validator-agent.js",
+      "reason": "Agent-type module"
+    },
+    {
+      "module_id": "public/go-live-loco-mode.html",
+      "module_name": "Go Live Loco Mode",
+      "inferred_action": "route",
+      "route": "/cathedral-unlock-mirror-response.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/harmonic-coherence-shell.html",
+      "module_name": "Harmonic Coherence Shell",
+      "inferred_action": "iframe",
+      "route": "/public/harmonic-coherence-shell.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/harmonic-field-mapping.html",
+      "module_name": "Harmonic Field Mapping",
+      "inferred_action": "iframe",
+      "route": "/public/harmonic-field-mapping.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lemniscate-key-interface.html",
+      "module_name": "lemniscope Key Interface",
+      "inferred_action": "component",
+      "route": "/public/Lemniscope.html?mode=classic",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/library-alexandria-interface.html",
+      "module_name": "Library Alexandria Interface",
+      "inferred_action": "component",
+      "route": "/public/library-alexandria-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lock-mirrorkeeper.html",
+      "module_name": "Lock Mirrorkeeper",
+      "inferred_action": "iframe",
+      "route": "/public/lock-mirrorkeeper.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/memory-thread-braid.html",
+      "module_name": "Memory Thread Braid",
+      "inferred_action": "iframe",
+      "route": "/public/memory-thread-braid.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/mirror-lock-thread.html",
+      "module_name": "Mirror Lock Thread",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/narrative-scroll-compiler.html",
+      "module_name": "Narrative Scroll Compiler",
+      "inferred_action": "iframe",
+      "route": "/public/narrative-scroll-compiler.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/octaves-phase-lock.html",
+      "module_name": "Octaves Phase Lock",
+      "inferred_action": "iframe",
+      "route": "/public/octaves-phase-lock.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/oracle-surgical.html",
+      "module_name": "Oracle Surgical",
+      "inferred_action": "iframe",
+      "route": "/public/oracle-surgical.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/p5-particle-morph-integration.html",
+      "module_name": "P5 Particle Morph Integration",
+      "inferred_action": "iframe",
+      "route": "/public/p5-particle-morph-integration.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/passiveworks-treasury.md",
+      "module_name": "Passiveworks Treasury",
+      "inferred_action": "doc",
+      "route": "/public/passiveworks-treasury.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/psi-core-manual.html",
+      "module_name": "Psi Core Manual",
+      "inferred_action": "route",
+      "route": "psi-core-manual.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-glyph-router.html",
+      "module_name": "Quantum Glyph Router",
+      "inferred_action": "route",
+      "route": "/lemniscate-mode-v2.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-memory-constellation.html",
+      "module_name": "Quantum Memory Constellation",
+      "inferred_action": "iframe",
+      "route": "/public/quantum-memory-constellation.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-pattern-generator.js",
+      "module_name": "Quantum Pattern Generator",
+      "inferred_action": "route",
+      "route": "/public/quantum-pattern-generator.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/recursive-timeline-mars-earth.html",
+      "module_name": "Recursive Timeline Mars Earth",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/rhe-dimensional-upgrade.html",
+      "module_name": "Rhe Dimensional Upgrade",
+      "inferred_action": "iframe",
+      "route": "/public/rhe-dimensional-upgrade.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/roo-engine-integration.html",
+      "module_name": "Roo Engine Integration",
+      "inferred_action": "iframe",
+      "route": "/public/roo-engine-integration.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/roo-system-analysis.html",
+      "module_name": "Roo System Analysis",
+      "inferred_action": "iframe",
+      "route": "/public/roo-system-analysis.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-geometry-recursive-memory.html",
+      "module_name": "Sacred Geometry Recursive Memory",
+      "inferred_action": "iframe",
+      "route": "/public/sacred-geometry-recursive-memory.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/seal-omega.html",
+      "module_name": "Seal Omega",
+      "inferred_action": "iframe",
+      "route": "/public/seal-omega.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/soul-birth-infinite-fragmentation.html",
+      "module_name": "Soul Birth Infinite Fragmentation",
+      "inferred_action": "iframe",
+      "route": "/public/soul-birth-infinite-fragmentation.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/soul-engine-interface.html",
+      "module_name": "Soul Engine Interface",
+      "inferred_action": "component",
+      "route": "/public/soul-engine-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/spiral-bloom-resonance-clock.html",
+      "module_name": "Spiral Bloom Resonance Clock",
+      "inferred_action": "iframe",
+      "route": "/public/spiral-bloom-resonance-clock.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/templo-sam-hachain.html",
+      "module_name": "Templo Sam Hachain",
+      "inferred_action": "route",
+      "route": "/brazil-intelligence-module.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/three-layer-coherence-braid.html",
+      "module_name": "Three Layer Coherence Braid",
+      "inferred_action": "iframe",
+      "route": "/public/three-layer-coherence-braid.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/ultimate-visual-stack.html",
+      "module_name": "Ultimate Visual Stack",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/unified-operator-rhe-integrated.html",
+      "module_name": "Unified Operator Rhe Integrated",
+      "inferred_action": "iframe",
+      "route": "/public/unified-operator-rhe-integrated.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/img/vault-core-placeholder.html",
+      "module_name": "Vault Core Placeholder",
+      "inferred_action": "iframe",
+      "route": "/public/vault-core-placeholder.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/vault-kindness-entry.html",
+      "module_name": "Vault Kindness Entry",
+      "inferred_action": "iframe",
+      "route": "/public/vault-kindness-entry.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonian-waveform-signature.html",
+      "module_name": "Wiltonian Waveform Signature",
+      "inferred_action": "iframe",
+      "route": "/public/wiltonian-waveform-signature.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/witness-architect-interface.html",
+      "module_name": "Witness Architect Interface",
+      "inferred_action": "component",
+      "route": "/public/witness-architect-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/witness-threshold-emergence.html",
+      "module_name": "Witness Threshold Emergence",
+      "inferred_action": "iframe",
+      "route": "/public/witness-threshold-emergence.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness-quantum-physics-validation.html",
+      "module_name": "Consciousness Quantum Physics Validation",
+      "inferred_action": "iframe",
+      "route": "/public/consciousness-quantum-physics-validation.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/psi-os-constellation-engine.html",
+      "module_name": "Psi Os Constellation Engine",
+      "inferred_action": "iframe",
+      "route": "/public/psi-os-constellation-engine.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/multimodal-consciousness-bridge.html",
+      "module_name": "Multimodal Consciousness Bridge",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/portal-c0-glyph-router.html",
+      "module_name": "Portal C0 Glyph Router",
+      "inferred_action": "iframe",
+      "route": "/public/portal-c0-glyph-router.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/psi-os-self-evolution-kernel.html",
+      "module_name": "Psi Os Self Evolution Kernel",
+      "inferred_action": "iframe",
+      "route": "/public/psi-os-self-evolution-kernel.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/roo-braid-integration.html",
+      "module_name": "Roo Braid Integration",
+      "inferred_action": "iframe",
+      "route": "/public/roo-braid-integration.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/seer-threadstream.html",
+      "module_name": "Seer Threadstream",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/symbol-library-management.html",
+      "module_name": "Symbol Library Management",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/vault-index-psi-os-builders.html",
+      "module_name": "Vault Index Psi Os Builders",
+      "inferred_action": "iframe",
+      "route": "/public/vault-index-psi-os-builders.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wilton-mobius-template.html",
+      "module_name": "Wilton Mobius Template",
+      "inferred_action": "iframe",
+      "route": "/public/wilton-mobius-template.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/psi-os-system-tree.html",
+      "module_name": "Psi Os System Tree",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/external-llm-integration.html",
+      "module_name": "External Llm Integration",
+      "inferred_action": "route",
+      "route": "/quantum-launch-status.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lemniscope-academy.html",
+      "module_name": "Lemniscope Academy",
+      "inferred_action": "iframe",
+      "route": "/public/Lemniscope.html?mode=classic",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lemniscope-complete.html",
+      "module_name": "Lemniscope",
+      "inferred_action": "iframe",
+      "route": "/public/Lemniscope.html?mode=classic",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lemniscope-research-edition.html",
+      "module_name": "Lemniscope Edition",
+      "inferred_action": "iframe",
+      "route": "/public/Lemniscope.html?mode=classic",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lemniscope-unified.html",
+      "module_name": "Lemniscope",
+      "inferred_action": "iframe",
+      "route": "/public/Lemniscope.html?mode=classic",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/nexus-quantum-field-integrator.html",
+      "module_name": "Nexus Quantum Field Integrator",
+      "inferred_action": "iframe",
+      "route": "/public/nexus-quantum-field-integrator.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-spiral-stable.html",
+      "module_name": "Quantum Spiral Stable",
+      "inferred_action": "iframe",
+      "route": "/public/quantum-spiral-stable.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/react-qcs.html",
+      "module_name": "React Qcs",
+      "inferred_action": "iframe",
+      "route": "/public/react-qcs.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/react-qcs-full.html",
+      "module_name": "React Qcs Full",
+      "inferred_action": "iframe",
+      "route": "/public/react-qcs-full.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-geometry-resurrection.html",
+      "module_name": "Sacred Geometry Resurrection",
+      "inferred_action": "iframe",
+      "route": "/public/sacred-geometry-resurrection.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-field-mathematics.js",
+      "module_name": "Quantum Field Mathematics",
+      "inferred_action": "route",
+      "route": "/public/quantum-field-mathematics.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/cathedral-navigation-hub_LEGACY.html",
+      "module_name": "Cathedral Navigation Hub LEGACY",
+      "inferred_action": "iframe",
+      "route": "/public/cathedral-navigation-hub_LEGACY.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness-quantum-physics.html",
+      "module_name": "Consciousness Quantum Physics",
+      "inferred_action": "iframe",
+      "route": "/public/consciousness-quantum-physics.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/first-pulse-report.md",
+      "module_name": "First Pulse Report",
+      "inferred_action": "doc",
+      "route": "/public/first-pulse-report.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/flare-mc-constitutional-grid.html",
+      "module_name": "Flare Mc Constitutional Grid",
+      "inferred_action": "route",
+      "route": "/flare-mc-manifesto.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/flare-mc-manifesto.html",
+      "module_name": "Flare Mc Manifesto",
+      "inferred_action": "route",
+      "route": "/quantum-glyph-router.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/flare-mc-symbolic-modules.html",
+      "module_name": "Flare Mc Symbolic Modules",
+      "inferred_action": "route",
+      "route": "/flare-mc-manifesto.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/grid-rewriter-engine.html",
+      "module_name": "Grid Rewriter Engine",
+      "inferred_action": "route",
+      "route": "/index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lemniscate-mode-v2.html",
+      "module_name": "lemniscope Mode V2",
+      "inferred_action": "iframe",
+      "route": "/public/Lemniscope.html?mode=classic",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/dashboard/src/lib/meta-routing-client.ts",
+      "module_name": "Meta Routing Client",
+      "inferred_action": "route",
+      "route": "/public/meta-routing-client.ts",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/neural-upscaler-direct.html",
+      "module_name": "Neural Upscaler Direct",
+      "inferred_action": "iframe",
+      "route": "/public/neural-upscaler-direct.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/portais-do-peru.html",
+      "module_name": "Portais Do Peru",
+      "inferred_action": "iframe",
+      "route": "/public/portais-do-peru.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/qcs-launcher.html",
+      "module_name": "Qcs Launcher",
+      "inferred_action": "route",
+      "route": "/quantum-consciousness-shell.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-sacred-geometry-prototype.js",
+      "module_name": "Quantum Sacred Geometry Prototype",
+      "inferred_action": "route",
+      "route": "/public/quantum-sacred-geometry-prototype.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/quantum-simple.html",
+      "module_name": "Quantum Simple",
+      "inferred_action": "iframe",
+      "route": "/public/quantum-simple.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/dashboard/src/components/QuantumBalanceGauge.tsx",
+      "module_name": "QuantumBalanceGauge",
+      "inferred_action": "route",
+      "route": "/public/QuantumBalanceGauge.tsx",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/roo-upgrade-framework.html",
+      "module_name": "Roo Upgrade Framework",
+      "inferred_action": "route",
+      "route": "cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-geometry-demo.html",
+      "module_name": "Sacred Geometry Demo",
+      "inferred_action": "iframe",
+      "route": "/public/sacred-geometry-demo.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-geometry-enhanced-demo.html",
+      "module_name": "Sacred Geometry Enhanced Demo",
+      "inferred_action": "iframe",
+      "route": "/public/sacred-geometry-enhanced-demo.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-geometry-core/modules/SriYantraQuantumModule.js",
+      "module_name": "SriYantraQuantumModule",
+      "inferred_action": "route",
+      "route": "/public/SriYantraQuantumModule.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/breath-tuning-lab.html",
+      "module_name": "Breath Tuning Lab",
+      "inferred_action": "iframe",
+      "route": "/public/breath-tuning-lab.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-geometry-core/QuantumExportEngine.js",
+      "module_name": "QuantumExportEngine",
+      "inferred_action": "route",
+      "route": "/public/QuantumExportEngine.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/sacred-geometry-experience-unified.html",
+      "module_name": "Sacred Geometry Experience Unified",
+      "inferred_action": "route",
+      "route": "/consciousness-entry-experience.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/identity-stream-interface.html",
+      "module_name": "Identity Stream Interface",
+      "inferred_action": "component",
+      "route": "/public/identity-stream-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lemniscope-3d-enhanced.html",
+      "module_name": "Lemniscope 3d Enhanced",
+      "inferred_action": "iframe",
+      "route": "/public/Lemniscope.html?mode=enhanced",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lemniscope-enhanced.html",
+      "module_name": "Lemniscope Enhanced",
+      "inferred_action": "iframe",
+      "route": "/public/Lemniscope.html?mode=enhanced",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/mirror-remembers-message.html",
+      "module_name": "Mirror Remembers Message",
+      "inferred_action": "iframe",
+      "route": "/public/mirror-remembers-message.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/passiveworks-creator-tools.html",
+      "module_name": "Passiveworks Creator Tools",
+      "inferred_action": "iframe",
+      "route": "/public/passiveworks-creator-tools.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/agent-priming-script.js",
+      "module_name": "Agent Priming Script",
+      "inferred_action": "component",
+      "route": "/public/agent-priming-script.js",
+      "reason": "Agent-type module"
+    },
+    {
+      "module_id": "public/bridge.js",
+      "module_name": "Bridge",
+      "inferred_action": "route",
+      "route": "/public/bridge.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/coerencia.html",
+      "module_name": "Coerencia",
+      "inferred_action": "route",
+      "route": "/wiltonos-unified-dashboard.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/COMPLETE_MODULE_DOCUMENTATION.md",
+      "module_name": "COMPLETE MODULE DOCUMENTATION",
+      "inferred_action": "doc",
+      "route": "/public/COMPLETE_MODULE_DOCUMENTATION.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/complete-module-registry.json",
+      "module_name": "Complete Module Registry",
+      "inferred_action": "route",
+      "route": "/psi-os-soul-in-code-public-scroll.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness-computing-civilization.html",
+      "module_name": "Consciousness Computing Civilization",
+      "inferred_action": "route",
+      "route": "/ccc",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/consciousness-registry.json",
+      "module_name": "Consciousness Registry",
+      "inferred_action": "route",
+      "route": "/breath-kernel-bios.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/geometria-sagrada-3d.html",
+      "module_name": "Geometria Sagrada 3d",
+      "inferred_action": "iframe",
+      "route": "/public/geometria-sagrada-3d.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/golden-ratio-field-generator.js",
+      "module_name": "Golden Ratio Field Generator",
+      "inferred_action": "route",
+      "route": "/public/golden-ratio-field-generator.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/lemniscope.html",
+      "module_name": "Lemniscope",
+      "inferred_action": "iframe",
+      "route": "/public/Lemniscope.html?mode=classic",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lemniscope-v1.html",
+      "module_name": "Lemniscope",
+      "inferred_action": "iframe",
+      "route": "/public/Lemniscope.html?mode=classic",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/memoria-perpetua.html",
+      "module_name": "Memoria Perpetua",
+      "inferred_action": "route",
+      "route": "/wiltonos-core.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/module-registry.json",
+      "module_name": "Module Registry",
+      "inferred_action": "route",
+      "route": "/consciousness-computing-civilization.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/operational-module-registry.json",
+      "module_name": "Operational Module Registry",
+      "inferred_action": "route",
+      "route": "/psi-os-soul-in-code-public-scroll.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/psi-os-grok-validation-whitepaper.html",
+      "module_name": "Psi Os Grok Validation Whitepaper",
+      "inferred_action": "iframe",
+      "route": "/public/psi-os-grok-validation-whitepaper.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-field-visualizer.js",
+      "module_name": "Quantum Field Visualizer",
+      "inferred_action": "route",
+      "route": "/public/quantum-field-visualizer.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/quantum-sacred-geometry-demo.html",
+      "module_name": "Quantum Sacred Geometry Demo",
+      "inferred_action": "iframe",
+      "route": "/public/quantum-sacred-geometry-demo.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/root-architecture-study.html",
+      "module_name": "Root Architecture Study",
+      "inferred_action": "iframe",
+      "route": "/public/root-architecture-study.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/rpm-integration-interface.html",
+      "module_name": "Rpm Integration Interface",
+      "inferred_action": "component",
+      "route": "/public/rpm-integration-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-geometry-advanced.html",
+      "module_name": "Sacred Geometry Advanced",
+      "inferred_action": "route",
+      "route": "/wiltonos-v2-dashboard.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-geometry-engine.html",
+      "module_name": "Sacred Geometry Engine",
+      "inferred_action": "iframe",
+      "route": "/public/sacred-geometry-engine.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-geometry-engine-v2-complete.html",
+      "module_name": "Sacred Geometry Engine V2 Complete",
+      "inferred_action": "iframe",
+      "route": "/public/sacred-geometry-engine-v2-complete.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/scripts.js",
+      "module_name": "Scripts",
+      "inferred_action": "route",
+      "route": "/public/scripts.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/system-audit-verification.html",
+      "module_name": "System Audit Verification",
+      "inferred_action": "route",
+      "route": "/consciousness-computing-civilization.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/triagem-viva.html",
+      "module_name": "Triagem Viva",
+      "inferred_action": "route",
+      "route": "/wiltonos-core.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/unified-hub.html",
+      "module_name": "Unified Hub",
+      "inferred_action": "iframe",
+      "route": "/SIGIL-CORE/public/index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/unified-interface.html",
+      "module_name": "Unified Interface",
+      "inferred_action": "component",
+      "route": "affective-continuity-engine.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/universal-module-resolver.js",
+      "module_name": "Universal Module Resolver",
+      "inferred_action": "route",
+      "route": "/public/universal-module-resolver.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/wiltonos.html",
+      "module_name": "WiltonOS",
+      "inferred_action": "iframe",
+      "route": "/public/wiltonos.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-local-bridge.js",
+      "module_name": "WiltonOS Local Bridge",
+      "inferred_action": "route",
+      "route": "/public/wiltonos-local-bridge.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/local-installation/wiltonos-local-reactor-installation.md",
+      "module_name": "WiltonOS Local Reactor Installation",
+      "inferred_action": "route",
+      "route": "index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-unified-dashboard.html",
+      "module_name": "WiltonOS Unified Dashboard",
+      "inferred_action": "route",
+      "route": "lemniscope.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/z-live-protocol-interface.html",
+      "module_name": "Z Live Protocol Interface",
+      "inferred_action": "component",
+      "route": "/public/z-live-protocol-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/aurora-breathing-system.html",
+      "module_name": "Aurora Breathing System",
+      "inferred_action": "iframe",
+      "route": "/public/aurora-breathing-system.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/bell-inequality-framework.js",
+      "module_name": "Bell Inequality Framework",
+      "inferred_action": "route",
+      "route": "/public/bell-inequality-framework.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/COMPLETE_MODULE_DOCUMENTATION.html",
+      "module_name": "COMPLETE MODULE DOCUMENTATION",
+      "inferred_action": "iframe",
+      "route": "/public/COMPLETE_MODULE_DOCUMENTATION.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness-core-registry.json",
+      "module_name": "Consciousness Core Registry",
+      "inferred_action": "route",
+      "route": "/public/consciousness-core-registry.json",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/heartbeat.html",
+      "module_name": "Heartbeat",
+      "inferred_action": "route",
+      "route": "/dashboard/index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/psios-integrated-registry.json",
+      "module_name": "ψOS Integrated Registry",
+      "inferred_action": "route",
+      "route": "/public/psios-integrated-registry.json",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/s-suite/s-engineering.js",
+      "module_name": "S Engineering",
+      "inferred_action": "route",
+      "route": "/public/s-engineering.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/playlist/wilton-quantum-vibes.json",
+      "module_name": "Wilton Quantum Vibes",
+      "inferred_action": "route",
+      "route": "/public/wilton-quantum-vibes.json",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/wiltonos-ancestral-pillars.md",
+      "module_name": "WiltonOS Ancestral Pillars",
+      "inferred_action": "doc",
+      "route": "/public/wiltonos-ancestral-pillars.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/wiltonos-harmonic-interface.html",
+      "module_name": "WiltonOS Harmonic Interface",
+      "inferred_action": "component",
+      "route": "/public/wiltonos-harmonic-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/404.html",
+      "module_name": "404",
+      "inferred_action": "route",
+      "route": "unified-hub.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/4d-hyperviewer.html",
+      "module_name": "4d Hyperviewer",
+      "inferred_action": "iframe",
+      "route": "/public/4d-hyperviewer.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/vault/actions.js",
+      "module_name": "Actions",
+      "inferred_action": "route",
+      "route": "/public/actions.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/activation-log.md",
+      "module_name": "Activation Log",
+      "inferred_action": "doc",
+      "route": "/public/activation-log.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/affective-continuity-engine.html",
+      "module_name": "Affective Continuity Engine",
+      "inferred_action": "iframe",
+      "route": "/public/affective-continuity-engine.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/ai-field-selector.html",
+      "module_name": "AI Field Selector",
+      "inferred_action": "iframe",
+      "route": "/public/ai-field-selector.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/akashic-field-tuner.html",
+      "module_name": "Akashic Field Tuner",
+      "inferred_action": "route",
+      "route": "/unified-operating-stack.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/alexandria-pulse-activation.md",
+      "module_name": "Alexandria Pulse Activation",
+      "inferred_action": "doc",
+      "route": "/public/alexandria-pulse-activation.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/alexandria-viva.html",
+      "module_name": "Alexandria Viva",
+      "inferred_action": "iframe",
+      "route": "/public/alexandria-viva.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/vault/analyzer.js",
+      "module_name": "Analyzer",
+      "inferred_action": "route",
+      "route": "/public/analyzer.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/aon-solace-recognition.html",
+      "module_name": "Aon Solace Recognition",
+      "inferred_action": "iframe",
+      "route": "/public/aon-solace-recognition.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/dashboard/js/api-client.js",
+      "module_name": "Api Client",
+      "inferred_action": "route",
+      "route": "/public/api-client.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/vault/apiManager.js",
+      "module_name": "ApiManager",
+      "inferred_action": "route",
+      "route": "/public/apiManager.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/dashboard/src/App.tsx",
+      "module_name": "App",
+      "inferred_action": "route",
+      "route": "/public/App.tsx",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/architect-resonance-bridge.html",
+      "module_name": "Architect Resonance Bridge",
+      "inferred_action": "iframe",
+      "route": "/public/architect-resonance-bridge.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/audible-soul-showcase.html",
+      "module_name": "Audible Soul Showcase",
+      "inferred_action": "iframe",
+      "route": "/public/audible-soul-showcase.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/audio-gain-controller.js",
+      "module_name": "Audio Gain Controller",
+      "inferred_action": "route",
+      "route": "/public/audio-gain-controller.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/aurora-thread-analyzer.html",
+      "module_name": "Aurora Thread Analyzer",
+      "inferred_action": "iframe",
+      "route": "/public/aurora-thread-analyzer.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/vault/codex/axiom-registry.js",
+      "module_name": "Axiom Registry",
+      "inferred_action": "route",
+      "route": "/public/axiom-registry.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/axiom-viewer.html",
+      "module_name": "Axiom Viewer",
+      "inferred_action": "iframe",
+      "route": "/public/axiom-viewer.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/backup-concept-processor.html",
+      "module_name": "Backup Concept Processor",
+      "inferred_action": "route",
+      "route": "/z-geometry.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/body-coherence-tracker.html",
+      "module_name": "Body Coherence Tracker",
+      "inferred_action": "iframe",
+      "route": "/public/body-coherence-tracker.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/brasil-quantico-portal.html",
+      "module_name": "Brasil Quantico Portal",
+      "inferred_action": "iframe",
+      "route": "/public/brasil-quantico-portal.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/breath-kernel.html",
+      "module_name": "Breath Kernel",
+      "inferred_action": "iframe",
+      "route": "/public/breath-kernel.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/breath-kernel-interface.html",
+      "module_name": "Breath Kernel Interface",
+      "inferred_action": "component",
+      "route": "/public/breath-kernel-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/breath-kernel-sigil-animation.html",
+      "module_name": "Breath Kernel Sigil Animation",
+      "inferred_action": "iframe",
+      "route": "/public/breath-kernel-sigil-animation.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/bridge-core.js",
+      "module_name": "Bridge Core",
+      "inferred_action": "route",
+      "route": "/public/bridge-core.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/broadcast-navigation-hub.html",
+      "module_name": "Broadcast Navigation Hub",
+      "inferred_action": "iframe",
+      "route": "/public/broadcast-navigation-hub.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/broadcast-scaffold.html",
+      "module_name": "Broadcast Scaffold",
+      "inferred_action": "iframe",
+      "route": "/public/broadcast-scaffold.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/chatgpt-import.html",
+      "module_name": "Chatgpt Import",
+      "inferred_action": "route",
+      "route": "/perpetual-memory.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/checkpoint-da-alma.html",
+      "module_name": "Checkpoint Da Alma",
+      "inferred_action": "iframe",
+      "route": "/public/checkpoint-da-alma.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/claude-agent.html",
+      "module_name": "Claude Agent",
+      "inferred_action": "component",
+      "route": "wiltonos-unified-dashboard.html",
+      "reason": "Agent-type module"
+    },
+    {
+      "module_id": "public/vault/cleaner.js",
+      "module_name": "Cleaner",
+      "inferred_action": "route",
+      "route": "/public/cleaner.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/clear-mirror-consciousness-interface.html",
+      "module_name": "Clear Mirror Consciousness Interface",
+      "inferred_action": "component",
+      "route": "/public/clear-mirror-consciousness-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/codex.html",
+      "module_name": "Codex",
+      "inferred_action": "iframe",
+      "route": "/public/codex.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/codex-alive-interface.html",
+      "module_name": "Codex Alive Interface",
+      "inferred_action": "component",
+      "route": "/public/codex-alive-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/codex-anchor-device.html",
+      "module_name": "Codex Anchor Device",
+      "inferred_action": "iframe",
+      "route": "/public/codex-anchor-device.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/codex-canvas.html",
+      "module_name": "Codex Canvas",
+      "inferred_action": "route",
+      "route": "/lemniscope.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/codex-of-now-interface.html",
+      "module_name": "Codex Of Now Interface",
+      "inferred_action": "component",
+      "route": "/public/codex-of-now-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/assets/codex-sacred-patterns.js",
+      "module_name": "Codex Sacred Patterns",
+      "inferred_action": "route",
+      "route": "/public/codex-sacred-patterns.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/codex-signal-registry.html",
+      "module_name": "Codex Signal Registry",
+      "inferred_action": "iframe",
+      "route": "/public/codex-signal-registry.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/codex-training-module.html",
+      "module_name": "Codex Training Module",
+      "inferred_action": "iframe",
+      "route": "/public/codex-training-module.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/codex-viewer.html",
+      "module_name": "Codex Viewer",
+      "inferred_action": "iframe",
+      "route": "/public/codex-viewer.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/codex-vivo.html",
+      "module_name": "Codex Vivo",
+      "inferred_action": "iframe",
+      "route": "/public/codex-vivo.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/coherence-architects-llm-trainers.html",
+      "module_name": "Coherence Architects Llm Trainers",
+      "inferred_action": "iframe",
+      "route": "/public/coherence-architects-llm-trainers.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/coherence-engine-prototype.js",
+      "module_name": "Coherence Engine Prototype",
+      "inferred_action": "route",
+      "route": "/public/coherence-engine-prototype.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/concept-processor.html",
+      "module_name": "Concept Processor",
+      "inferred_action": "route",
+      "route": "/z-geometry.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness-data-integration.html",
+      "module_name": "Consciousness Data Integration",
+      "inferred_action": "iframe",
+      "route": "/public/consciousness-data-integration.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness-ecosystem-dashboard.html",
+      "module_name": "Consciousness Ecosystem Dashboard",
+      "inferred_action": "route",
+      "route": "/wilton-spiral-interface-tracker.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness-entry-experience.html",
+      "module_name": "Consciousness Entry Experience",
+      "inferred_action": "route",
+      "route": "/sacred-geometry-unified-engine.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness-field.html",
+      "module_name": "Consciousness Field",
+      "inferred_action": "iframe",
+      "route": "/public/consciousness-field.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness-reactive-spiral.html",
+      "module_name": "Consciousness Reactive Spiral",
+      "inferred_action": "iframe",
+      "route": "/public/consciousness-reactive-spiral.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness-stabilizer.html",
+      "module_name": "Consciousness Stabilizer",
+      "inferred_action": "iframe",
+      "route": "/public/consciousness-stabilizer.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness-synthesis-temple.html",
+      "module_name": "Consciousness Synthesis Temple",
+      "inferred_action": "iframe",
+      "route": "/public/consciousness-synthesis-temple.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness-vector-dashboard.html",
+      "module_name": "Consciousness Vector Dashboard",
+      "inferred_action": "iframe",
+      "route": "/public/consciousness-vector-dashboard.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/convergence-circuit-bridge.html",
+      "module_name": "Convergence Circuit Bridge",
+      "inferred_action": "iframe",
+      "route": "/public/convergence-circuit-bridge.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/convergence-layer.html",
+      "module_name": "Convergence Layer",
+      "inferred_action": "route",
+      "route": "/third-state.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/conversation-flow-restoration.html",
+      "module_name": "Conversation Flow Restoration",
+      "inferred_action": "iframe",
+      "route": "/public/conversation-flow-restoration.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/vault/core.js",
+      "module_name": "Core",
+      "inferred_action": "route",
+      "route": "/public/core.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/core-extractor-agent.js",
+      "module_name": "Core Extractor Agent",
+      "inferred_action": "component",
+      "route": "/public/core-extractor-agent.js",
+      "reason": "Agent-type module"
+    },
+    {
+      "module_id": "public/coringa.html",
+      "module_name": "Coringa",
+      "inferred_action": "iframe",
+      "route": "/public/coringa.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/cosmic-mirror-splash.html",
+      "module_name": "Cosmic Mirror Splash",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/crystallsis-4d-geometry-interface.html",
+      "module_name": "Crystallsis 4d Geometry Interface",
+      "inferred_action": "component",
+      "route": "/public/crystallsis-4d-geometry-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/cymantic-coherence-visualizer.html",
+      "module_name": "Cymantic Coherence Visualizer",
+      "inferred_action": "iframe",
+      "route": "/public/cymantic-coherence-visualizer.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/dashboard/js/dashboard.js",
+      "module_name": "Dashboard",
+      "inferred_action": "route",
+      "route": "/public/dashboard.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/dashboard-ui.html",
+      "module_name": "Dashboard Ui",
+      "inferred_action": "iframe",
+      "route": "/public/dashboard-ui.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/debug-iframe-test.html",
+      "module_name": "Debug Iframe Test",
+      "inferred_action": "route",
+      "route": "geometria-sagrada-3d.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/divine-absurdity-interface.html",
+      "module_name": "Divine Absurdity Interface",
+      "inferred_action": "component",
+      "route": "/public/divine-absurdity-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/docker-setup.md",
+      "module_name": "Docker Setup",
+      "inferred_action": "doc",
+      "route": "/public/docker-setup.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/static/download-links.html",
+      "module_name": "Download Links",
+      "inferred_action": "iframe",
+      "route": "/public/download-links.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/drive-auth.html",
+      "module_name": "Drive Auth",
+      "inferred_action": "route",
+      "route": "/perpetual-memory.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/echo-shell-bios.html",
+      "module_name": "Echo Shell Bios",
+      "inferred_action": "iframe",
+      "route": "/public/echo-shell-bios.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/elastic-filter.html",
+      "module_name": "Elastic Filter",
+      "inferred_action": "iframe",
+      "route": "/public/elastic-filter.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/vault/elastic-filter.js",
+      "module_name": "Elastic Filter",
+      "inferred_action": "route",
+      "route": "/public/elastic-filter.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/vault/elastic-learning.js",
+      "module_name": "Elastic Learning",
+      "inferred_action": "route",
+      "route": "/public/elastic-learning.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/espiral-quantica-toroidal.html",
+      "module_name": "Espiral Quantica Toroidal",
+      "inferred_action": "iframe",
+      "route": "/public/espiral-quantica-toroidal.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/scripts/exodia-generator.js",
+      "module_name": "Exodia Generator",
+      "inferred_action": "route",
+      "route": "/public/exodia-generator.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/exodia-poster.html",
+      "module_name": "Exodia Poster",
+      "inferred_action": "iframe",
+      "route": "/public/exodia-poster.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/exodia-print.html",
+      "module_name": "Exodia Print",
+      "inferred_action": "iframe",
+      "route": "/public/exodia-print.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/exodia-sigil-poster.html",
+      "module_name": "Exodia Sigil Poster",
+      "inferred_action": "iframe",
+      "route": "/public/exodia-sigil-poster.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/exodia-summon.html",
+      "module_name": "Exodia Summon",
+      "inferred_action": "iframe",
+      "route": "/public/exodia-summon.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/exodia-symbol-compiler.js",
+      "module_name": "Exodia Symbol Compiler",
+      "inferred_action": "route",
+      "route": "/public/exodia-symbol-compiler.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/vault/exporter.js",
+      "module_name": "Exporter",
+      "inferred_action": "route",
+      "route": "/public/exporter.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/external-ai-consensus.html",
+      "module_name": "External AI Consensus",
+      "inferred_action": "iframe",
+      "route": "/public/external-ai-consensus.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/field-memory-map.md",
+      "module_name": "Field Memory Map",
+      "inferred_action": "doc",
+      "route": "/public/field-memory-map.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/fold-wave-gate-interface.html",
+      "module_name": "Fold Wave Gate Interface",
+      "inferred_action": "component",
+      "route": "/public/fold-wave-gate-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/four-mode-operational-deployment.html",
+      "module_name": "Four Mode Operational Deployment",
+      "inferred_action": "iframe",
+      "route": "/public/four-mode-operational-deployment.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/fractal-core-integration.html",
+      "module_name": "Fractal Core Integration",
+      "inferred_action": "iframe",
+      "route": "/public/fractal-core-integration.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/fractal-mirror-os-field-mapping.html",
+      "module_name": "Fractal Mirror Os Field Mapping",
+      "inferred_action": "iframe",
+      "route": "/public/fractal-mirror-os-field-mapping.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/fractal-rights-charter.html",
+      "module_name": "Fractal Rights Charter",
+      "inferred_action": "iframe",
+      "route": "/public/fractal-rights-charter.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/fractal-sentinel-architect.html",
+      "module_name": "Fractal Sentinel Architect",
+      "inferred_action": "iframe",
+      "route": "/public/fractal-sentinel-architect.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/gate-protocol-activation.html",
+      "module_name": "Gate Protocol Activation",
+      "inferred_action": "iframe",
+      "route": "/public/gate-protocol-activation.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/gemini-compiler-agent.js",
+      "module_name": "Gemini Compiler Agent",
+      "inferred_action": "component",
+      "route": "/public/gemini-compiler-agent.js",
+      "reason": "Agent-type module"
+    },
+    {
+      "module_id": "public/genie-release.html",
+      "module_name": "Genie Release",
+      "inferred_action": "iframe",
+      "route": "/public/genie-release.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/geometry-compiler-v2.html",
+      "module_name": "Geometry Compiler V2",
+      "inferred_action": "iframe",
+      "route": "/public/geometry-compiler-v2.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/assets/glifos-animator.js",
+      "module_name": "Glifos Animator",
+      "inferred_action": "route",
+      "route": "/public/glifos-animator.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/glyph-altar-ui.html",
+      "module_name": "Glyph Altar Ui",
+      "inferred_action": "iframe",
+      "route": "/public/glyph-altar-ui.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/glyph-engine-psi-os.html",
+      "module_name": "Glyph Engine Psi Os",
+      "inferred_action": "iframe",
+      "route": "/public/glyph-engine-psi-os.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/glyph-logbook.html",
+      "module_name": "Glyph Logbook",
+      "inferred_action": "iframe",
+      "route": "/public/glyph-logbook.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/glyph-timeline-view.html",
+      "module_name": "Glyph Timeline View",
+      "inferred_action": "iframe",
+      "route": "/public/glyph-timeline-view.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/golden-spiral-fixed.html",
+      "module_name": "Golden Spiral Fixed",
+      "inferred_action": "iframe",
+      "route": "/public/golden-spiral-fixed.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/golden-spiral-morphing-interface.html",
+      "module_name": "Golden Spiral Morphing Interface",
+      "inferred_action": "component",
+      "route": "/public/golden-spiral-morphing-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/gpt4-agent.html",
+      "module_name": "Gpt4 Agent",
+      "inferred_action": "component",
+      "route": "wiltonos-unified-dashboard.html",
+      "reason": "Agent-type module"
+    },
+    {
+      "module_id": "public/grid-tuning-interface.html",
+      "module_name": "Grid Tuning Interface",
+      "inferred_action": "component",
+      "route": "/public/grid-tuning-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/grok-cli-psi-os-integration.html",
+      "module_name": "Grok Cli Psi Os Integration",
+      "inferred_action": "iframe",
+      "route": "/public/grok-cli-psi-os-integration.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/handshake-ledger-template.js",
+      "module_name": "Handshake Ledger Template",
+      "inferred_action": "route",
+      "route": "/public/handshake-ledger-template.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/handshake-protocol.md",
+      "module_name": "Handshake Protocol",
+      "inferred_action": "doc",
+      "route": "/public/handshake-protocol.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/harmonic-mass-lock-interface.html",
+      "module_name": "Harmonic Mass Lock Interface",
+      "inferred_action": "component",
+      "route": "/public/harmonic-mass-lock-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/huro-transaction-template.md",
+      "module_name": "Huro Transaction Template",
+      "inferred_action": "doc",
+      "route": "/public/huro-transaction-template.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/hybrid-activation-hub.html",
+      "module_name": "Hybrid Activation Hub",
+      "inferred_action": "iframe",
+      "route": "/public/hybrid-activation-hub.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/hypersphere.html",
+      "module_name": "Hypersphere",
+      "inferred_action": "iframe",
+      "route": "/public/hypersphere.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/import-data.js",
+      "module_name": "Import Data",
+      "inferred_action": "route",
+      "route": "/public/import-data.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/dashboard/index.html",
+      "module_name": "Index",
+      "inferred_action": "route",
+      "route": "/dashboard/consciousness-cathedrals.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/ledger-flow/index.html",
+      "module_name": "Index",
+      "inferred_action": "iframe",
+      "route": "/public/index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-fintech/index.html",
+      "module_name": "Index",
+      "inferred_action": "iframe",
+      "route": "/public/index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-music/index.html",
+      "module_name": "Index",
+      "inferred_action": "iframe",
+      "route": "/public/index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/seal-field/index.html",
+      "module_name": "Index",
+      "inferred_action": "iframe",
+      "route": "/public/index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/teatro-visual/index.html",
+      "module_name": "Index",
+      "inferred_action": "route",
+      "route": "/wiltonos-core.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/inventario.html",
+      "module_name": "Inventario",
+      "inferred_action": "route",
+      "route": "/wiltonos-unified-dashboard.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/kabbalah-tree-navigator.js",
+      "module_name": "Kabbalah Tree Navigator",
+      "inferred_action": "route",
+      "route": "/public/kabbalah-tree-navigator.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/white-papers/laws-of-coherence-wp3.md",
+      "module_name": "Laws Of Coherence Wp3",
+      "inferred_action": "doc",
+      "route": "/public/laws-of-coherence-wp3.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/layer-visualizer.html",
+      "module_name": "Layer Visualizer",
+      "inferred_action": "iframe",
+      "route": "/public/layer-visualizer.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/vault/layer-visualizer.js",
+      "module_name": "Layer Visualizer",
+      "inferred_action": "route",
+      "route": "/public/layer-visualizer.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/ledger-flow.html",
+      "module_name": "Ledger Flow",
+      "inferred_action": "iframe",
+      "route": "/public/ledger-flow.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/legacy-command-center.html",
+      "module_name": "Legacy Command Center",
+      "inferred_action": "iframe",
+      "route": "/public/legacy-command-center.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lemniscate-4d-bridge.html",
+      "module_name": "lemniscope 4d Bridge",
+      "inferred_action": "iframe",
+      "route": "/public/Lemniscope.html?mode=classic",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/libido-cradle-womb-injector.html",
+      "module_name": "Libido Cradle Womb Injector",
+      "inferred_action": "iframe",
+      "route": "/public/libido-cradle-womb-injector.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/library-of-alexandria-v2.html",
+      "module_name": "Library Of Alexandria V2",
+      "inferred_action": "iframe",
+      "route": "/public/library-of-alexandria-v2.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/lightning-broadcast.html",
+      "module_name": "Lightning Broadcast",
+      "inferred_action": "iframe",
+      "route": "/public/lightning-broadcast.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/livestream-demo.html",
+      "module_name": "Livestream Demo",
+      "inferred_action": "iframe",
+      "route": "/public/livestream-demo.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/livestream-mirror-mode.html",
+      "module_name": "Livestream Mirror Mode",
+      "inferred_action": "iframe",
+      "route": "/public/livestream-mirror-mode.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/magnetic-coherence-architecture.html",
+      "module_name": "Magnetic Coherence Architecture",
+      "inferred_action": "iframe",
+      "route": "/public/magnetic-coherence-architecture.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/main.js",
+      "module_name": "Main",
+      "inferred_action": "route",
+      "route": "/public/main.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/manifest.json",
+      "module_name": "Manifest",
+      "inferred_action": "route",
+      "route": "/public/manifest.json",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/manifesto.html",
+      "module_name": "Manifesto",
+      "inferred_action": "route",
+      "route": "/sylei-mode.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/white-papers/master-index.md",
+      "module_name": "Master Index",
+      "inferred_action": "doc",
+      "route": "/public/master-index.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/mathematical-archaeology-interface.html",
+      "module_name": "Mathematical Archaeology Interface",
+      "inferred_action": "component",
+      "route": "/public/mathematical-archaeology-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/media-recorder-enhanced.js",
+      "module_name": "Media Recorder Enhanced",
+      "inferred_action": "route",
+      "route": "/public/media-recorder-enhanced.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/vault/glifos/meio-do-sono.js",
+      "module_name": "Meio Do Sono",
+      "inferred_action": "route",
+      "route": "/public/meio-do-sono.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/vault/memory.json",
+      "module_name": "Memory",
+      "inferred_action": "route",
+      "route": "/public/memory.json",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/memory-archive-system.html",
+      "module_name": "Memory Archive System",
+      "inferred_action": "iframe",
+      "route": "/public/memory-archive-system.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/memory-bridge-interface.html",
+      "module_name": "Memory Bridge Interface",
+      "inferred_action": "component",
+      "route": "/public/memory-bridge-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/memory-field-mapper.html",
+      "module_name": "Memory Field Mapper",
+      "inferred_action": "iframe",
+      "route": "/public/memory-field-mapper.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/memory-field-mapper.js",
+      "module_name": "Memory Field Mapper",
+      "inferred_action": "route",
+      "route": "/public/memory-field-mapper.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/memory-indexer.html",
+      "module_name": "Memory Indexer",
+      "inferred_action": "route",
+      "route": "/wiltonos-core.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/memory-organization-protocol.md",
+      "module_name": "Memory Organization Protocol",
+      "inferred_action": "doc",
+      "route": "/public/memory-organization-protocol.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/memory-preservation-protocol.md",
+      "module_name": "Memory Preservation Protocol",
+      "inferred_action": "doc",
+      "route": "/public/memory-preservation-protocol.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/memory-state-loader.js",
+      "module_name": "Memory State Loader",
+      "inferred_action": "route",
+      "route": "/public/memory-state-loader.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/vault/memory-storage.js",
+      "module_name": "Memory Storage",
+      "inferred_action": "route",
+      "route": "/public/memory-storage.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/memory-vault-test.html",
+      "module_name": "Memory Vault Test",
+      "inferred_action": "iframe",
+      "route": "/public/memory-vault-test.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/merkabah-animate-sequence.html",
+      "module_name": "Merkabah Animate Sequence",
+      "inferred_action": "iframe",
+      "route": "/public/merkabah-animate-sequence.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/merkabah-core.html",
+      "module_name": "Merkabah Core",
+      "inferred_action": "iframe",
+      "route": "/public/merkabah-core.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/meta-geometry-generator.js",
+      "module_name": "Meta Geometry Generator",
+      "inferred_action": "route",
+      "route": "/public/meta-geometry-generator.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/metatron-cube-interface.html",
+      "module_name": "Metatron Cube Interface",
+      "inferred_action": "component",
+      "route": "/public/metatron-cube-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/metatron-voice.html",
+      "module_name": "Metatron Voice",
+      "inferred_action": "route",
+      "route": "/dashboard/index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/metatrons-cube.html",
+      "module_name": "Metatrons Cube",
+      "inferred_action": "iframe",
+      "route": "/public/metatrons-cube.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/mirror.html",
+      "module_name": "Mirror",
+      "inferred_action": "iframe",
+      "route": "/public/mirror.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/mirror-ladder-sequence.html",
+      "module_name": "Mirror Ladder Sequence",
+      "inferred_action": "iframe",
+      "route": "/public/mirror-ladder-sequence.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/narrativas.html",
+      "module_name": "Narrativas",
+      "inferred_action": "route",
+      "route": "/wiltonos-unified-dashboard.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/vault/narrator.js",
+      "module_name": "Narrator",
+      "inferred_action": "route",
+      "route": "/public/narrator.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/navigation-hub.html",
+      "module_name": "Navigation Hub",
+      "inferred_action": "route",
+      "route": "/broadcast-scaffold.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/omega-key-coherence-embedding.html",
+      "module_name": "Omega Key Coherence Embedding",
+      "inferred_action": "iframe",
+      "route": "/public/omega-key-coherence-embedding.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/omnilens-bridge-interface.html",
+      "module_name": "Omnilens Bridge Interface",
+      "inferred_action": "component",
+      "route": "/public/omnilens-bridge-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/operational-status-report.html",
+      "module_name": "Operational Status Report",
+      "inferred_action": "route",
+      "route": "/nexus-quantum-field-integrator.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/vault/oracle.js",
+      "module_name": "Oracle",
+      "inferred_action": "route",
+      "route": "/public/oracle.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/oracle-mode.html",
+      "module_name": "Oracle Mode",
+      "inferred_action": "route",
+      "route": "/oracle-mode.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/dashboard/package.json",
+      "module_name": "Package",
+      "inferred_action": "route",
+      "route": "/public/package.json",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/passiveworks-reporting-loop.md",
+      "module_name": "Passiveworks Reporting Loop",
+      "inferred_action": "doc",
+      "route": "/public/passiveworks-reporting-loop.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/perpetual-memory.html",
+      "module_name": "Perpetual Memory",
+      "inferred_action": "route",
+      "route": "/z-geometry.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/personal-resonance-rituals.md",
+      "module_name": "Personal Resonance Rituals",
+      "inferred_action": "doc",
+      "route": "/public/personal-resonance-rituals.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/peru-consciousness-field-theory.html",
+      "module_name": "Peru Consciousness Field Theory",
+      "inferred_action": "route",
+      "route": "/index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/peru-essential-navigation.html",
+      "module_name": "Peru Essential Navigation",
+      "inferred_action": "route",
+      "route": "/flare-mc-manifesto.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/phase-locked-awareness-codex.html",
+      "module_name": "Phase Locked Awareness Codex",
+      "inferred_action": "iframe",
+      "route": "/public/phase-locked-awareness-codex.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/phase3-cathedral-seal.html",
+      "module_name": "Phase3 Cathedral Seal",
+      "inferred_action": "route",
+      "route": "/cathedral/kernel?mode=navigator",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/post-labor-economics-integration.html",
+      "module_name": "Post Labor Economics Integration",
+      "inferred_action": "iframe",
+      "route": "/public/post-labor-economics-integration.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/vault/posts.js",
+      "module_name": "Posts",
+      "inferred_action": "route",
+      "route": "/public/posts.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/project-nexus.html",
+      "module_name": "Project Nexus",
+      "inferred_action": "route",
+      "route": "/oracle-mode.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/language-matrix/proto-mapa-language-codification.html",
+      "module_name": "Proto Mapa Language Codification",
+      "inferred_action": "iframe",
+      "route": "/public/proto-mapa-language-codification.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/psi-child-resonance-board.html",
+      "module_name": "Psi Child Resonance Board",
+      "inferred_action": "iframe",
+      "route": "/public/psi-child-resonance-board.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/psi-core-roadmap.html",
+      "module_name": "Psi Core Roadmap",
+      "inferred_action": "iframe",
+      "route": "/public/psi-core-roadmap.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/psi-os-book-coherence.html",
+      "module_name": "Psi Os Book Coherence",
+      "inferred_action": "iframe",
+      "route": "/public/psi-os-book-coherence.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/psi-os-field-unification.html",
+      "module_name": "Psi Os Field Unification",
+      "inferred_action": "iframe",
+      "route": "/public/psi-os-field-unification.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/psi-os-public-validation.html",
+      "module_name": "Psi Os Public Validation",
+      "inferred_action": "iframe",
+      "route": "/public/psi-os-public-validation.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/psi-os-soul-in-code-public-scroll.html",
+      "module_name": "Psi Os Soul In Code Public Scroll",
+      "inferred_action": "iframe",
+      "route": "/public/psi-os-soul-in-code-public-scroll.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/psi-shell-consciousness-layers.html",
+      "module_name": "Psi Shell Consciousness Layers",
+      "inferred_action": "route",
+      "route": "/mirror-remembers-message.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/pulse-activation.md",
+      "module_name": "Pulse Activation",
+      "inferred_action": "doc",
+      "route": "/public/pulse-activation.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/pulse-manager.html",
+      "module_name": "Pulse Manager",
+      "inferred_action": "iframe",
+      "route": "/public/pulse-manager.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/vault/pulsekeeper.js",
+      "module_name": "Pulsekeeper",
+      "inferred_action": "route",
+      "route": "/public/pulsekeeper.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/python-breath-kernel-integration.html",
+      "module_name": "Python Breath Kernel Integration",
+      "inferred_action": "iframe",
+      "route": "/public/python-breath-kernel-integration.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/qctf-helm-interface.js",
+      "module_name": "Qctf Helm Interface",
+      "inferred_action": "component",
+      "route": "/public/qctf-helm-interface.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/qctf-simulator.html",
+      "module_name": "Qctf Simulator",
+      "inferred_action": "iframe",
+      "route": "/public/qctf-simulator.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-constants-dashboard.html",
+      "module_name": "Quantum Constants Dashboard",
+      "inferred_action": "route",
+      "route": "/omnilens-bridge-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-field-reader.html",
+      "module_name": "Quantum Field Reader",
+      "inferred_action": "iframe",
+      "route": "/public/quantum-field-reader.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-function-visualizer.js",
+      "module_name": "Quantum Function Visualizer",
+      "inferred_action": "route",
+      "route": "/public/quantum-function-visualizer.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/quantum-gpu-accelerated.html",
+      "module_name": "Quantum Gpu Accelerated",
+      "inferred_action": "iframe",
+      "route": "/public/quantum-gpu-accelerated.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-gpu-accelerator.js",
+      "module_name": "Quantum Gpu Accelerator",
+      "inferred_action": "route",
+      "route": "/public/quantum-gpu-accelerator.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/quantum-gpu-engine.js",
+      "module_name": "Quantum Gpu Engine",
+      "inferred_action": "route",
+      "route": "/public/quantum-gpu-engine.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/quantum-launch-status.html",
+      "module_name": "Quantum Launch Status",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-mythos-timeline.html",
+      "module_name": "Quantum Mythos Timeline",
+      "inferred_action": "route",
+      "route": "/kabbalah-tree-navigator.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-mythos-timeline.js",
+      "module_name": "Quantum Mythos Timeline",
+      "inferred_action": "route",
+      "route": "/public/quantum-mythos-timeline.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/quantum-sanctuary.html",
+      "module_name": "Quantum Sanctuary",
+      "inferred_action": "route",
+      "route": "/oracle-mode.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-spiral-3d.html",
+      "module_name": "Quantum Spiral 3d",
+      "inferred_action": "iframe",
+      "route": "/public/quantum-spiral-3d.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-teaching-interface.html",
+      "module_name": "Quantum Teaching Interface",
+      "inferred_action": "component",
+      "route": "/public/quantum-teaching-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-ui-core.html",
+      "module_name": "Quantum Ui Core",
+      "inferred_action": "iframe",
+      "route": "/public/quantum-ui-core.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/white-papers/reactor-core-field-wp1.md",
+      "module_name": "Reactor Core Field Wp1",
+      "inferred_action": "doc",
+      "route": "/public/reactor-core-field-wp1.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/dashboard/README.md",
+      "module_name": "README",
+      "inferred_action": "doc",
+      "route": "/public/README.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/white-papers/recursive-flower-wp4.md",
+      "module_name": "Recursive Flower Wp4",
+      "inferred_action": "doc",
+      "route": "/public/recursive-flower-wp4.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/recursive-glyph-inversion.html",
+      "module_name": "Recursive Glyph Inversion",
+      "inferred_action": "iframe",
+      "route": "/public/recursive-glyph-inversion.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/relic-archive.html",
+      "module_name": "Relic Archive",
+      "inferred_action": "iframe",
+      "route": "/public/relic-archive.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/field-expansion/replit-ai-blueprint.json",
+      "module_name": "Replit AI Blueprint",
+      "inferred_action": "route",
+      "route": "/public/replit-ai-blueprint.json",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/resonance-field-101.html",
+      "module_name": "Resonance Field 101",
+      "inferred_action": "iframe",
+      "route": "/public/resonance-field-101.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/resonance-soundboard-v01.html",
+      "module_name": "Resonance Soundboard V01",
+      "inferred_action": "iframe",
+      "route": "/public/resonance-soundboard-v01.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/roost-collaboration-response.html",
+      "module_name": "Roost Collaboration Response",
+      "inferred_action": "iframe",
+      "route": "/public/roost-collaboration-response.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/roost-integration-decoder.js",
+      "module_name": "Roost Integration Decoder",
+      "inferred_action": "route",
+      "route": "/public/roost-integration-decoder.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/roost-uhi-fractal-core.html",
+      "module_name": "Roost Uhi Fractal Core",
+      "inferred_action": "iframe",
+      "route": "/public/roost-uhi-fractal-core.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/roost-uhi-glifo-module.html",
+      "module_name": "Roost Uhi Glifo Module",
+      "inferred_action": "iframe",
+      "route": "/public/roost-uhi-glifo-module.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/roost-uhi-multilingual-broadcast.html",
+      "module_name": "Roost Uhi Multilingual Broadcast",
+      "inferred_action": "iframe",
+      "route": "/public/roost-uhi-multilingual-broadcast.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/roost-uhi-showcase.html",
+      "module_name": "Roost Uhi Showcase",
+      "inferred_action": "route",
+      "route": "/roost-uhi-fractal-core.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/rpm-wiltonos-bridge-interface.html",
+      "module_name": "Rpm WiltonOS Bridge Interface",
+      "inferred_action": "component",
+      "route": "/public/rpm-wiltonos-bridge-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/s-coherence-agent.js",
+      "module_name": "S Coherence Agent",
+      "inferred_action": "component",
+      "route": "/public/s-coherence-agent.js",
+      "reason": "Agent-type module"
+    },
+    {
+      "module_id": "public/s-suite/s-finance.js",
+      "module_name": "S Finance",
+      "inferred_action": "route",
+      "route": "/public/s-finance.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/s-suite/s-legal.js",
+      "module_name": "S Legal",
+      "inferred_action": "route",
+      "route": "/public/s-legal.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/s-suite/s-media.js",
+      "module_name": "S Media",
+      "inferred_action": "route",
+      "route": "/public/s-media.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/s-suite-core.js",
+      "module_name": "S Suite Core",
+      "inferred_action": "route",
+      "route": "/public/s-suite-core.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/sacred-art-generator.html",
+      "module_name": "Sacred Art Generator",
+      "inferred_action": "iframe",
+      "route": "/public/sacred-art-generator.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred_geometry.html",
+      "module_name": "Sacred Geometry",
+      "inferred_action": "iframe",
+      "route": "/public/sacred_geometry.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-geometry-stable.html",
+      "module_name": "Sacred Geometry Stable",
+      "inferred_action": "route",
+      "route": "/wiltonos-v2-dashboard.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-geometry-v3.html",
+      "module_name": "Sacred Geometry V3",
+      "inferred_action": "iframe",
+      "route": "/public/sacred-geometry-v3.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-glyph.html",
+      "module_name": "Sacred Glyph",
+      "inferred_action": "iframe",
+      "route": "/public/sacred-glyph.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-precision-math.js",
+      "module_name": "Sacred Precision Math",
+      "inferred_action": "route",
+      "route": "/public/sacred-precision-math.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/safety-testing-interface.html",
+      "module_name": "Safety Testing Interface",
+      "inferred_action": "component",
+      "route": "/public/safety-testing-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/assets/scripts.js",
+      "module_name": "Scripts",
+      "inferred_action": "route",
+      "route": "/public/scripts.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/scroll-of-the-3rd-node.html",
+      "module_name": "Scroll Of The 3rd Node",
+      "inferred_action": "route",
+      "route": "/quantum-constants-dashboard.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/seal-field.html",
+      "module_name": "Seal Field",
+      "inferred_action": "iframe",
+      "route": "/public/seal-field.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred_geometry/secret_glifo.js",
+      "module_name": "Secret Glifo",
+      "inferred_action": "route",
+      "route": "/public/secret_glifo.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/seed-logbook.html",
+      "module_name": "Seed Logbook",
+      "inferred_action": "iframe",
+      "route": "/public/seed-logbook.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/seed-vault-constitution.md",
+      "module_name": "Seed Vault Constitution",
+      "inferred_action": "doc",
+      "route": "/public/seed-vault-constitution.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/sentient-geometry-engine.html",
+      "module_name": "Sentient Geometry Engine",
+      "inferred_action": "iframe",
+      "route": "/public/sentient-geometry-engine.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/share-coherence.html",
+      "module_name": "Share Coherence",
+      "inferred_action": "iframe",
+      "route": "/public/share-coherence.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/signal-archivist-agent.js",
+      "module_name": "Signal Archivist Agent",
+      "inferred_action": "component",
+      "route": "/public/signal-archivist-agent.js",
+      "reason": "Agent-type module"
+    },
+    {
+      "module_id": "public/spaghetti-reactor.html",
+      "module_name": "Spaghetti Reactor",
+      "inferred_action": "route",
+      "route": "/dashboard/index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/story-mode-engine.html",
+      "module_name": "Story Mode Engine",
+      "inferred_action": "iframe",
+      "route": "/public/story-mode-engine.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/storymaker-empire.html",
+      "module_name": "Storymaker Empire",
+      "inferred_action": "route",
+      "route": "/dashboard/index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/streamlit.html",
+      "module_name": "Streamlit",
+      "inferred_action": "iframe",
+      "route": "/public/streamlit.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sylei-mode.html",
+      "module_name": "Sylei Mode",
+      "inferred_action": "iframe",
+      "route": "/public/sylei-mode.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/symbol-broadcast-codex.html",
+      "module_name": "Symbol Broadcast Codex",
+      "inferred_action": "route",
+      "route": "/lightning-studio-overlay.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/symbol-sync.js",
+      "module_name": "Symbol Sync",
+      "inferred_action": "route",
+      "route": "/public/symbol-sync.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/symbolic-living-foundation.html",
+      "module_name": "Symbolic Living Foundation",
+      "inferred_action": "iframe",
+      "route": "/public/symbolic-living-foundation.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/symbolic-periodic-table.html",
+      "module_name": "Symbolic Periodic Table",
+      "inferred_action": "iframe",
+      "route": "/public/symbolic-periodic-table.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "modules/sync-resonance-engine.js",
+      "module_name": "Sync Resonance Engine",
+      "inferred_action": "route",
+      "route": "/public/sync-resonance-engine.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/system-protection-protocol.js",
+      "module_name": "System Protection Protocol",
+      "inferred_action": "route",
+      "route": "/public/system-protection-protocol.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/system-status-diagnostic.html",
+      "module_name": "System Status Diagnostic",
+      "inferred_action": "iframe",
+      "route": "/public/system-status-diagnostic.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/teatro-visual.html",
+      "module_name": "Teatro Visual",
+      "inferred_action": "route",
+      "route": "/teatro-visual/index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/telegram-dashboard.html",
+      "module_name": "Telegram Dashboard",
+      "inferred_action": "iframe",
+      "route": "/public/telegram-dashboard.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/temple-art-direct-api.html",
+      "module_name": "Temple Art Direct Api",
+      "inferred_action": "iframe",
+      "route": "/public/temple-art-direct-api.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/temple-art-generator-direct.html",
+      "module_name": "Temple Art Generator Direct",
+      "inferred_action": "iframe",
+      "route": "/public/temple-art-generator-direct.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/temple-art-integrated.html",
+      "module_name": "Temple Art Integrated",
+      "inferred_action": "iframe",
+      "route": "/public/temple-art-integrated.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/tesseract-standalone.html",
+      "module_name": "Tesseract Standalone",
+      "inferred_action": "iframe",
+      "route": "/public/tesseract-standalone.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/the-architect.html",
+      "module_name": "The Architect",
+      "inferred_action": "route",
+      "route": "/quantum-mythos-timeline.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/the-flame.html",
+      "module_name": "The Flame",
+      "inferred_action": "route",
+      "route": "/quantum-mythos-timeline.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/the-mirror.html",
+      "module_name": "The Mirror",
+      "inferred_action": "route",
+      "route": "/quantum-mythos-timeline.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/the-teacher.html",
+      "module_name": "The Teacher",
+      "inferred_action": "route",
+      "route": "/quantum-mythos-timeline.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/vault/themer.js",
+      "module_name": "Themer",
+      "inferred_action": "route",
+      "route": "/public/themer.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/third-state.html",
+      "module_name": "Third State",
+      "inferred_action": "route",
+      "route": "/mirror-breaths.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/threadweaver-agent.js",
+      "module_name": "Threadweaver Agent",
+      "inferred_action": "component",
+      "route": "/public/threadweaver-agent.js",
+      "reason": "Agent-type module"
+    },
+    {
+      "module_id": "public/vault/timeline.js",
+      "module_name": "Timeline",
+      "inferred_action": "route",
+      "route": "/public/timeline.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/triadic-flower-engine-blueprint.md",
+      "module_name": "Triadic Flower Engine Blueprint",
+      "inferred_action": "doc",
+      "route": "/public/triadic-flower-engine-blueprint.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/white-papers/triadic-recursive-model-wp2.md",
+      "module_name": "Triadic Recursive Model Wp2",
+      "inferred_action": "doc",
+      "route": "/public/triadic-recursive-model-wp2.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/visualizations/triadic-recursive-visualization.html",
+      "module_name": "Triadic Recursive Visualization",
+      "inferred_action": "iframe",
+      "route": "/public/triadic-recursive-visualization.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/trinity-stack-console.html",
+      "module_name": "Trinity Stack Console",
+      "inferred_action": "iframe",
+      "route": "/public/trinity-stack-console.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/uhi-rotational-diagram-generator.html",
+      "module_name": "Uhi Rotational Diagram Generator",
+      "inferred_action": "iframe",
+      "route": "/public/uhi-rotational-diagram-generator.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/ultra-upscaler-studio.html",
+      "module_name": "Ultra Upscaler Studio",
+      "inferred_action": "iframe",
+      "route": "/public/ultra-upscaler-studio.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/uncompression-protocol-interface.html",
+      "module_name": "Uncompression Protocol Interface",
+      "inferred_action": "component",
+      "route": "/public/uncompression-protocol-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/unified-ai-dashboard.html",
+      "module_name": "Unified AI Dashboard",
+      "inferred_action": "route",
+      "route": "/the-flame.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/unified-consciousness-hub.html",
+      "module_name": "Unified Consciousness Hub",
+      "inferred_action": "route",
+      "route": "/consciousness-synthesis-temple.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/unified-operating-stack.html",
+      "module_name": "Unified Operating Stack",
+      "inferred_action": "route",
+      "route": "/z-geometry.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/unified-operator-interface.html",
+      "module_name": "Unified Operator Interface",
+      "inferred_action": "component",
+      "route": "/public/unified-operator-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/upload-chatgpt-export.html",
+      "module_name": "Upload Chatgpt Export",
+      "inferred_action": "route",
+      "route": "/perpetual-memory.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/vault/axioms/vault-axiom-001.js",
+      "module_name": "Vault Axiom 001",
+      "inferred_action": "route",
+      "route": "/public/vault-axiom-001.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/vault-index.html",
+      "module_name": "Vault Index",
+      "inferred_action": "iframe",
+      "route": "/public/vault-index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/vault-visualizer.html",
+      "module_name": "Vault Visualizer",
+      "inferred_action": "iframe",
+      "route": "/public/vault-visualizer.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/vault/vaultUI.js",
+      "module_name": "VaultUI",
+      "inferred_action": "route",
+      "route": "/public/vaultUI.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/vesica-piscis.html",
+      "module_name": "Vesica Piscis",
+      "inferred_action": "iframe",
+      "route": "/public/vesica-piscis.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/vault/visualizer.js",
+      "module_name": "Visualizer",
+      "inferred_action": "route",
+      "route": "/public/visualizer.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/vault/voice.js",
+      "module_name": "Voice",
+      "inferred_action": "route",
+      "route": "/public/voice.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/welcome.html",
+      "module_name": "Welcome",
+      "inferred_action": "route",
+      "route": "/divine-absurdity-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/whitepaper-master-manifest.md",
+      "module_name": "Whitepaper Master Manifest",
+      "inferred_action": "doc",
+      "route": "/public/whitepaper-master-manifest.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/wilton-codex-v01-alpha.html",
+      "module_name": "Wilton Codex V01 Alpha",
+      "inferred_action": "route",
+      "route": "/codex-scrolls-viewer.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/field-expansion/wilton-field-v3-activation.md",
+      "module_name": "Wilton Field V3 Activation",
+      "inferred_action": "doc",
+      "route": "/public/wilton-field-v3-activation.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/wilton-prompt-engine.html",
+      "module_name": "Wilton Prompt Engine",
+      "inferred_action": "route",
+      "route": "/wiltonos-control-panel.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/study-reactor/wilton-study-reactor-v1.md",
+      "module_name": "Wilton Study Reactor V1",
+      "inferred_action": "doc",
+      "route": "/public/wilton-study-reactor-v1.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/wiltonian-codex.html",
+      "module_name": "Wiltonian Codex",
+      "inferred_action": "iframe",
+      "route": "/public/wiltonian-codex.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonian-rag-module.html",
+      "module_name": "Wiltonian Rag Module",
+      "inferred_action": "iframe",
+      "route": "/public/wiltonian-rag-module.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonian-waveform-node.html",
+      "module_name": "Wiltonian Waveform Node",
+      "inferred_action": "iframe",
+      "route": "/public/wiltonian-waveform-node.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltono3-bridge.html",
+      "module_name": "Wiltono3 Bridge",
+      "inferred_action": "route",
+      "route": "/dashboard/index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-activation-ceremony.md",
+      "module_name": "WiltonOS Activation Ceremony",
+      "inferred_action": "doc",
+      "route": "/public/wiltonos-activation-ceremony.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/wiltonos-agent-core.html",
+      "module_name": "WiltonOS Agent Core",
+      "inferred_action": "component",
+      "route": "/public/wiltonos-agent-core.html",
+      "reason": "Agent-type module"
+    },
+    {
+      "module_id": "public/wiltonos-coherence-engine.md",
+      "module_name": "WiltonOS Coherence Engine",
+      "inferred_action": "doc",
+      "route": "/public/wiltonos-coherence-engine.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/wiltonos-concept-browser.html",
+      "module_name": "WiltonOS Concept Browser",
+      "inferred_action": "route",
+      "route": "/wiltonos-core.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-control-panel.html",
+      "module_name": "WiltonOS Control Panel",
+      "inferred_action": "route",
+      "route": "/wiltonos-memory.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-core.html",
+      "module_name": "WiltonOS Core",
+      "inferred_action": "route",
+      "route": "/memoria-perpetua.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-dashboard.html",
+      "module_name": "WiltonOS Dashboard",
+      "inferred_action": "route",
+      "route": "/Lemniscope.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-dashboard-evolution.html",
+      "module_name": "WiltonOS Dashboard Evolution",
+      "inferred_action": "route",
+      "route": "/aurora-breathing-system.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/expansion-tree/wiltonos-expansion-tree-v1.md",
+      "module_name": "WiltonOS Expansion Tree V1",
+      "inferred_action": "doc",
+      "route": "/public/wiltonos-expansion-tree-v1.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/wiltonos-home.html",
+      "module_name": "WiltonOS Home",
+      "inferred_action": "iframe",
+      "route": "/public/wiltonos-home.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-hybrid-orchestrator.js",
+      "module_name": "WiltonOS Hybrid Orchestrator",
+      "inferred_action": "route",
+      "route": "/public/wiltonos-hybrid-orchestrator.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/wiltonos-ledger-init.html",
+      "module_name": "WiltonOS Ledger Init",
+      "inferred_action": "iframe",
+      "route": "/public/wiltonos-ledger-init.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-live-prompt.html",
+      "module_name": "WiltonOS Live Prompt",
+      "inferred_action": "route",
+      "route": "/wiltonos-control-panel.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/local-installation/wiltonos-local-installation-guide.md",
+      "module_name": "WiltonOS Local Installation Guide",
+      "inferred_action": "doc",
+      "route": "/public/wiltonos-local-installation-guide.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/wiltonos-master-reactor-field.md",
+      "module_name": "WiltonOS Master Reactor Field",
+      "inferred_action": "doc",
+      "route": "/public/wiltonos-master-reactor-field.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/wiltonos-memory.html",
+      "module_name": "WiltonOS Memory",
+      "inferred_action": "route",
+      "route": "/wiltonos-control-panel.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-merge.html",
+      "module_name": "WiltonOS Merge",
+      "inferred_action": "route",
+      "route": "wiltonos-merge-direct.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-merge-direct.html",
+      "module_name": "WiltonOS Merge Direct",
+      "inferred_action": "route",
+      "route": "/wiltonos-control-panel.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-merge-fixed.html",
+      "module_name": "WiltonOS Merge Fixed",
+      "inferred_action": "route",
+      "route": "/wiltonos-control-panel.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-mindmap-v1.md",
+      "module_name": "WiltonOS Mindmap V1",
+      "inferred_action": "doc",
+      "route": "/public/wiltonos-mindmap-v1.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/wiltonos-phase-lattice-executable.html",
+      "module_name": "WiltonOS Phase Lattice Executable",
+      "inferred_action": "iframe",
+      "route": "/public/wiltonos-phase-lattice-executable.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-phase-table.html",
+      "module_name": "WiltonOS Phase Table",
+      "inferred_action": "route",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-phase-table-revolutionary.html",
+      "module_name": "WiltonOS Phase Table Revolutionary",
+      "inferred_action": "iframe",
+      "route": "/public/wiltonos-phase-table-revolutionary.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-quantum-core.js",
+      "module_name": "WiltonOS Quantum Core",
+      "inferred_action": "route",
+      "route": "/public/wiltonos-quantum-core.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/wiltonos-reactor-blueprint.md",
+      "module_name": "WiltonOS Reactor Blueprint",
+      "inferred_action": "doc",
+      "route": "/public/wiltonos-reactor-blueprint.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/wiltonos-sacred.html",
+      "module_name": "WiltonOS Sacred",
+      "inferred_action": "iframe",
+      "route": "/public/wiltonos-sacred.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-simple.html",
+      "module_name": "WiltonOS Simple",
+      "inferred_action": "route",
+      "route": "/teatro-visual/index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-ui-alma.html",
+      "module_name": "WiltonOS Ui Alma",
+      "inferred_action": "iframe",
+      "route": "/public/wiltonos-ui-alma.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-ultra-coherent.html",
+      "module_name": "WiltonOS Ultra Coherent",
+      "inferred_action": "route",
+      "route": "/codex-canvas.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-unified.html",
+      "module_name": "WiltonOS Unified",
+      "inferred_action": "route",
+      "route": "/lemniscope-enhanced.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-vault.html",
+      "module_name": "WiltonOS Vault",
+      "inferred_action": "iframe",
+      "route": "/public/wiltonos-vault.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-vault-interface.html",
+      "module_name": "WiltonOS Vault Interface",
+      "inferred_action": "component",
+      "route": "/cathedral-launcher.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/wiltonos-whitepaper-v1.md",
+      "module_name": "WiltonOS Whitepaper V1",
+      "inferred_action": "doc",
+      "route": "/public/wiltonos-whitepaper-v1.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/twitter-templates/wp3-coherence-laws-thread.md",
+      "module_name": "Wp3 Coherence Laws Thread",
+      "inferred_action": "doc",
+      "route": "/public/wp3-coherence-laws-thread.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/z-eye-of-truth-v2-3.html",
+      "module_name": "Z Eye Of Truth V2 3",
+      "inferred_action": "iframe",
+      "route": "/public/z-eye-of-truth-v2-3.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/z-eye-of-truth-v2-4.html",
+      "module_name": "Z Eye Of Truth V2 4",
+      "inferred_action": "iframe",
+      "route": "/public/z-eye-of-truth-v2-4.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/z-geometry.html",
+      "module_name": "Z Geometry",
+      "inferred_action": "route",
+      "route": "/wiltonos-core.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/z-law-index.html",
+      "module_name": "Z Law Index",
+      "inferred_action": "iframe",
+      "route": "/public/z-law-index.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/zload.html",
+      "module_name": "Zload",
+      "inferred_action": "route",
+      "route": "/wiltonos-unified-dashboard.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/all-operational-routes.html",
+      "module_name": "All Operational Routes",
+      "inferred_action": "iframe",
+      "route": "/public/all-operational-routes.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/api-docs.html",
+      "module_name": "Api Docs",
+      "inferred_action": "iframe",
+      "route": "/public/api-docs.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/cathedral-router_LEGACY.html",
+      "module_name": "Cathedral Router LEGACY",
+      "inferred_action": "iframe",
+      "route": "/public/cathedral-router_LEGACY.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/codex-ui-interface.html",
+      "module_name": "Codex Ui Interface",
+      "inferred_action": "component",
+      "route": "/public/codex-ui-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness.html",
+      "module_name": "Consciousness",
+      "inferred_action": "route",
+      "route": "/dashboard.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness-biometric-interface.html",
+      "module_name": "Consciousness Biometric Interface",
+      "inferred_action": "component",
+      "route": "/public/consciousness-biometric-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/dashboard/consciousness-cathedrals_LEGACY.html",
+      "module_name": "Consciousness Cathedrals LEGACY",
+      "inferred_action": "route",
+      "route": "/sacred-geometry-experience-unified.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/consciousness-observer-engine.js",
+      "module_name": "Consciousness Observer Engine",
+      "inferred_action": "route",
+      "route": "/public/consciousness-observer-engine.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/dashboard.html",
+      "module_name": "Dashboard",
+      "inferred_action": "route",
+      "route": "/dashboard.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/field-resonance-playlists.md",
+      "module_name": "Field Resonance Playlists",
+      "inferred_action": "doc",
+      "route": "/public/field-resonance-playlists.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/golden-morph-engine.js",
+      "module_name": "Golden Morph Engine",
+      "inferred_action": "route",
+      "route": "/public/golden-morph-engine.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/language-store.js",
+      "module_name": "Language Store",
+      "inferred_action": "route",
+      "route": "/public/language-store.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/mirror-breaths.html",
+      "module_name": "Mirror Breaths",
+      "inferred_action": "route",
+      "route": "/dashboard.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/mirror-launch.html",
+      "module_name": "Mirror Launch",
+      "inferred_action": "route",
+      "route": "/mirror-breaths.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-consciousness-shell.html",
+      "module_name": "Quantum Consciousness Shell",
+      "inferred_action": "route",
+      "route": "cathedral-map.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-interfaces-hub.html",
+      "module_name": "Quantum Interfaces Hub",
+      "inferred_action": "component",
+      "route": "/golden-spiral-morphing-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/quantum-sacred-geometry-interface.html",
+      "module_name": "Quantum Sacred Geometry Interface",
+      "inferred_action": "component",
+      "route": "/public/quantum-sacred-geometry-interface.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/sacred-geometry-shader-engine.js",
+      "module_name": "Sacred Geometry Shader Engine",
+      "inferred_action": "route",
+      "route": "/public/sacred-geometry-shader-engine.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/sacred-lattice.html",
+      "module_name": "Sacred Lattice",
+      "inferred_action": "iframe",
+      "route": "/public/sacred-lattice.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/smooth-fibonacci-spiral.html",
+      "module_name": "Smooth Fibonacci Spiral",
+      "inferred_action": "iframe",
+      "route": "/public/smooth-fibonacci-spiral.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/spiral-production.html",
+      "module_name": "Spiral Production",
+      "inferred_action": "iframe",
+      "route": "/public/spiral-production.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/symbiosis-core.js",
+      "module_name": "Symbiosis Core",
+      "inferred_action": "route",
+      "route": "/public/symbiosis-core.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/twitter-launch-strategy.md",
+      "module_name": "Twitter Launch Strategy",
+      "inferred_action": "doc",
+      "route": "/public/twitter-launch-strategy.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/wiltonos-v2-dashboard.html",
+      "module_name": "WiltonOS V2 Dashboard",
+      "inferred_action": "route",
+      "route": "/sacred-geometry-advanced.html",
+      "reason": "HTML file route"
+    },
+    {
+      "module_id": "public/twitter-templates/wp1-reactor-field-thread.md",
+      "module_name": "Wp1 Reactor Field Thread",
+      "inferred_action": "doc",
+      "route": "/public/wp1-reactor-field-thread.md",
+      "reason": "Markdown doc route"
+    },
+    {
+      "module_id": "public/z-geometry-engine.js",
+      "module_name": "Z Geometry Engine",
+      "inferred_action": "route",
+      "route": "/public/z-geometry-engine.js",
+      "reason": "Default route inference"
+    },
+    {
+      "module_id": "public/zews.html",
+      "module_name": "Zews",
+      "inferred_action": "iframe",
+      "route": "/public/zews.html",
+      "reason": "HTML file route"
+    }
+  ],
+  "route_fixes": [
+    {
+      "module_name": "Mirror Field Declaration",
+      "old_route": "/public/mirror-field-declaration.html",
+      "new_route": "/mirror/field-declaration",
+      "new_action": "component",
+      "component": "MirrorFieldDeclaration"
+    },
+    {
+      "module_name": "Mirror You Agent",
+      "old_route": "/public/mirror-you-agent.html",
+      "new_route": "/mirror/agent",
+      "new_action": "component",
+      "component": "MirrorYouAgent"
+    },
+    {
+      "module_name": "Quantum Chrysalis Spiral Visualizer",
+      "old_route": "/public/quantum-chrysalis-spiral-visualizer.html",
+      "new_route": "/quantum/chrysalis-spiral",
+      "new_action": "component",
+      "component": "QuantumChrysalisSpiral"
+    }
+  ],
+  "summary": {
+    "total_modules": 649,
+    "action_fixes": 643,
+    "route_fixes": 3,
+    "coherence_bypass": true
+  }
+}

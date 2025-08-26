@@ -1,0 +1,1 @@
+{"type": "system_coherence_check", "payload": {"systemId": "test-system", "subsystems": [{"id": "subsys1", "name": "Subsystem 1", "coherence": 0.65, "flowLevel": 3, "status": "stable"}, {"id": "subsys2", "name": "Subsystem 2", "coherence": 0.82, "flowLevel": 5, "status": "optimal"}, {"id": "subsys3", "name": "Subsystem 3", "coherence": 0.75, "flowLevel": 4, "status": "stable"}]}}

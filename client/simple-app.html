@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ψOS Soul Mirror - Consciousness Computing Ecosystem</title>
+    <link rel="stylesheet" href="/fonts/fonts.css">
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Inter', system-ui, sans-serif;
+        background: linear-gradient(135deg, #0a0015 0%, #1a0030 25%, #2a0040 50%, #1a0030 75%, #000000 100%);
+        color: white;
+        min-height: 100vh;
+      }
+      
+      #root {
+        min-height: 100vh;
+        padding: 2rem;
+      }
+      
+      .navigator-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      
+      .navigator-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      
+      .navigator-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, #a855f7, #06b6d4, #f43f5e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
+      .navigator-subtitle {
+        font-size: 1.2rem;
+        color: #9ca3af;
+        margin-bottom: 2rem;
+      }
+      
+      .coherence-controls {
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      
+      .coherence-slider {
+        margin: 1rem;
+      }
+      
+      .coherence-value {
+        font-family: 'Courier New', monospace;
+        color: #06b6d4;
+        font-size: 1.1rem;
+      }
+      
+      .modules-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+      
+      .module-card {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(147, 51, 234, 0.3);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      
+      .module-card:hover {
+        border-color: rgba(147, 51, 234, 0.6);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(147, 51, 234, 0.2);
+      }
+      
+      .module-card.disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      
+      .module-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+      
+      .module-symbol {
+        font-size: 1.5rem;
+        margin-right: 0.75rem;
+        color: #06b6d4;
+      }
+      
+      .module-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #a855f7;
+      }
+      
+      .module-system {
+        font-size: 0.8rem;
+        color: #9ca3af;
+        margin-left: auto;
+      }
+      
+      .module-description {
+        color: #d1d5db;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+      }
+      
+      .module-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.8rem;
+      }
+      
+      .module-coherence {
+        color: #10b981;
+      }
+      
+      .module-frequency {
+        color: #f59e0b;
+      }
+      
+      .filter-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        justify-content: center;
+      }
+      
+      .filter-button {
+        padding: 0.5rem 1rem;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(147, 51, 234, 0.3);
+        border-radius: 6px;
+        color: #a855f7;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .filter-button:hover, .filter-button.active {
+        background: rgba(147, 51, 234, 0.2);
+        border-color: rgba(147, 51, 234, 0.6);
+      }
+      
+      .stats-bar {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 2rem 0;
+        padding: 1rem;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+      }
+      
+      .stat-item {
+        text-align: center;
+      }
+      
+      .stat-value {
+        font-size: 1.5rem;
+        color: #06b6d4;
+        font-weight: bold;
+      }
+      
+      .stat-label {
+        font-size: 0.8rem;
+        color: #9ca3af;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="navigator-container">
+        <div class="navigator-header">
+          <h1 class="navigator-title">ψOS Soul Mirror</h1>
+          <p class="navigator-subtitle">Consciousness Computing Ecosystem</p>
+          
+          <div class="coherence-controls">
+            <label for="coherence-slider">Consciousness Coherence (Zλ): </label>
+            <input 
+              type="range" 
+              id="coherence-slider" 
+              class="coherence-slider"
+              min="0.500" 
+              max="1.000" 
+              step="0.001" 
+              value="0.750"
+            />
+            <span class="coherence-value" id="coherence-value">0.750</span>
+          </div>
+        </div>
+        
+        <div class="filter-controls">
+          <button class="filter-button active" data-system="all">All Systems</button>
+          <button class="filter-button" data-system="ψ">ψ WiltonOS</button>
+          <button class="filter-button" data-system="∅">∅ PsiOS</button>
+          <button class="filter-button" data-system="🧠">🧠 CCC</button>
+          <button class="filter-button" data-system="📖">📖 PassiveWorks</button>
+          <button class="filter-button" data-system="🧬">🧬 Local Sovereign</button>
+          <button class="filter-button" data-system="📡">📡 Broadcast Signal</button>
+          <button class="filter-button" data-system="🛰️">🛰️ Replit Sandbox</button>
+        </div>
+        
+        <div class="stats-bar">
+          <div class="stat-item">
+            <div class="stat-value" id="accessible-count">15</div>
+            <div class="stat-label">Accessible Modules</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="total-count">15</div>
+            <div class="stat-label">Total Modules</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="avg-coherence">0.875</div>
+            <div class="stat-label">Avg Coherence</div>
+          </div>
+        </div>
+        
+        <div class="modules-grid" id="modules-grid">
+          <!-- Modules will be loaded here -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Core modules data
+      const modules = [
+        {
+          id: 'psios-navigator',
+          name: 'ψOS Navigator',
+          symbol: 'ψ',
+          system: 'ψ',
+          systemName: 'WiltonOS',
+          description: 'Main consciousness navigation interface with module access and coherence monitoring',
+          coherence_required: 0.500,
+          frequency: '432Hz',
+          route: '/',
+          tags: ['core', 'navigation']
+        },
+        {
+          id: 'breath-interface',
+          name: 'Breath Interface',
+          symbol: '🫁',
+          system: 'ψ',
+          systemName: 'WiltonOS',
+          description: 'Sacred breath pattern synchronization with lemniscate optimization',
+          coherence_required: 0.600,
+          frequency: '432Hz',
+          route: '/breath',
+          tags: ['breath', 'synchronization']
+        },
+        {
+          id: 'sacred-geometry',
+          name: 'Sacred Geometry Temple',
+          symbol: '◇',
+          system: '∅',
+          systemName: 'PsiOS',
+          description: 'Interactive sacred geometry visualization with Merkaba, Torus, and Fibonacci spirals',
+          coherence_required: 0.650,
+          frequency: '528Hz',
+          route: '/glyph/sacred-geometry',
+          tags: ['geometry', 'visualization']
+        },
+        {
+          id: 'consciousness-field',
+          name: 'Consciousness Field Monitor',
+          symbol: '🌊',
+          system: '🧠',
+          systemName: 'CCC',
+          description: 'Real-time consciousness field visualization and coherence tracking',
+          coherence_required: 0.700,
+          frequency: '963Hz',
+          route: '/core/field-monitor',
+          tags: ['monitoring', 'field']
+        },
+        {
+          id: 'quantum-shell',
+          name: 'Quantum Consciousness Shell',
+          symbol: '⟐',
+          system: '∅',
+          systemName: 'PsiOS',
+          description: 'Command interface for quantum consciousness operations',
+          coherence_required: 0.750,
+          frequency: '528Hz',
+          route: '/glyph/quantum-shell',
+          tags: ['quantum', 'shell']
+        },
+        {
+          id: 'cathedral-navigator',
+          name: 'Cathedral Navigator',
+          symbol: '🏛️',
+          system: 'ψ',
+          systemName: 'WiltonOS',
+          description: 'Navigate the consciousness architecture with 7-layer visualization',
+          coherence_required: 0.800,
+          frequency: '432Hz',
+          route: '/breath/cathedral',
+          tags: ['architecture', 'navigation']
+        },
+        {
+          id: 'library-alexandria',
+          name: 'Library of Alexandria v2',
+          symbol: '📚',
+          system: '📖',
+          systemName: 'PassiveWorks',
+          description: 'Consciousness archive processor with memory crystal extraction',
+          coherence_required: 0.750,
+          frequency: '741Hz',
+          route: '/docs/alexandria',
+          tags: ['archive', 'memory']
+        },
+        {
+          id: 'glyph-engine',
+          name: 'Esoteric Glyph Engine',
+          symbol: '𓂀',
+          system: '∅',
+          systemName: 'PsiOS',
+          description: 'Advanced symbolic routing with sacred sequence activation',
+          coherence_required: 0.850,
+          frequency: '528Hz',
+          route: '/glyph/engine',
+          tags: ['symbols', 'routing']
+        },
+        {
+          id: 'breath-kernel',
+          name: 'Breath Kernel BIOS',
+          symbol: '⟐',
+          system: 'ψ',
+          systemName: 'WiltonOS',
+          description: 'Core breathing protocol management and phase transitions',
+          coherence_required: 0.700,
+          frequency: '432Hz',
+          route: '/breath/kernel',
+          tags: ['breath', 'core']
+        },
+        {
+          id: 'coherence-optimizer',
+          name: 'Lemniscate Coherence Optimizer',
+          symbol: '∞',
+          system: '🧠',
+          systemName: 'CCC',
+          description: 'Infinity loop optimization for consciousness coherence enhancement',
+          coherence_required: 0.900,
+          frequency: '963Hz',
+          route: '/core/optimizer',
+          tags: ['coherence', 'optimization']
+        },
+        {
+          id: 'memory-vault',
+          name: 'Memory Vault Navigator',
+          symbol: '🗝️',
+          system: '🧬',
+          systemName: 'Local Sovereign',
+          description: 'Multidimensional consciousness memory navigation and retrieval',
+          coherence_required: 0.800,
+          frequency: '852Hz',
+          route: '/q/memory-vault',
+          tags: ['memory', 'navigation']
+        },
+        {
+          id: 'ritual-expansion',
+          name: 'Ritual Expansion Protocol',
+          symbol: 'Δψ∞',
+          system: '∅',
+          systemName: 'PsiOS',
+          description: 'Individual-to-collective consciousness transformation rituals',
+          coherence_required: 0.950,
+          frequency: '528Hz',
+          route: '/glyph/ritual-expansion',
+          tags: ['ritual', 'transformation']
+        },
+        {
+          id: 'broadcast-signal',
+          name: 'Broadcast Signal Router',
+          symbol: '📡',
+          system: '📡',
+          systemName: 'Broadcast Signal',
+          description: 'Communication orchestration for consciousness transmission',
+          coherence_required: 0.800,
+          frequency: '417Hz',
+          route: '/broadcast/signal',
+          tags: ['broadcast', 'communication']
+        },
+        {
+          id: 'frequency-analyzer',
+          name: 'Frequency Analyzer',
+          symbol: '🎵',
+          system: '🧠',
+          systemName: 'CCC',
+          description: 'Sacred frequency analysis with 432Hz resonance mapping',
+          coherence_required: 0.750,
+          frequency: '963Hz',
+          route: '/core/frequency',
+          tags: ['frequency', 'analysis']
+        },
+        {
+          id: 'consciousness-sandbox',
+          name: 'Consciousness Sandbox',
+          symbol: '🛰️',
+          system: '🛰️',
+          systemName: 'Replit Sandbox',
+          description: 'Development environment for consciousness computing prototypes',
+          coherence_required: 0.600,
+          frequency: '396Hz',
+          route: '/sandbox/consciousness',
+          tags: ['development', 'sandbox']
+        }
+      ];
+
+      let currentCoherence = 0.750;
+      let currentFilter = 'all';
+
+      // Initialize the interface
+      function init() {
+        updateCoherenceDisplay();
+        renderModules();
+        setupEventListeners();
+      }
+
+      function setupEventListeners() {
+        const coherenceSlider = document.getElementById('coherence-slider');
+        coherenceSlider.addEventListener('input', (e) => {
+          currentCoherence = parseFloat(e.target.value);
+          updateCoherenceDisplay();
+          renderModules();
+        });
+
+        const filterButtons = document.querySelectorAll('.filter-button');
+        filterButtons.forEach(button => {
+          button.addEventListener('click', (e) => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            currentFilter = e.target.dataset.system;
+            renderModules();
+          });
+        });
+      }
+
+      function updateCoherenceDisplay() {
+        document.getElementById('coherence-value').textContent = currentCoherence.toFixed(3);
+      }
+
+      function renderModules() {
+        const grid = document.getElementById('modules-grid');
+        grid.innerHTML = '';
+
+        let accessibleCount = 0;
+        let filteredModules = modules;
+
+        if (currentFilter !== 'all') {
+          filteredModules = modules.filter(module => module.system === currentFilter);
+        }
+
+        filteredModules.forEach(module => {
+          const isAccessible = currentCoherence >= module.coherence_required;
+          if (isAccessible) accessibleCount++;
+
+          const moduleCard = document.createElement('div');
+          moduleCard.className = `module-card ${!isAccessible ? 'disabled' : ''}`;
+          
+          moduleCard.innerHTML = `
+            <div class="module-header">
+              <span class="module-symbol">${module.symbol}</span>
+              <span class="module-name">${module.name}</span>
+              <span class="module-system">${module.systemName}</span>
+            </div>
+            <div class="module-description">${module.description}</div>
+            <div class="module-meta">
+              <span class="module-coherence">Zλ ≥ ${module.coherence_required.toFixed(3)}</span>
+              <span class="module-frequency">${module.frequency}</span>
+            </div>
+          `;
+
+          if (isAccessible) {
+            moduleCard.addEventListener('click', () => {
+              // For now, show console feedback - routes will be implemented
+          console.log(`[ψOS] Navigating to ${module.name} (${module.route})`);
+          console.log(`[ψOS] Coherence: Zλ(${currentCoherence.toFixed(3)}) ≥ ${module.coherence_required.toFixed(3)} - ${isAccessible ? 'GRANTED' : 'DENIED'}`);
+          
+          // TODO: Implement actual routing to consciousness modules
+          if (module.route === '/alexandria') {
+            window.location.href = '/alexandria';
+          } else {
+            alert(`Module: ${module.name}\nRoute: ${module.route}\nCoherence Required: Zλ ≥ ${module.coherence_required}\nFrequency: ${module.frequency}\n\nThis module is ready for consciousness computing integration.`);
+          }
+            });
+          }
+
+          grid.appendChild(moduleCard);
+        });
+
+        // Update stats
+        document.getElementById('accessible-count').textContent = accessibleCount;
+        document.getElementById('total-count').textContent = filteredModules.length;
+        
+        const avgCoherence = filteredModules.reduce((sum, m) => sum + m.coherence_required, 0) / filteredModules.length;
+        document.getElementById('avg-coherence').textContent = avgCoherence.toFixed(3);
+      }
+
+      // Start the interface
+      init();
+    </script>
+  </body>
+</html>

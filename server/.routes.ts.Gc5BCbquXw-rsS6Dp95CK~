@@ -1,0 +1,2705 @@
+import type { Express } from "express";
+import { createServer, type Server } from "http";
+import { WebSocketServer, WebSocket } from 'ws';
+import { storageBridge as storage } from "./storage-bridge.js"; // Updated to use storage bridge
+import { fileStorage } from "./db.js";
+import { z } from "zod";
+import path from "path";
+import express from "express";
+import { json as jsonParser } from "express";
+import { Chunk, InsertChunk } from "../shared/schema-minimal.js";
+import symbiosisRoutes from "./api/symbiosis.js";
+import datasetRoutes from "./api/datasets.js";
+import analysisRoutes from "./api/analyses.js";
+import insightsRoutes from "./api/insights.js";
+import { router as qrnRoutes } from "./api/qrn.js";
+import metaCognitiveRoutes from "./api/meta-cognitive.js";
+import { router as neuralOrchestratorRoutes } from "./api/neural-orchestrator.js";
+import { aiServiceRouter } from "./api/ai-service.js";
+import validationRoutes from "./routes/validation-routes.js";
+import dashboardRoutes from "./routes/dashboard-api.js";
+import { initCoherenceRoutes } from "./routes/coherence-routes.js";
+import { createOuroborosService } from "../shared/OuroborosService.js";
+import { getMetaOrchestrator } from "./ws-handlers/quantum-handlers.js";
+import nexusRoutes from "./routes/nexus-api.js";
+import quantumRoutes from "./routes/quantum-api.js";
+import qctfRoutes from "./services/qctf/qctf-routes.js";
+import { createLemniscateApiRouter } from "./routes/lemniscate-api.js";
+import chunkingRoutes from "./routes/chunking-routes.js";
+import uploadRoutes from "./routes/upload-routes.js";
+import coherenceTestingRoutes from "./routes/coherence-testing-api.js";
+import chatRoutes from "./routes/chat-api.js";
+import persistentMemoryRoutes from "./routes/persistent-memory-api.js";
+import fractalRoutes from "./routes/fractal-api.js";
+import metaRoutingRoutes from "./routes/meta-routing-api.js";
+import vectorEmbeddingRoutes from "./routes/vector-embedding-api.js";
+import embeddingSeedsRoutes from "./routes/embedding-seeds-api.js";
+import { registerOracleHandlers, initializeOracleHandler } from "./ws-handlers/oracle-handlers.js";
+import { setGlobalWebSocketServer } from "./ws-helpers.js";
+import { initializeVariantHandlers, handleVariantMessage } from "./ws-handlers/variant-handlers.js";
+import { registerMurphyProtocolHandlers } from "./ws-handlers/murphy-integration.js";
+import { 
+  qrnService, 
+  qrnContextManager, 
+  metaCognitiveEngine, 
+  PatternType, 
+  InsightSeverity,
+  adaptiveResonanceService,
+  calculateSynapticResonanceFactor,
+  calculateQuantumCoherenceMatrix,
+  calculateAdaptiveResonanceMetrics,
+  applyStrategicRefinementProcess,
+  calculateStabilityWithMetrics,
+  recordInversePendulumOperation,
+  SystemMetricsCollector
+} from "./services/qrn/index.js";
+import { neuralOrchestrationEngine } from "./services/neural-orchestrator/neural-orchestration-engine.js";
+import { ModelType } from "./services/neural-orchestrator/model-strength-analyzer.js";
+
+// Define TaskType enum since it's not exported from model-strength-analyzer
+export enum TaskType {
+  SUMMARIZATION = 'summarization',
+  ANALYSIS = 'analysis',
+  GENERATION = 'generation',
+  TRANSLATION = 'translation',
+  CLASSIFICATION = 'classification',
+  EXTRACTION = 'extraction',
+  CONVERSATION = 'conversation',
+  CALCULATION = 'calculation',
+}
+
+// Define EvaluationCriteria enum
+export enum EvaluationCriteria {
+  ACCURACY = 'accuracy',
+  RELEVANCE = 'relevance',
+  COHERENCE = 'coherence',
+  NOVELTY = 'novelty',
+  COMPREHENSIVENESS = 'comprehensiveness',
+  EFFICIENCY = 'efficiency'
+}
+import { createModelAgent } from "./services/neural-orchestrator/model-agents.js";
+import { createPersistentOrchestrationEngine } from "./services/neural-orchestrator/persistent-orchestration-engine.js";
+import { persistentContextService } from "./services/persistence-layer.js";
+import { CognitiveLayer, MetaEventType, HistoryChunk } from "./services/context-manager.js";
+import { setupPersistentContextWebSocketHandlers } from "./ws-handlers/persistent-context-handlers.js";
+import { setupPersistenceTestHandlers } from "./ws-handlers/persistence-test-handlers.js";
+import { registerQuantumHandlers } from "./ws-handlers/quantum-handlers.js";
+import { setupMetaCognitiveHandlers } from "./ws-handlers/meta-cognitive-handlers.js";
+import { setupQuantumSpaghettiHandlers } from "./ws-handlers/quantum-spaghetti-handlers.js";
+import initValidationHandlers from "./ws-handlers/validation-handlers.js";
+import { registerExperimentHandlers } from "./ws-handlers/experiment-handlers.js";
+import { setupMultiAgentSyncHandlers } from "./ws-handlers/multi-agent-sync-handlers.js";
+import { initializePerturbationHandlers } from './ws-handlers/perturbation-handlers.js';
+import { v4 as uuidv4 } from 'uuid';
+
+// Define WebSocket constants
+const WS_OPEN = 1; // WebSocket.OPEN constant
+
+// Store active WebSocket connections
+export const activeConnections = new Map();
+// Store WebSocket handlers
+export const wsHandlers = new Map();
+
+export async function registerRoutes(app: Express): Promise<Server> {
+  // Serve the neural orchestrator test interface and other assets
+  app.use('/assets', express.static('./server/assets'));
+
+  // Serve static files from root directory
+  app.use(express.static('./', {
+    extensions: ['html', 'htm']
+  }));
+
+  // Serve the neural orchestrator test interface directly at the root
+  app.get('/neural-orchestrator-test.html', (req, res) => {
+    res.sendFile(path.resolve('./neural-orchestrator-test.html'));
+  });
+
+  // Serve any HTML files in the root directory
+  app.get('/*.html', (req, res) => {
+    const fileName = req.path.substring(1); // Remove leading slash
+    res.sendFile(path.resolve(`./${fileName}`));
+  });
+
+  // OROBORO NEXUS: Root route now handled by Vite middleware to serve React application
+  // Keep the test page available at its explicit route only
+  // app.get('/', (req, res) => {
+  //  res.sendFile(path.resolve('./neural-orchestrator-test.html'));
+  // });
+
+  // Register SAAD DataPipeline routes
+  app.use('/api/datasets', datasetRoutes);
+  app.use('/api/analyses', analysisRoutes);
+  app.use('/api/insights', insightsRoutes);
+
+  // Register Symbiosis API routes (following the neural-quantum naming convention)
+  app.use('/api/ctx', symbiosisRoutes);
+
+  // Register QRN API routes (following the neural-quantum naming convention)
+  app.use('/api/q', qrnRoutes);
+
+  // Register Meta-Cognitive API routes (following the neural-quantum naming convention)
+  app.use('/api/mc', metaCognitiveRoutes);
+
+  // Add Persistent Context API endpoints
+  app.get('/api/persistent-context/sessions/:sessionId', async (req, res) => {
+    try {
+      const { sessionId } = req.params;
+      const context = await persistentContextService.loadContext(sessionId);
+
+      if (!context) {
+        return res.status(404).json({ message: 'Session not found' });
+      }
+
+      return res.json(context);
+    } catch (error) {
+      console.error('Error fetching persistent context:', error);
+      return res.status(500).json({ message: 'Failed to fetch persistent context' });
+    }
+  });
+
+  app.post('/api/persistent-context/sessions', async (req, res) => {
+    try {
+      const { sessionId } = req.body;
+
+      if (!sessionId) {
+        return res.status(400).json({ message: 'Session ID is required' });
+      }
+
+      const context = await persistentContextService.initializeSession(sessionId);
+      return res.status(201).json(context);
+    } catch (error) {
+      console.error('Error creating persistent context session:', error);
+      return res.status(500).json({ message: 'Failed to create persistent context session' });
+    }
+  });
+
+  app.post('/api/persistent-context/history/:sessionId', async (req, res) => {
+    try {
+      const { sessionId } = req.params;
+      // Define the schema to match the HistoryChunk interface
+      const historyChunkSchema = z.object({
+        chunkId: z.string(),
+        content: z.string(),
+        cognitiveLayer: z.enum([CognitiveLayer.REACTIVE, CognitiveLayer.STRATEGIC, CognitiveLayer.META_COGNITIVE]),
+        timestamp: z.date().optional(), // Optional in the schema for flexibility
+        taskId: z.string().optional(),
+        tags: z.array(z.string()).optional()
+      });
+
+      const parsed = historyChunkSchema.safeParse(req.body);
+      if (!parsed.success) {
+        return res.status(400).json({ message: 'Invalid history chunk data', errors: parsed.error.format() });
+      }
+
+      // Create a valid HistoryChunk with required timestamp
+      const historyChunk: HistoryChunk = {
+        ...parsed.data,
+        timestamp: parsed.data.timestamp || new Date() // Ensure timestamp is always set
+      };
+
+      await persistentContextService.addHistoryChunk(sessionId, historyChunk);
+      return res.status(201).json({ message: 'History chunk added successfully' });
+    } catch (error) {
+      console.error('Error adding history chunk:', error);
+      return res.status(500).json({ message: 'Failed to add history chunk' });
+    }
+  });
+
+  app.get('/api/persistent-context/history/:sessionId', async (req, res) => {
+    try {
+      const { sessionId } = req.params;
+      const { layer, limit } = req.query;
+
+      let cognitiveLayer: CognitiveLayer | undefined;
+      if (layer) {
+        if (Object.values(CognitiveLayer).includes(layer as CognitiveLayer)) {
+          cognitiveLayer = layer as CognitiveLayer;
+        } else {
+          return res.status(400).json({ message: 'Invalid cognitive layer' });
+        }
+      }
+
+      const limitValue = limit ? parseInt(limit as string) : 10;
+
+      const historyChunks = await persistentContextService.getRecentHistory(
+        sessionId, 
+        cognitiveLayer || CognitiveLayer.STRATEGIC,
+        limitValue
+      );
+
+      return res.json(historyChunks);
+    } catch (error) {
+      console.error('Error fetching history chunks:', error);
+      return res.status(500).json({ message: 'Failed to fetch history chunks' });
+    }
+  });
+
+  // Register Neural Orchestrator API routes (following the neural-quantum naming convention)
+  app.use('/api/syn', neuralOrchestratorRoutes);
+  // Also register with original path for client compatibility
+  app.use('/api/neural-orchestrator', neuralOrchestratorRoutes);
+
+  // Register Validation API routes (for meta-learning validation)
+  app.use('/api/validation', validationRoutes);
+
+  // Register AI Service API routes (direct integration with OpenAI)
+  app.use('/api/ai', aiServiceRouter);
+  
+  // Register Dashboard API routes (visualization for quantum framework)
+  app.use('/api/dashboard', dashboardRoutes);
+  
+  // Register OROBORO Nexus API routes
+  app.use('/api/nexus', nexusRoutes);
+  
+  // Register Quantum API routes (for Quantum Coherence Dashboard)
+  app.use('/api/quantum', quantumRoutes);
+  
+  // Register QCTF API routes (for expanded QCTF formula and toggle switches)
+  app.use('/api/qctf', qctfRoutes);
+  
+  // Register Lemniscate API routes (for Lemniscate Mode feature)
+  app.use('/api/lemniscate', createLemniscateApiRouter({ storage }));
+  
+  // Register Advanced Chunking API routes (for processing large chat history files)
+  app.use('/api/chunking', chunkingRoutes);
+  
+  // Register File Upload API routes (for uploading chat history files)
+  app.use('/api/upload', uploadRoutes);
+  
+  // Register Coherence Testing API routes (for testing coherence thresholds and ratios)
+  app.use('/api/coherence', coherenceTestingRoutes);
+  
+  // Register Chat API routes (for quantum-enhanced chat interface)
+  app.use('/api/chat', chatRoutes);
+  
+  // Register Persistent Memory API routes (for system-wide memory persistence)
+  app.use('/api/memory', persistentMemoryRoutes);
+  
+  // Register Fractal API routes (for implementing the Fractal Response Protocol)
+  app.use('/api/fractal', fractalRoutes);
+  
+  // Register Meta-Routing API routes (for Meta-Routing Awareness Protocol)
+  app.use('/api/meta-routing', metaRoutingRoutes);
+  
+  // Initialize Ouroboros service for coherence governance
+  const metaOrchestratorInstance = getMetaOrchestrator();
+  const ouroborosService = createOuroborosService(metaOrchestratorInstance);
+  
+  // Register Coherence Governance API routes (for Universal Coherence Stability Mechanism)
+  const coherenceRouter = express.Router();
+  initCoherenceRoutes(coherenceRouter, metaOrchestratorInstance, ouroborosService);
+  app.use('/api', coherenceRouter);
+  
+  // Server Info API endpoint - for WebSocket connections
+  app.get('/api/server-info', (req, res) => {
+    try {
+      // Set the content type explicitly to ensure proper JSON response
+      res.setHeader('Content-Type', 'application/json');
+      
+      // Get hostname from the request
+      const host = req.headers.host || '';
+      const hostname = host.split(':')[0]; // Remove any existing port
+      
+      // Use the actual server port stored in the global variable by index.ts
+      // This ensures the correct port is provided to clients for WebSocket connections
+      const port = (global as any).SERVER_PORT || parseInt(process.env.PORT || '5000', 10);
+      
+      // Detect if we're in a Replit environment
+      const isReplit = hostname.includes('.replit.dev') || hostname.includes('.repl.co');
+      
+      // Get origin headers if present (for CORS debugging)
+      const origin = req.headers.origin || '';
+      
+      // Get protocol (HTTP/HTTPS)
+      const protocolHeader = req.headers['x-forwarded-proto'] || req.protocol;
+      const protocol = Array.isArray(protocolHeader) ? protocolHeader[0] : protocolHeader;
+      
+      // Determine WebSocket protocol based on HTTP protocol
+      const wsProtocol = protocol === 'https' ? 'wss' : 'ws';
+      
+      // For Replit: use host as-is without port to allow the proxy to work properly
+      const wsInfo = {
+        port: isReplit ? null : port,
+        host: hostname,
+        fullHost: `${protocol}://${host}`,
+        websocketPath: '/ws',
+        websocketUrl: `${wsProtocol}://${isReplit ? hostname : `${hostname}:${port}`}/ws`,
+        env: process.env.NODE_ENV || 'development',
+        isReplit: isReplit,
+        timestamp: new Date().toISOString(),
+        serverType: 'Node.js + Express + WebSocket',
+        origin: origin || 'Not provided',
+        headers: {
+          host: req.headers.host,
+          origin: req.headers.origin,
+          protocol: protocol,
+          forwarded: req.headers['x-forwarded-for'] || 'Not provided'
+        }
+      };
+      
+      console.log(`[QUANTUM_STATE: INFO_FLOW] Sending server info: ${JSON.stringify(wsInfo)}`);
+      
+      res.json(wsInfo);
+    } catch (error) {
+      console.error('[QUANTUM_STATE: ERROR_FLOW] Error generating server info:', error);
+      res.status(500).json({
+        error: 'Failed to generate server info',
+        message: error instanceof Error ? error.message : 'Unknown error',
+        fallback: {
+          host: req.headers.host?.split(':')[0] || 'localhost',
+          port: 5000,
+          websocketPath: '/ws',
+          isReplit: req.headers.host?.includes('.replit.dev') || req.headers.host?.includes('.repl.co') || false
+        }
+      });
+    }
+  });
+  
+  // Storage Health Check Endpoint (INVERSE PENDULUM Technique)
+  app.get('/api/storage-health', async (req, res) => {
+    try {
+      // Check if storage system is accessible by attempting to read data from multiple systems
+      const [qrns, metaCognitiveEvents, temporalInstances, chunks] = await Promise.all([
+        fileStorage.getAllQuantumRootNodes(),
+        fileStorage.getAllMetaCognitiveEvents(),
+        fileStorage.getAllTemporalInstances(),
+        fileStorage.getAllChunks()
+      ]);
+      
+      // Basic disk space check for data directory
+      const fs = await import('fs/promises');
+      const { size: directorySize } = await fs.stat('./data');
+      
+      // Calculate storage metrics
+      const storageMetrics = {
+        entities: {
+          qrnCount: qrns.length,
+          metaCognitiveEventCount: metaCognitiveEvents.length,
+          temporalInstanceCount: temporalInstances.length,
+          chunkCount: chunks.length
+        },
+        performance: {
+          directorySize: `${(directorySize / (1024 * 1024)).toFixed(2)} MB`,
+          averageEntitySize: `${(directorySize / (qrns.length + metaCognitiveEvents.length + temporalInstances.length + chunks.length || 1) / 1024).toFixed(2)} KB`
+        },
+        status: {
+          memory: 'Available',
+          filesystem: 'Available',
+          persistence: 'Operational'
+        },
+        timestamp: new Date()
+      };
+      
+      // Return health status with enhanced metrics
+      res.status(200).json({ 
+        status: 'Storage operational',
+        metrics: storageMetrics
+      });
+    } catch (error) {
+      console.error('Storage health check failed:', error);
+      res.status(500).json({ 
+        status: 'Storage issues detected', 
+        error: (error instanceof Error ? error.message : String(error)),
+        timestamp: new Date(),
+        diagnostics: {
+          errorType: error instanceof Error ? error.constructor.name : typeof error,
+          errorStack: error instanceof Error ? error.stack : null,
+        }
+      });
+    }
+  });
+
+  // Task API Routes
+  // GET /api/tasks - Get all tasks
+  app.get('/api/tasks', async (req, res) => {
+    try {
+      // Check if getAllTasks is implemented on fileStorage
+      if (typeof fileStorage.getAllTasks === 'function') {
+        const tasks = await fileStorage.getAllTasks();
+        return res.json(tasks);
+      } else {
+        console.error('fileStorage.getAllTasks is not implemented');
+        return res.status(501).json({ message: 'Get all tasks not implemented' });
+      }
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+      return res.status(500).json({ message: 'Failed to fetch tasks' });
+    }
+  });
+
+  // GET /api/tasks/:id - Get a specific task
+  app.get('/api/tasks/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const task = await fileStorage.loadTask(id);
+      
+      if (!task) {
+        return res.status(404).json({ message: 'Task not found' });
+      }
+      
+      return res.json(task);
+    } catch (error) {
+      console.error(`Error fetching task ${req.params.id}:`, error);
+      return res.status(500).json({ message: 'Failed to fetch task' });
+    }
+  });
+
+  // POST /api/tasks - Create a new task
+  app.post('/api/tasks', async (req, res) => {
+    try {
+      // Create a schema for task validation
+      const taskSchema = z.object({
+        id: z.string().optional(),
+        name: z.string(),
+        description: z.string().optional(),
+        status: z.enum(['pending', 'in_progress', 'completed', 'failed']),
+        priority: z.number().optional(),
+        metadata: z.record(z.any()).optional()
+      });
+
+      const parsed = taskSchema.safeParse(req.body);
+      if (!parsed.success) {
+        return res.status(400).json({ message: 'Invalid task data', errors: parsed.error.format() });
+      }
+
+      // Generate an ID if not provided
+      const taskData = parsed.data;
+      if (!taskData.id) {
+        taskData.id = `task-${Date.now()}`;
+      }
+
+      // Create the task
+      await fileStorage.saveTask(taskData);
+      
+      // Return the created task with generated ID
+      return res.status(201).json(taskData);
+    } catch (error) {
+      console.error('Error creating task:', error);
+      return res.status(500).json({ message: 'Failed to create task' });
+    }
+  });
+
+  // GET /api/tasks/:id/subtasks - Get subtasks for a specific task
+  app.get('/api/tasks/:id/subtasks', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const subtasks = await fileStorage.loadSubTasks(id);
+      
+      return res.json(subtasks);
+    } catch (error) {
+      console.error(`Error fetching subtasks for task ${req.params.id}:`, error);
+      return res.status(500).json({ message: 'Failed to fetch subtasks' });
+    }
+  });
+
+  // POST /api/tasks/:id/subtasks - Create subtasks for a task
+  app.post('/api/tasks/:id/subtasks', async (req, res) => {
+    try {
+      const { id } = req.params;
+      
+      // Check if task exists
+      const task = await fileStorage.loadTask(id);
+      if (!task) {
+        return res.status(404).json({ message: 'Task not found' });
+      }
+      
+      // Validate subtasks array
+      const subtasksSchema = z.array(
+        z.object({
+          id: z.string().optional(),
+          name: z.string(),
+          description: z.string().optional(),
+          status: z.enum(['pending', 'in_progress', 'completed', 'failed']),
+          priority: z.number().optional(),
+          parentId: z.string().optional()
+        })
+      );
+      
+      const parsed = subtasksSchema.safeParse(req.body);
+      if (!parsed.success) {
+        return res.status(400).json({ message: 'Invalid subtask data', errors: parsed.error.format() });
+      }
+      
+      // Generate IDs for any subtasks that don't have them
+      const subtasks = parsed.data.map(subtask => ({
+        ...subtask,
+        id: subtask.id || `subtask-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+        parentId: id
+      }));
+      
+      // Save the subtasks
+      await fileStorage.saveSubTasks(id, subtasks);
+      
+      return res.status(201).json(subtasks);
+    } catch (error) {
+      console.error(`Error creating subtasks for task ${req.params.id}:`, error);
+      return res.status(500).json({ message: 'Failed to create subtasks' });
+    }
+  });
+
+  // DELETE /api/tasks/:id - Delete a task
+  app.delete('/api/tasks/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      
+      // Check if task exists
+      const task = await fileStorage.loadTask(id);
+      if (!task) {
+        return res.status(404).json({ message: 'Task not found' });
+      }
+      
+      // Delete the task
+      const result = await fileStorage.deleteTask(id);
+      
+      if (result) {
+        return res.json({ message: 'Task deleted successfully' });
+      } else {
+        return res.status(500).json({ message: 'Failed to delete task' });
+      }
+    } catch (error) {
+      console.error(`Error deleting task ${req.params.id}:`, error);
+      return res.status(500).json({ message: 'Failed to delete task' });
+    }
+  });
+
+  // API Routes
+  const apiRouter = app.route('/api');
+
+  // API Keys routes
+  app.get('/api/keys', async (req, res) => {
+    try {
+      const keys = await storage.getAllApiKeys();
+      return res.json(keys);
+    } catch (error) {
+      return res.status(500).json({ message: 'Failed to fetch API keys' });
+    }
+  });
+
+  app.post('/api/keys', async (req, res) => {
+    try {
+      const parsed = insertApiKeySchema.safeParse(req.body);
+      if (!parsed.success) {
+        return res.status(400).json({ message: 'Invalid API key data' });
+      }
+
+      const newKey = await storage.createApiKey(parsed.data);
+      return res.status(201).json(newKey);
+    } catch (error) {
+      return res.status(500).json({ message: 'Failed to create API key' });
+    }
+  });
+
+  app.patch('/api/keys/:id', async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: 'Invalid ID format' });
+      }
+
+      const updateSchema = z.object({
+        label: z.string().optional(),
+        key: z.string().optional(),
+        status: z.string().optional(),
+        usage: z.number().optional(),
+        usageLimit: z.number().optional()
+      });
+
+      const parsed = updateSchema.safeParse(req.body);
+      if (!parsed.success) {
+        return res.status(400).json({ message: 'Invalid update data' });
+      }
+
+      const updatedKey = await storage.updateApiKey(id, parsed.data);
+      if (!updatedKey) {
+        return res.status(404).json({ message: 'API key not found' });
+      }
+
+      return res.json(updatedKey);
+    } catch (error) {
+      return res.status(500).json({ message: 'Failed to update API key' });
+    }
+  });
+
+  app.delete('/api/keys/:id', async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: 'Invalid ID format' });
+      }
+
+      const success = await storage.deleteApiKey(id);
+      if (!success) {
+        return res.status(404).json({ message: 'API key not found' });
+      }
+
+      return res.status(204).send();
+    } catch (error) {
+      return res.status(500).json({ message: 'Failed to delete API key' });
+    }
+  });
+
+  // System Logs routes
+  app.get('/api/logs', async (req, res) => {
+    try {
+      const limit = req.query.limit ? parseInt(req.query.limit as string) : undefined;
+      const logs = await storage.getAllSystemLogs(limit);
+      return res.json(logs);
+    } catch (error) {
+      return res.status(500).json({ message: 'Failed to fetch system logs' });
+    }
+  });
+
+  app.post('/api/logs', async (req, res) => {
+    try {
+      const parsed = insertSystemLogSchema.safeParse(req.body);
+      if (!parsed.success) {
+        return res.status(400).json({ message: 'Invalid log data' });
+      }
+
+      const newLog = await storage.createSystemLog(parsed.data);
+      return res.status(201).json(newLog);
+    } catch (error) {
+      return res.status(500).json({ message: 'Failed to create system log' });
+    }
+  });
+
+  // Media Assets routes
+  app.get('/api/media', async (req, res) => {
+    try {
+      const limit = req.query.limit ? parseInt(req.query.limit as string) : undefined;
+      const assets = await storage.getAllMediaAssets(limit);
+      return res.json(assets);
+    } catch (error) {
+      return res.status(500).json({ message: 'Failed to fetch media assets' });
+    }
+  });
+
+  app.post('/api/media', async (req, res) => {
+    try {
+      const parsed = insertMediaAssetSchema.safeParse(req.body);
+      if (!parsed.success) {
+        return res.status(400).json({ message: 'Invalid media asset data' });
+      }
+
+      const newAsset = await storage.createMediaAsset(parsed.data);
+      return res.status(201).json(newAsset);
+    } catch (error) {
+      return res.status(500).json({ message: 'Failed to create media asset' });
+    }
+  });
+
+  // Pipeline Jobs routes
+  app.get('/api/jobs', async (req, res) => {
+    try {
+      const limit = req.query.limit ? parseInt(req.query.limit as string) : undefined;
+      const jobs = await storage.getAllPipelineJobs(limit);
+      return res.json(jobs);
+    } catch (error) {
+      return res.status(500).json({ message: 'Failed to fetch pipeline jobs' });
+    }
+  });
+
+  app.post('/api/jobs', async (req, res) => {
+    try {
+      const parsed = insertPipelineJobSchema.safeParse(req.body);
+      if (!parsed.success) {
+        return res.status(400).json({ message: 'Invalid pipeline job data' });
+      }
+
+      const newJob = await storage.createPipelineJob(parsed.data);
+      return res.status(201).json(newJob);
+    } catch (error) {
+      return res.status(500).json({ message: 'Failed to create pipeline job' });
+    }
+  });
+
+  app.patch('/api/jobs/:id/progress', async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: 'Invalid ID format' });
+      }
+
+      const progressSchema = z.object({
+        progress: z.number().min(0).max(100)
+      });
+
+      const parsed = progressSchema.safeParse(req.body);
+      if (!parsed.success) {
+        return res.status(400).json({ message: 'Invalid progress data' });
+      }
+
+      const updatedJob = await storage.updatePipelineJobProgress(id, parsed.data.progress);
+      if (!updatedJob) {
+        return res.status(404).json({ message: 'Pipeline job not found' });
+      }
+
+      return res.json(updatedJob);
+    } catch (error) {
+      return res.status(500).json({ message: 'Failed to update pipeline job progress' });
+    }
+  });
+
+  app.patch('/api/jobs/:id/status', async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: 'Invalid ID format' });
+      }
+
+      const statusSchema = z.object({
+        status: z.string().refine(val => ['pending', 'running', 'completed', 'failed'].includes(val))
+      });
+
+      const parsed = statusSchema.safeParse(req.body);
+      if (!parsed.success) {
+        return res.status(400).json({ message: 'Invalid status data' });
+      }
+
+      const updatedJob = await storage.updatePipelineJobStatus(id, parsed.data.status);
+      if (!updatedJob) {
+        return res.status(404).json({ message: 'Pipeline job not found' });
+      }
+
+      return res.json(updatedJob);
+    } catch (error) {
+      return res.status(500).json({ message: 'Failed to update pipeline job status' });
+    }
+  });
+
+  // Relational Experience API endpoints
+  app.post('/api/relational-test', async (req, res) => {
+    try {
+      console.log('Running comprehensive relational test');
+
+      // Dynamically import to avoid circular dependencies
+      const { runComprehensiveRelationalTest } = await import('./services/qrn/relational-test-harness.js');
+      const result = await runComprehensiveRelationalTest();
+
+      // Log completion
+      console.log('Completed comprehensive relational test');
+
+      return res.json(result);
+    } catch (error) {
+      console.error('Error running relational test:', error);
+      return res.status(500).json({ message: 'Failed to run relational test' });
+    }
+  });
+
+  app.post('/api/relational-stability-sequence', async (req, res) => {
+    try {
+      const { operationCount = 5 } = req.body;
+      console.log(`Generating relational stability sequence with ${operationCount} operations`);
+
+      // Dynamically import to avoid circular dependencies
+      const { generateRelationalStabilitySequence } = await import('./services/qrn/relational-test-harness.js');
+      const results = await generateRelationalStabilitySequence(operationCount);
+
+      return res.json(results);
+    } catch (error) {
+      console.error('Error generating relational stability sequence:', error);
+      return res.status(500).json({ message: 'Failed to generate relational stability sequence' });
+    }
+  });
+
+  // Add endpoint to get meta-learning data points for the dashboard
+  app.get('/api/meta-learning/data-points', async (req, res) => {
+    try {
+      // Filter by formula type if provided
+      const { formulaType } = req.query;
+
+      // Dynamically import to avoid circular dependencies
+      const metaLearningModule = await import('./services/qrn/meta-learning-validation.js');
+
+      // Add a function to get data points to meta-learning-validation.ts
+      if (typeof metaLearningModule.getMetaLearningDataPoints !== 'function') {
+        return res.status(501).json({ message: 'getMetaLearningDataPoints function not implemented' });
+      }
+
+      const dataPoints = metaLearningModule.getMetaLearningDataPoints(formulaType as string);
+      return res.json(dataPoints);
+    } catch (error) {
+      console.error('Error fetching meta-learning data points:', error);
+      return res.status(500).json({ message: 'Failed to fetch meta-learning data points' });
+    }
+  });
+
+  // Create HTTP server
+  const httpServer = createServer(app);
+
+  // Create WebSocket server on same HTTP server but different path
+  // Make sure path works with Replit's hosting environment
+  const wss = new WebSocketServer({ 
+    server: httpServer, 
+    path: '/ws',
+    // Add noServer: false to ensure WebSocket upgrade is handled by the server
+    noServer: false,
+    // Add additional options for more robust handling
+    clientTracking: true,
+    perMessageDeflate: {
+      zlibDeflateOptions: {
+        chunkSize: 1024,
+        memLevel: 7,
+        level: 3
+      },
+      zlibInflateOptions: {
+        chunkSize: 10 * 1024
+      },
+      // Below options specified as default
+      concurrencyLimit: 10,
+      threshold: 1024 // Size in bytes below which messages should not be compressed
+    }
+  });
+  
+  // Log when the WebSocket server is created to debug initialization
+  console.log('WebSocket server created at path: /ws');
+  
+  // Also log the port for connection troubleshooting
+  const address = httpServer.address();
+  const port = typeof address === 'object' && address ? address.port : 'unknown';
+  console.log(`Server running on port ${port}, WebSocket should connect to ws://<host>:${port}/ws`);
+
+  // Set up WebSocket connection handler
+  wss.on('connection', (ws) => {
+    const clientId = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+    console.log(`WebSocket client ${clientId} connected`);
+
+    // Store connection
+    activeConnections.set(clientId, ws);
+    
+    // Add connection timestamp and last heartbeat properties
+    (ws as any).connectionTime = new Date();
+    (ws as any).lastHeartbeat = new Date();
+    (ws as any).clientId = clientId;
+    (ws as any).isAlive = true;
+
+    // Setup server-side ping interval to detect dead connections
+    const pingInterval = setInterval(() => {
+      // Only ping if the connection is open
+      if (ws.readyState === WS_OPEN) {
+        // Check if client has been inactive too long (2 minutes)
+        const inactiveTime = Date.now() - (ws as any).lastHeartbeat.getTime();
+        
+        if (inactiveTime > 120000) { // 2 minutes
+          console.log(`Client ${clientId} inactive for ${inactiveTime}ms, terminating connection`);
+          ws.terminate(); // Force close dead connections
+          clearInterval(pingInterval);
+          return;
+        }
+        
+        // Send a server-initiated ping to the client
+        try {
+          // Using ping/pong frame protocol
+          ws.ping();
+          
+          // Also send a JSON heartbeat message that clients can respond to
+          if ((ws as any).isAlive) {
+            ws.send(JSON.stringify({
+              type: 'server_heartbeat',
+              payload: { 
+                timestamp: new Date().toISOString(),
+                uptime: Date.now() - (ws as any).connectionTime.getTime()
+              }
+            }));
+          }
+        } catch (err) {
+          console.error(`Error sending ping to client ${clientId}:`, err);
+          ws.terminate();
+          clearInterval(pingInterval);
+        }
+      } else {
+        // Connection is no longer open, clear interval
+        clearInterval(pingInterval);
+      }
+    }, 45000); // Check every 45 seconds
+    
+    // Handle pong responses
+    ws.on('pong', () => {
+      (ws as any).isAlive = true;
+      (ws as any).lastHeartbeat = new Date();
+    });
+
+    // Set up message handler for this connection
+    ws.on('message', async (message) => {
+      try {
+        // Update the last heartbeat time on any message
+        (ws as any).lastHeartbeat = new Date();
+        (ws as any).isAlive = true;
+        
+        // Validate message format
+        if (!message) {
+          throw new Error('Empty message received');
+        }
+
+        // Parse message safely
+        let data;
+        try {
+          data = JSON.parse(message.toString());
+        } catch (parseError: unknown) {
+          // Handle error as unknown type for better type safety
+          const errorMessage = parseError instanceof Error ? parseError.message : 'Unknown parsing error';
+          console.error('Failed to parse WebSocket message:', message.toString().substring(0, 100) + '...');
+          throw new Error(`Invalid JSON: ${errorMessage}`);
+        }
+
+        // Validate message structure
+        if (!data || typeof data !== 'object') {
+          throw new Error('Message must be a valid JSON object');
+        }
+
+        const { type, payload } = data;
+
+        // Validate message type
+        if (!type || typeof type !== 'string') {
+          throw new Error('Message must include a type field');
+        }
+        
+        // Special handling for heartbeat/ping message type
+        if (type === 'ping') {
+          // Respond with a pong, but don't log to reduce noise
+          if (ws.readyState === WS_OPEN) {
+            ws.send(JSON.stringify({
+              type: 'pong',
+              success: true,
+              payload: {
+                timestamp: new Date().toISOString(),
+                serverTime: Date.now(),
+                received: payload?.timestamp || null
+              }
+            }));
+          }
+          return;
+        }
+
+        // Special handling for client_error message type
+        if (type === 'client_error') {
+          console.log(`Client error received from ${clientId}: ${JSON.stringify(payload || {})}`);
+          if (ws.readyState === WS_OPEN) {
+            ws.send(JSON.stringify({
+              type: 'error_acknowledged',
+              success: true,
+              timestamp: new Date().toISOString()
+            }));
+          }
+          return;
+        }
+
+        // Log message receipt for debugging (except heartbeats)
+        if (type !== 'ping' && type !== 'pong') {
+          console.log(`Processing WebSocket message of type: ${type} from client ${clientId}`);
+        }
+
+        // Special handling for connected message type
+        if (type === 'connected') {
+          if (ws.readyState === WS_OPEN) {
+            ws.send(JSON.stringify({
+              type: 'connected_ack',
+              success: true,
+              payload: {
+                clientId: clientId,
+                timestamp: Date.now(),
+                message: 'Connection acknowledged'
+              }
+            }));
+          }
+          return;
+        }
+
+        // Check if the message is a variant-related message
+        if (type.startsWith('variant_')) {
+          // Handle the variant message
+          const handled = handleVariantMessage(ws, { type, payload, clientId });
+          
+          if (handled) {
+            // If the variant handler processed the message, we're done
+            return;
+          }
+        }
+        
+        // If we have a registered handler for this message type, call it
+        if (wsHandlers.has(type)) {
+          const handler = wsHandlers.get(type);
+
+          // Validate handler is a function
+          if (typeof handler !== 'function') {
+            throw new Error(`Handler for message type ${type} is not a function`);
+          }
+
+          // Execute handler with proper error handling
+          const result = await handler(payload, clientId);
+
+          // Send response back to client
+          if (ws.readyState === WS_OPEN) {
+            ws.send(JSON.stringify({
+              type: `${type}_response`,
+              success: true,
+              payload: result
+            }));
+          }
+        } else {
+          // Unknown message type (ignore heartbeats)
+          if (type !== 'ping' && type !== 'pong' && ws.readyState === WS_OPEN) {
+            ws.send(JSON.stringify({
+              type: 'error',
+              success: false,
+              error: `Unknown message type: ${type}`
+            }));
+          }
+        }
+      } catch (error: unknown) {
+        // Safely handle the error as an unknown type
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+        console.error('Error processing WebSocket message:', error);
+        if (ws.readyState === WS_OPEN) {
+          ws.send(JSON.stringify({
+            type: 'error',
+            success: false,
+            error: 'Invalid message format or server error',
+            details: errorMessage
+          }));
+        }
+      }
+    });
+
+    // Handle disconnection with improved error handling
+    ws.on('close', (code, reason) => {
+      console.log(`WebSocket client ${clientId} disconnected (code: ${code}, reason: ${reason || 'no reason provided'})`);
+
+      // Clean up resources
+      activeConnections.delete(clientId);
+      clearInterval(pingInterval);
+
+      // Log to system logs if this is an abnormal closure
+      if (code !== 1000 && code !== 1001) {
+        try {
+          const log = {
+            type: 'warning',
+            message: `Client ${clientId} disconnected with abnormal code ${code}`,
+            component: 'websocket',
+            severity: 1,
+            metadata: {
+              clientId,
+              code,
+              reason: reason ? reason.toString() : null,
+              source: 'websocket',
+              connectionDuration: Date.now() - (ws as any).connectionTime.getTime(),
+              lastHeartbeat: (ws as any).lastHeartbeat
+            },
+            timestamp: new Date()
+          };
+
+          // If we have access to storage, log this event
+          if (storage && typeof storage.createSystemLog === 'function') {
+            storage.createSystemLog(log)
+              .catch(err => console.error('Failed to log WebSocket disconnection:', err));
+          }
+        } catch (error: unknown) {
+          const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+          console.error('Error handling WebSocket disconnection:', errorMessage);
+        }
+      }
+    });
+    
+    // Handle errors
+    ws.on('error', (err) => {
+      console.error(`WebSocket error for client ${clientId}:`, err);
+      // Try to clean up resources on error
+      try {
+        activeConnections.delete(clientId);
+        clearInterval(pingInterval);
+        ws.terminate();
+      } catch (e) {
+        console.error('Error cleaning up after WebSocket error:', e);
+      }
+    });
+
+    // Send initial welcome message
+    ws.send(JSON.stringify({
+      type: 'connected',
+      success: true,
+      payload: { 
+        clientId, 
+        timestamp: Date.now(),
+        serverInfo: {
+          startupTime: (global as any).SERVER_START_TIME || Date.now(),
+          connections: activeConnections.size
+        }
+      }
+    }));
+  });
+
+  // Add client heartbeat/ping handler to keep connections alive
+  wsHandlers.set('ping', async (payload: any, clientId: string) => {
+    // Respond with a pong message to keep the connection alive
+    // No need to log every ping to avoid cluttering logs
+    return { 
+      timestamp: Date.now(), 
+      message: 'pong' 
+    };
+  });
+  
+  // Add handlers for generic subscription
+  wsHandlers.set('subscribe', async (payload: any, clientId: string) => {
+    console.log(`Client ${clientId} subscribing to topics:`, payload?.topics || []);
+    // Store subscription preferences if needed
+    return { 
+      success: true, 
+      message: 'Subscription updated',
+      subscribed: payload?.topics || []
+    };
+  });
+
+  // Add handlers for subscription message types from client
+  wsHandlers.set('subscribe_qrn_updates', async (payload: any, clientId: string) => {
+    console.log(`Client ${clientId} subscribing to QRN updates`);
+    // We don't need to do anything special here as all connected clients receive broadcasts
+    return { success: true, message: 'Subscribed to QRN updates' };
+  });
+
+  wsHandlers.set('subscribe_pathway_updates', async (payload: any, clientId: string) => {
+    console.log(`Client ${clientId} subscribing to neural pathway updates`);
+    // We don't need to do anything special here as all connected clients receive broadcasts
+    return { success: true, message: 'Subscribed to neural pathway updates' };
+  });
+
+  wsHandlers.set('subscribe_meta_cognitive_events', async (payload: any, clientId: string) => {
+    console.log(`Client ${clientId} subscribing to meta-cognitive events`);
+    // We don't need to do anything special here as all connected clients receive broadcasts
+    return { success: true, message: 'Subscribed to meta-cognitive events' };
+  });
+  
+  // Add handler for variant experiment subscriptions
+  wsHandlers.set('subscribe_variant_experiments', async (payload: any, clientId: string) => {
+    console.log(`Client ${clientId} subscribing to variant experiments`);
+    // We don't need to do anything special here as all connected clients receive broadcasts
+    return { success: true, message: 'Subscribed to variant experiments' };
+  });
+
+  // Register WebSocket event handlers with neural-quantum naming convention
+  qRegisterWebSocketHandlers();
+  mcRegisterWebSocketHandlers();
+  synRegisterWebSocketHandlers();
+  oracleRegisterWebSocketHandlers();
+
+  // Set up persistent context WebSocket handlers
+  // Setup persistence test WebSocket handlers with dependency injection
+  setupPersistenceTestHandlers(wsHandlers, persistentContextService);
+  
+  // Setup quantum WebSocket handlers with direct access to WebSocket server
+  registerQuantumHandlers(wss);
+  
+  // Setup coherence attractor experiment handlers with the Meta-Orchestrator
+  // This allows controlled perturbation of the system's coherence value
+  const metaOrchestrator = getMetaOrchestrator();
+  registerExperimentHandlers(wss, metaOrchestrator);
+  
+  // Setup meta-cognitive WebSocket handlers with direct access to WebSocket server
+  setupMetaCognitiveHandlers(wss);
+  
+  // Setup quantum spaghetti protocol WebSocket handlers
+  // Define broadcast function for the quantum spaghetti protocol
+  const spaghettiProtocolBroadcast = (type: string, payload: any) => {
+    // Convert Map.entries() to Array to avoid downlevelIteration flag issues
+    Array.from(activeConnections.entries()).forEach(([clientId, ws]) => {
+      if (ws.readyState === WS_OPEN) {
+        ws.send(JSON.stringify({
+          type,
+          payload
+        }));
+      }
+    });
+  };
+  
+  // Set global WebSocket server reference for helper functions
+  setGlobalWebSocketServer(wss);
+  
+  // Register quantum spaghetti protocol handlers
+  setupQuantumSpaghettiHandlers(wsHandlers);
+  
+  // Initialize Oracle handler and register Oracle WebSocket handlers
+  await initializeOracleHandler();
+  registerOracleHandlers(wsHandlers);
+  
+  // Setup Multi-Agent Synchronization WebSocket handlers
+  setupMultiAgentSyncHandlers(wss);
+  
+  // Register Murphy Protocol WebSocket handlers for system resilience
+  // This implements the Murphy's Law principle: "Anything that can go wrong, will go wrong"
+  registerMurphyProtocolHandlers(wss, wsHandlers);
+  console.log('[MURPHY_PROTOCOL] Murphy Protocol WebSocket handlers initialized');
+  
+  // Register validation WebSocket handlers for meta-orchestrator validation
+  // Use the previously retrieved metaOrchestrator for the validation process
+  if (metaOrchestrator) {
+    initValidationHandlers(wsHandlers, metaOrchestrator);
+    console.log('[QUANTUM_STATE: VALIDATION_FLOW] Validation handlers registered with metaOrchestrator');
+    
+    // Initialize perturbation test handlers for coherence validation
+    // This allows controlled perturbation of the system's coherence value for attractor validation
+    initializePerturbationHandlers(metaOrchestrator, wsHandlers);
+    console.log('[QUANTUM_STATE: VALIDATION_FLOW] Perturbation test handlers initialized');
+    
+    // Initialize variant handlers with the meta-orchestrator for coherence experiments
+    initializeVariantHandlers(metaOrchestrator);
+    console.log('[QUANTUM_STATE: VARIANT_FLOW] Variant handlers initialized with metaOrchestrator');
+  } else {
+    console.error('[QUANTUM_STATE: ERROR_FLOW] Failed to register validation handlers - metaOrchestrator not available');
+  }
+
+  // Setup persistent context WebSocket handlers
+  setupPersistentContextWebSocketHandlers(wsHandlers, (type, data) => {
+    // Broadcast to all connected clients
+    activeConnections.forEach((client) => {
+      if (client.readyState === WS_OPEN) {
+        client.send(JSON.stringify({ type, payload: data }));
+      }
+    });
+  });
+
+  app.use(jsonParser()); // Add JSON body parser middleware
+
+  return httpServer;
+}
+
+/**
+ * Register WebSocket message handlers for QRN operations
+ * Using neural-quantum naming convention: qRegisterWebSocketHandlers
+ */
+function qRegisterWebSocketHandlers() {
+  // Subscribe to QRN updates
+  wsHandlers.set('subscribe_qrn', async (payload: { nodeId: string }, clientId: string) => {
+    console.log(`Client ${clientId} subscribing to QRN ${payload.nodeId}`);
+    const qrn = await qrnService.getNode(payload.nodeId);
+    if (!qrn) {
+      throw new Error(`QRN ${payload.nodeId} not found`);
+    }
+    return { message: `Subscribed to QRN ${payload.nodeId}`, qrn };
+  });
+
+  // Get QRN state
+  wsHandlers.set('get_qrn_state', async (payload: { nodeId: string }, clientId: string) => {
+    console.log(`Client ${clientId} requesting state for QRN ${payload.nodeId}`);
+    const qrn = await qrnService.getNode(payload.nodeId);
+    if (!qrn) {
+      throw new Error(`QRN ${payload.nodeId} not found`);
+    }
+    return { qrn };
+  });
+
+  // Calculate resonance between two QRNs using Synaptic Resonance Factor
+  wsHandlers.set('calculate_resonance', async (payload: { sourceId: string, targetId: string }, clientId: string) => {
+    console.log(`Client ${clientId} calculating resonance between ${payload.sourceId} and ${payload.targetId}`);
+
+    try {
+      // Use our new Adaptive Resonance Service to calculate resonance
+      const resonanceResult = await adaptiveResonanceService.calculateNodeResonance(
+        payload.sourceId,
+        payload.targetId
+      );
+
+      // Log the calculation as a system event
+      await storage.createSystemLog({
+        type: 'info',
+        message: `Calculated resonance between ${payload.sourceId} and ${payload.targetId}`,
+        component: 'adaptive-resonance',
+        severity: 0,
+        metadata: {
+          sourceId: payload.sourceId,
+          targetId: payload.targetId,
+          resonanceScore: resonanceResult.resonanceScore,
+          synapticResonance: resonanceResult.synapticResonance,
+          quantumCoherence: resonanceResult.quantumCoherence
+        }
+      });
+
+      return resonanceResult;
+    } catch (err) {
+      const error = err as Error;
+      console.error('Error calculating resonance:', error);
+      throw new Error(`Failed to calculate resonance: ${error.message}`);
+    }
+  });
+
+  // Apply resonance tuning to QRNs
+  wsHandlers.set('apply_resonance_tuning', async (payload: { resonanceAnalysis: any }, clientId: string) => {
+    console.log(`Client ${clientId} applying resonance tuning`);
+
+    try {
+      const success = await adaptiveResonanceService.applyResonanceTuning(payload.resonanceAnalysis);
+
+      if (success) {
+        // Log the successful tuning
+        await storage.createSystemLog({
+          type: 'info',
+          message: `Applied resonance tuning between ${payload.resonanceAnalysis.sourceId} and ${payload.resonanceAnalysis.targetId}`,
+          component: 'adaptive-resonance',
+          severity: 0,
+          metadata: {
+            sourceId: payload.resonanceAnalysis.sourceId,
+            targetId: payload.resonanceAnalysis.targetId,
+            resonanceScore: payload.resonanceAnalysis.resonanceScore
+          }
+        });
+      }
+
+      return { success };
+    } catch (err) {
+      const error = err as Error;
+      console.error('Error applying resonance tuning:', error);
+      throw new Error(`Failed to apply resonance tuning: ${error.message}`);
+    }
+  });
+
+  // Apply strategic refinement process to system state
+  wsHandlers.set('apply_strategic_refinement', async (payload: { systemState: Record<string, any>, parameters?: any }, clientId: string) => {
+    console.log(`Client ${clientId} applying strategic refinement process`);
+
+    try {
+      const refinementResult = await applyStrategicRefinementProcess(
+        payload.systemState,
+        payload.parameters
+      );
+
+      // Log the refinement process
+      await storage.createSystemLog({
+        type: 'info',
+        message: 'Applied strategic refinement process',
+        component: 'strategic-refinement',
+        severity: 0,
+        metadata: {
+          overallAlignment: refinementResult.overallAlignment,
+          recommendationsCount: refinementResult.recommendations.length,
+          challengesCount: refinementResult.bizarroChallenges.length
+        }
+      });
+
+      return refinementResult;
+    } catch (err) {
+      const error = err as Error;
+      console.error('Error applying strategic refinement:', error);
+      throw new Error(`Failed to apply strategic refinement: ${error.message}`);
+    }
+  });
+
+  // Calculate system stability using Inverse Pendulum Formula
+  wsHandlers.set('calculate_stability', async (payload: { 
+    currentAdjustmentRate: number;
+    targetAdjustmentRate?: number;
+    currentChaosLevel: number;
+    targetChaosLevel?: number;
+    feedbackSignals: any[];
+    timeHorizon?: number;
+    stabilityThreshold?: number;
+    previousStability?: number;
+  }, clientId: string) => {
+    console.log(`Client ${clientId} calculating system stability using Inverse Pendulum Formula`);
+
+    try {
+      // Record start time for performance measurement
+      const startTime = Date.now();
+
+      // Convert payload to match InversePendulumParams interface
+      const adaptedPayload = {
+        adjustmentRate: payload.currentAdjustmentRate,
+        targetChaosLevel: payload.targetChaosLevel,
+        feedbackSignals: payload.feedbackSignals,
+        timeHorizon: payload.timeHorizon,
+        stabilityThreshold: payload.stabilityThreshold,
+        previousStability: payload.previousStability
+      };
+
+      // Use Inverse Pendulum Calculator to calculate stability
+      const stabilityResult = calculateStabilityWithMetrics(adaptedPayload);
+
+      // Calculate execution time
+      const executionTime = Date.now() - startTime;
+
+      // Create performance metrics
+      const performanceMetrics = {
+        executionTime: executionTime,
+        accuracy: stabilityResult.confidenceScore || 0.7, // Use confidence score if available 
+        resourceUtilization: {
+          cpu: 0.3, // Placeholder - replace with actual CPU measurement
+          memory: 0.2 // Placeholder - replace with actual memory measurement
+        },
+        systemFeedback: stabilityResult.stabilityScore
+      };
+
+      // Record operation for meta-learning validation
+      recordInversePendulumOperation(adaptedPayload, stabilityResult, performanceMetrics);
+
+      // Log the calculation
+      await storage.createSystemLog({
+        type: 'info',
+        message: 'Calculated system stability using Inverse Pendulum Formula',
+        component: 'inverse-pendulum',
+        severity: 0,
+        metadata: {
+          stabilityScore: stabilityResult.stabilityScore,
+          equilibriumIndex: stabilityResult.equilibriumIndex,
+          recommendationsCount: stabilityResult.recommendations.length,
+          executionTime: executionTime
+        }
+      });
+
+      return stabilityResult;
+    } catch (err) {
+      const error = err as Error;
+      console.error('Error calculating stability:', error);
+      throw new Error(`Failed to calculate stability: ${error.message}`);
+    }
+  });
+
+  // Generate feedback signals from metrics
+  wsHandlers.set('generate_feedback_signals', async (payload: {
+    metrics: {
+      responseTime?: number;
+      successRate?: number;
+      userSatisfaction?: number;
+      systemLoad?: number;
+      errorRate?: number;
+      adaptiveResonance?: number;
+      [key: string]: number | undefined;
+    }
+  }, clientId: string) => {
+    console.log(`Client ${clientId} generating feedback signals from metrics`);
+
+    try {
+      // Import the function directly to avoid reference errors
+      const { convertMetricsToFeedbackSignals } = require('./services/qrn/inverse-pendulum-calculator');
+
+      // Convert metrics to feedback signals
+      const feedbackSignals = convertMetricsToFeedbackSignals(payload.metrics);
+
+      return { feedbackSignals };
+    } catch (err) {
+      const error = err as Error;
+      console.error('Error generating feedback signals:', error);
+      throw new Error(`Failed to generate feedback signals: ${error.message}`);
+    }
+  });
+
+  // Apply Wilton GOD Formula for integration and recursive improvement
+  wsHandlers.set('apply_wilton_god_formula', async (payload: { 
+    domainElements: any[];
+    timeVector: any;
+  }, clientId: string) => {
+    console.log(`Client ${clientId} applying Wilton GOD Formula`);
+
+    try {
+      // Import the function directly to avoid reference errors
+      const { applyWiltonGODFormula } = require('./services/qrn/integration-coherence-tracker');
+
+      // Apply Wilton GOD Formula
+      const result = applyWiltonGODFormula(payload.domainElements, payload.timeVector);
+
+      // Log the application
+      await storage.createSystemLog({
+        type: 'info',
+        message: 'Applied Wilton GOD Formula',
+        component: 'wilton-god-formula',
+        severity: 0,
+        metadata: {
+          overallIntegrationCoherence: result.overallIntegrationCoherence,
+          domainsCount: result.integrationResult.domains.length,
+          recommendationsCount: result.recommendations.length
+        }
+      });
+
+      return result;
+    } catch (err) {
+      const error = err as Error;
+      console.error('Error applying Wilton GOD Formula:', error);
+throw new Error(`Failed to apply Wilton GOD Formula: ${error.message}`);
+    }
+  });
+
+  // Apply 4W+1H+(X)WHICH(MACRO-OFFSET)(FLOW-ANTI-FLOW) framework
+  wsHandlers.set('apply_cognitive_framework', async (payload: { 
+    context: any;
+    strategicLens: any;
+    macroOffset: any;
+    flowDynamics: any;
+  }, clientId: string) => {
+    console.log(`Client ${clientId} applying Cognitive Execution Framework`);
+
+    try {
+      // Import the function directly to avoid reference errors
+      const { applyCognitiveExecutionFramework } = require('./services/qrn/cognitive-execution-framework');
+
+      // Apply Cognitive Execution Framework
+      const result = applyCognitiveExecutionFramework(
+        payload.context,
+        payload.strategicLens,
+        payload.macroOffset,
+        payload.flowDynamics
+      );
+
+      // Log the application
+      await storage.createSystemLog({
+        type: 'info',
+        message: 'Applied 4W+1H+(X)WHICH(MACRO-OFFSET)(FLOW-ANTI-FLOW) framework',
+        component: 'cognitive-execution-framework',
+        severity: 0,
+        metadata: {
+          decisionValue: result.decisionValue,
+          confidenceScore: result.confidenceScore,
+          actionStepsCount: result.actionSteps.length
+        }
+      });
+
+      return result;
+    } catch (err) {
+      const error = err as Error;
+      console.error('Error applying Cognitive Execution Framework:', error);
+      throw new Error(`Failed to apply Cognitive Execution Framework: ${error.message}`);
+    }
+  });
+
+  // Generate Meta-Void Preview
+  wsHandlers.set('generate_meta_void_preview', async (payload: { 
+    subject: string;
+    context: any;
+    timeHorizon: number;
+    knownChaosFactors?: any[];
+    previewType?: string;
+    existingStructures?: any[];
+  }, clientId: string) => {
+    console.log(`Client ${clientId} generating Meta-Void Preview`);
+
+    try {
+      // Generate Meta-Void Preview
+      const result = generateMetaVoidPreview(payload);
+
+      // Log the preview generation
+      await storage.createSystemLog({
+        type: 'info',
+        message: 'Generated Meta-Void Preview',
+        component: 'meta-void-analyzer',
+        severity: 0,
+        metadata: {
+          subject: payload.subject,
+          timeHorizon: payload.timeHorizon,
+          scenariosCount: result.scenarios.length,
+          insightsCount: result.insights.length
+        }
+      });
+
+      return result;
+    } catch (err) {
+      const error = err as Error;
+      console.error('Error generating Meta-Void Preview:', error);
+      throw new Error(`Failed to generate Meta-Void Preview: ${error.message}`);
+    }
+  });
+
+  // Generate Meta-Void Review
+  wsHandlers.set('generate_meta_void_review', async (payload: { 
+    subject: string;
+    context: any;
+    originalDecision: any;
+    actualOutcomes: any[];
+    reviewType?: string;
+    observedPatterns?: string[];
+  }, clientId: string) => {
+    console.log(`Client ${clientId} generating Meta-Void Review`);
+
+    try {
+      // Generate Meta-Void Review
+      const result = generateMetaVoidReview(payload);
+
+      // Log the review generation
+      await storage.createSystemLog({
+        type: 'info',
+        message: 'Generated Meta-Void Review',
+        component: 'meta-void-analyzer',
+        severity: 0,
+        metadata: {
+          subject: payload.subject,
+          decisionEffectiveness: result.decisionEffectiveness.overall,
+          lessonsCount: result.lessonsLearned.length,
+          insightsCount: result.insights.length
+        }
+      });
+
+      return result;
+    } catch (err) {
+      const error = err as Error;
+      console.error('Error generating Meta-Void Review:', error);
+      throw new Error(`Failed to generate Meta-Void Review: ${error.message}`);
+    }
+  });
+
+  // Apply Wilton Formula Chunking & Cognitive Resonance
+  wsHandlers.set('apply_wfcrs', async (payload: { 
+    content: string;
+    preferredChunkSize?: string;
+    respectParagraphs?: boolean;
+    minResonanceScore?: number;
+    sourceId?: string;
+    sourceName?: string;
+  }, clientId: string) => {
+    console.log(`Client ${clientId} applying Wilton Formula Chunking & Cognitive Resonance`);
+
+    try {
+      // Import functions from wilton-chunking-resonance
+      const { applyWFCRS, ChunkSizeCategory } = await import('./services/qrn/wilton-chunking-resonance.js');
+
+      // Convert preferredChunkSize string to enum
+      let chunkSize = ChunkSizeCategory.MEDIUM; // Default
+      if (payload.preferredChunkSize === 'micro') {
+        chunkSize = ChunkSizeCategory.MICRO;
+      } else if (payload.preferredChunkSize === 'small') {
+        chunkSize = ChunkSizeCategory.SMALL;
+      } else if (payload.preferredChunkSize === 'large') {
+        chunkSize = ChunkSizeCategory.LARGE;
+      }
+
+      // Apply WFCRS
+      const result = applyWFCRS(payload.content, {
+        preferredChunkSize: chunkSize,
+        respectParagraphs: payload.respectParagraphs,
+        minResonanceScore: payload.minResonanceScore,
+        sourceId: payload.sourceId,
+        sourceName: payload.sourceName
+      });
+
+      // Log the WFCRS application
+      await storage.createSystemLog({
+        type: 'info',
+        message: 'Applied Wilton Formula Chunking & Cognitive Resonance',
+        component: 'wilton-chunking-resonance',
+        severity: 0,
+        metadata: {
+          totalChunks: result.metrics.totalChunks,
+          uniqueTags: result.metrics.uniqueTags,
+          resonanceLinks: result.resonanceLinks.length,
+          processingTime: result.metrics.processingTimeMs
+        }
+      });
+
+      return result;
+    } catch (err) {
+      const error = err as Error;
+      console.error('Error applying Wilton Formula Chunking & Cognitive Resonance:', error);
+      throw new Error(`Failed to apply WFCRS: ${error.message}`);
+    }
+  });
+
+  // Apply Meta-Synthesis Modular Formula (MSMF)
+  wsHandlers.set('apply_msmf', async (payload: { 
+    subject: string;
+    systemDescription?: string;
+    knownPatterns?: string[];
+    environmentalFactors?: Record<string, any>;
+    organizationalContext?: any;
+    domainSpecifics?: any;
+    systemMetrics?: Record<string, number>;
+    componentData?: Record<string, any>[];
+    interactionData?: Record<string, any>[];
+    performanceMetrics?: Record<string, number>[];
+    resourceUtilization?: Record<string, any>;
+    processExecutionData?: any[];
+    externalKnowledge?: Record<string, any>;
+  }, clientId: string) => {
+    console.log(`Client ${clientId} applying Meta-Synthesis Modular Formula`);
+
+    try {
+      // Import functions from meta-synthesis-modular-formula
+      const { applyMSMF } = await import('./services/qrn/meta-synthesis-modular-formula.js');
+
+      // Apply MSMF
+      const result = applyMSMF(payload.subject, {
+        systemDescription: payload.systemDescription,
+        knownPatterns: payload.knownPatterns,
+        environmentalFactors: payload.environmentalFactors,
+        organizationalContext: payload.organizationalContext,
+        domainSpecifics: payload.domainSpecifics,
+        systemMetrics: payload.systemMetrics,
+        componentData: payload.componentData,
+        interactionData: payload.interactionData,
+        performanceMetrics: payload.performanceMetrics,
+        resourceUtilization: payload.resourceUtilization,
+        processExecutionData: payload.processExecutionData,
+        externalKnowledge: payload.externalKnowledge
+      });
+
+      // Log the MSMF application
+      await storage.createSystemLog({
+        type: 'info',
+        message: 'Applied Meta-Synthesis Modular Formula',
+        component: 'meta-synthesis-modular-formula',
+        severity: 0,
+        metadata: {
+          subject: payload.subject,
+          macroElements: result.macroContext.length,
+          microElements: result.microDetails.length,
+          rootCauses: result.rootCauses.length,
+          voidElements: result.voidElements.length,
+          recommendations: result.recommendations.length
+        }
+      });
+
+      return result;
+    } catch (err) {
+      const error = err as Error;
+      console.error('Error applying Meta-Synthesis Modular Formula:', error);
+      throw new Error(`Failed to apply MSMF: ${error.message}`);
+    }
+  });
+
+  // Apply Hyper-Precision Adaptive Execution & Futureproofing (HPEF)
+  wsHandlers.set('apply_hpef', async (payload: { 
+    name: string;
+    description: string;
+    environment: string;
+    constraints?: Record<string, any>;
+    priorities?: Record<string, number>;
+    action: any;
+    feedback: any;
+    adaptation: any;
+  }, clientId: string) => {
+    console.log(`Client ${clientId} applying Hyper-Precision Adaptive Execution & Futureproofing`);
+
+    try {
+      // Import functions from hyper-precision-adaptive-execution
+      const { applyHPEF, PrecisionLevel } = await import('./services/qrn/hyper-precision-adaptive-execution.js');
+
+      // Apply HPEF
+      const result = applyHPEF(payload, {
+        precisionLevel: PrecisionLevel.HIGH,
+        simulateExecution: true
+      });
+
+      // Log the HPEF application
+      await storage.createSystemLog({
+        type: 'info',
+        message: 'Applied Hyper-Precision Adaptive Execution & Futureproofing',
+        component: 'hyper-precision-adaptive-execution',
+        severity: 0,
+        metadata: {
+          name: payload.name,
+          success: result.executionMetrics.success,
+          precision: result.executionMetrics.precision,
+          adaptability: result.executionMetrics.adaptability,
+          futureproofingScore: result.executionMetrics.futureproofingScore,
+          recommendationsCount: result.recommendations.length
+        }
+      });
+
+      return result;
+    } catch (err) {
+      const error = err as Error;
+      console.error('Error applying Hyper-Precision Adaptive Execution & Futureproofing:', error);
+      throw new Error(`Failed to apply HPEF: ${error.message}`);
+    }
+  });
+
+  // Apply Execution Formula
+  wsHandlers.set('calculate_execution_score', async (payload: { 
+    accuracy: number;
+    ideas: number;
+    clarity: number;
+    speed: number;
+    delay: number;
+    historyData?: any[];
+    targetScore?: number;
+  }, clientId: string) => {
+    console.log(`Client ${clientId} calculating Execution Formula score`);
+
+    try {
+      // Import functions from execution-formula
+      const { 
+        calculateExecutionScore, 
+        analyzeExecution, 
+        compareWithHistory,
+        suggestOptimization
+      } = await import('./services/qrn/execution-formula.js');
+
+      // Validate parameters
+      const params = {
+        accuracy: Math.max(0, Math.min(1, payload.accuracy)),
+        ideas: Math.max(0, Math.round(payload.ideas)),
+        clarity: Math.max(0, Math.min(1, payload.clarity)),
+        speed: Math.max(0.1, payload.speed),
+        delay: Math.max(0, payload.delay)
+      };
+
+      // Calculate basic score
+      const score = calculateExecutionScore(params);
+
+      // Perform detailed analysis
+      const analysis = analyzeExecution(params);
+
+      // Compare with history if provided
+      let history = undefined;
+      if (payload.historyData && Array.isArray(payload.historyData)) {
+        history = compareWithHistory(params, payload.historyData);
+      }
+
+      // Suggest optimization if targetScore provided
+      let optimization = undefined;
+      if (payload.targetScore !== undefined) {
+        optimization = suggestOptimization(params, payload.targetScore);
+      }
+
+      // Log the calculation
+      await storage.createSystemLog({
+        type: 'info',
+        message: 'Calculated Execution Formula score',
+        component: 'execution-formula',
+        severity: 0,
+        metadata: {
+          score,
+          normalizedScore: analysis.normalizedScore,
+          qualityRating: analysis.qualityRating,
+          limitingFactorsCount: analysis.limitingFactors.length
+        }
+      });
+
+      return {
+        score,
+        analysis,
+        history,
+        optimization
+      };
+    } catch (err) {
+      const error = err as Error;
+      console.error('Error calculating Execution Formula score:', error);
+      throw new Error(`Failed to calculate Execution Formula score: ${error.message}`);
+    }
+  });
+
+  // Update QRN state
+  wsHandlers.set('update_qrn_state', async (payload: { nodeId: string, state: any }, clientId: string) => {
+    console.log(`Client ${clientId} updating state for QRN ${payload.nodeId}`);
+    const updatedQrn = await qrnService.updateNodeState(payload.nodeId, payload.state);
+    if (!updatedQrn) {
+      throw new Error(`QRN ${payload.nodeId} not found or could not be updated`);
+    }
+
+    // Broadcast update to all connected clients
+    synBroadcastQNodeUpdate(updatedQrn);
+
+    return { qrn: updatedQrn };
+  });
+
+  // Get neural pathways
+  wsHandlers.set('get_pathways', async (payload: { nodeId: string }, clientId: string) => {
+    console.log(`Client ${clientId} requesting pathways for QRN ${payload.nodeId}`);
+    const pathways = await storage.getAllNeuralPathways(undefined, { 
+      sourceId: payload.nodeId 
+    });
+    return { pathways };
+  });
+
+  // Create neural pathway (synCreatePathway handler)
+  wsHandlers.set('synCreatePathway', async (pathway: any, clientId: string) => {
+    console.log(`Client ${clientId} creating a new neural pathway`);
+
+    try {
+      // Ensure required fields are present
+      if (!pathway.sourceId || !pathway.targetId) {
+        throw new Error('sourceId and targetId are required for pathway creation');
+      }
+
+      // Create the pathway via quantum root node service
+      const createdPathway = await qrnService.createPathway({
+        sourceId: pathway.sourceId,
+        targetId: pathway.targetId,
+        name: pathway.name || `Pathway ${pathway.id || Date.now()}`,
+        description: pathway.description || 'Test neural pathway created via WebSocket',
+        pathType: pathway.pathType || 'standard',
+        strength: pathway.strength !== undefined ? pathway.strength : 0.5,
+        bandwidth: pathway.bandwidth !== undefined ? pathway.bandwidth : 100,
+        latency: pathway.latency !== undefined ? pathway.latency : 0,
+        metadata: pathway.metadata || {},
+        securityLevel: pathway.securityLevel || 1,
+        active: pathway.active !== undefined ? pathway.active : true
+      });
+
+      // Broadcast pathway update to all connected clients
+      synBroadcastNCPathwayUpdate(createdPathway);
+
+      // Send specific response to the requesting client
+      const response = {
+        type: 'synCreatePathway_response',
+        success: true,
+        payload: createdPathway
+      };
+
+      const ws = activeConnections.get(clientId);
+      if (ws && ws.readyState === WS_OPEN) {
+        ws.send(JSON.stringify(response));
+      }
+
+      return { success: true, pathway: createdPathway };
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      console.error('Error creating neural pathway:', error);
+
+      // Send error response to the requesting client
+      const errorResponse = {
+        type: 'synCreatePathway_response',
+        success: false,
+        error: errorMessage || 'Failed to create neural pathway'
+      };
+
+      const ws = activeConnections.get(clientId);
+      if (ws && ws.readyState === WS_OPEN) {
+        ws.send(JSON.stringify(errorResponse));
+      }
+
+      throw error;
+    }
+  });
+
+  // Transmit data over pathway
+  wsHandlers.set('transmit', async (payload: { pathwayId: string, data: any }, clientId: string) => {
+    console.log(`Client ${clientId} transmitting data through pathway ${payload.pathwayId}`);
+    const updatedPathway = await qrnService.recordTransmission(payload.pathwayId, payload.data);
+    if (!updatedPathway) {
+      throw new Error(`Pathway ${payload.pathwayId} not found or could not transmit`);
+    }
+
+    // Broadcast pathway update to all connected clients
+    synBroadcastNCPathwayUpdate(updatedPathway);
+
+    return { pathway: updatedPathway };
+  });
+
+  // Get temporal instances
+  wsHandlers.set('get_temporal_instances', async (payload: { nodeId: string }, clientId: string) => {
+    console.log(`Client ${clientId} requesting temporal instances for QRN ${payload.nodeId}`);
+    const instances = await qrnService.getNodeTemporalInstances(payload.nodeId);
+    return { instances };
+  });
+
+  // Get meta-cognitive events
+  wsHandlers.set('get_events', async (payload: { nodeId: string }, clientId: string) => {
+    console.log(`Client ${clientId} requesting meta-cognitive events for QRN ${payload.nodeId}`);
+    const events = await qrnService.getNodeMetaCognitiveEvents(payload.nodeId);
+    return { events };
+  });
+
+  // Record meta-cognitive event
+  wsHandlers.set('record_event', async (payload: { 
+    nodeId: string, 
+    type: string, 
+    description: string,
+    details?: any,
+    confidence?: number,
+    impact?: number
+  }, clientId: string) => {
+    console.log(`Client ${clientId} recording event for QRN ${payload.nodeId}`);
+    const event = await qrnService.recordMetaCognitiveEvent({
+      nodeId: payload.nodeId,
+      type: payload.type,
+      description: payload.description,
+      details: payload.details || {},
+      confidence: payload.confidence || 0.5,
+      impact: payload.impact || 5
+    });
+
+    // Broadcast event to all connected clients
+    mcBroadcastEventUpdate(event);
+
+    return { event };
+  });
+}
+
+/**
+ * Broadcast QRN update to all connected WebSocket clients
+ * Using neural-quantum naming convention: synBroadcastQNodeUpdate
+ */
+function synBroadcastQNodeUpdate(qrn: any) {
+  // Convert Map.entries() to Array to avoid downlevelIteration flag issues
+  Array.from(activeConnections.entries()).forEach(([clientId, ws]) => {
+    if (ws.readyState === WS_OPEN) {
+      ws.send(JSON.stringify({
+        type: 'qrn_update',
+        payload: { qrn }
+      }));
+    }
+  });
+}
+
+/**
+ * Broadcast neural pathway update to all connected WebSocket clients
+ * Using neural-quantum naming convention: synBroadcastNCPathwayUpdate
+ */
+function synBroadcastNCPathwayUpdate(pathway: any) {
+  // Ensure we have a well-structured payload with essential information
+  const payload = {
+    pathway,
+    nodes: Array.isArray(pathway.nodes) ? pathway.nodes : [pathway.sourceId, pathway.targetId],
+    strength: pathway.strength || pathway.bandwidth || 1.0,
+    timestamp: new Date().toISOString()
+  };
+
+  // Convert Map.entries() to Array to avoid downlevelIteration flag issues
+  Array.from(activeConnections.entries()).forEach(([clientId, ws]) => {
+    if (ws.readyState === WS_OPEN) {
+      ws.send(JSON.stringify({
+        type: 'pathway_update',
+        payload
+      }));
+    }
+  });
+}
+
+/**
+ * Broadcast meta-cognitive event to all connected WebSocket clients
+ * Using neural-quantum naming convention: mcBroadcastEventUpdate
+ */
+function mcBroadcastEventUpdate(event: any) {
+  // Convert Map.entries() to Array to avoid downlevelIteration flag issues
+  Array.from(activeConnections.entries()).forEach(([clientId, ws]) => {
+    if (ws.readyState === WS_OPEN) {
+      ws.send(JSON.stringify({
+        type: 'event_update',
+        payload: { event }
+      }));
+    }
+  });
+}
+
+/**
+ * Broadcast cognitive pattern to all connected WebSocket clients
+ * Using neural-quantum naming convention: mcBroadcastPatternUpdate
+ */
+function mcBroadcastPatternUpdate(pattern: any) {
+  // Convert Map.entries() to Array to avoid downlevelIteration flag issues
+  Array.from(activeConnections.entries()).forEach(([clientId, ws]) => {
+    if (ws.readyState === WS_OPEN) {
+      ws.send(JSON.stringify({
+        type: 'pattern_update',
+        payload: { pattern }
+      }));
+    }
+  });
+}
+
+/**
+ * Broadcast cognitive insight to all connected WebSocket clients
+ * Using neural-quantum naming convention: mcBroadcastInsightUpdate
+ */
+function mcBroadcastInsightUpdate(insight: any) {
+  // Convert Map.entries() to Array to avoid downlevelIteration flag issues
+  Array.from(activeConnections.entries()).forEach(([clientId, ws]) => {
+    if (ws.readyState === WS_OPEN) {
+      ws.send(JSON.stringify({
+        type: 'insight_update',
+        payload: { insight }
+      }));
+    }
+  });
+}
+
+/**
+ * Register WebSocket message handlers for Meta-Cognitive operations
+ * Using neural-quantum naming convention: mcRegisterWebSocketHandlers
+ */
+function mcRegisterWebSocketHandlers() {
+  // Get cognitive summary
+  wsHandlers.set('get_cognitive_summary', async (payload: any, clientId: string) => {
+    console.log(`Client ${clientId} requesting cognitive state summary`);
+    const summary = metaCognitiveEngine.getCognitiveStateSummary();
+    return { summary };
+  });
+
+  // Get cognitive patterns
+  wsHandlers.set('get_patterns', async (payload: {
+    nodeId?: string;
+    patternType?: PatternType;
+    minConfidence?: number;
+    strategicLayer?: number;
+  }, clientId: string) => {
+    console.log(`Client ${clientId} requesting cognitive patterns`);
+    const patterns = metaCognitiveEngine.getPatterns(payload);
+    return { patterns };
+  });
+
+  // Get cognitive insights
+  wsHandlers.set('get_insights', async (payload: {
+    nodeId?: string;
+    severity?: InsightSeverity;
+    minImpact?: number;
+    strategicLayer?: number;
+  }, clientId: string) => {
+    console.log(`Client ${clientId} requesting cognitive insights`);
+    const insights = metaCognitiveEngine.getInsights(payload);
+    return { insights };
+  });
+
+  // Process a meta-cognitive event
+  wsHandlers.set('process_event', async (payload: { event: any }, clientId: string) => {
+    console.log(`Client ${clientId} requesting to process meta-cognitive event`);
+    await metaCognitiveEngine.processEvent(payload.event);
+    return { success: true, message: 'Event processed successfully' };
+  });
+
+  // Process user feedback (new handler for outcome-driven approach)
+  wsHandlers.set('user_feedback', async (payload: { 
+    feedback: {
+      rating: string, 
+      details?: string,
+      timestamp: Date,
+      context?: {
+        activeModels?: string,
+        activeTasks?: string,
+        avgResponseTime?: number,
+        websocketStability?: string
+      }
+    }
+  }, clientId: string) => {
+    console.log(`Client ${clientId} submitted user experience feedback: ${payload.feedback.rating}`);
+
+    try {
+      // Create a meta-cognitive event based on user feedback
+      const event = {
+        id: uuidv4(),
+        nodeId: qrnContextManager.getDefaultQRN(), // Use default QRN
+        eventType: 'user_feedback',
+        timestamp: new Date(),
+        description: `User provided ${payload.feedback.rating} feedback`,
+        details: {
+          rating: payload.feedback.rating,
+          details: payload.feedback.details || '',
+          context: payload.feedback.context || {},
+          clientId
+        },
+        confidence: 1.0, // Direct user feedback has high confidence
+        impact: getImpactFromRating(payload.feedback.rating),
+        processingTime: 0,
+        relatedEvents: [],
+        outcome: null,
+        sourceContext: {
+          source: 'user',
+          timestamp: payload.feedback.timestamp || new Date()
+        }
+      };
+
+      // Process the event through meta-cognitive engine
+      await metaCognitiveEngine.processEvent(event);
+
+      // Store the feedback in the database (if appropriate storage method exists)
+      if (storage && typeof storage.createSystemLog === 'function') {
+        await storage.createSystemLog({
+          type: 'user_feedback',
+          message: `User feedback: ${payload.feedback.rating}`,
+          details: JSON.stringify(payload.feedback),
+          component: 'user_interface',
+          severity: getSeverityFromRating(payload.feedback.rating),
+          metadata: payload.feedback
+        });
+      }
+
+      return { 
+        success: true, 
+        message: 'Feedback received and processed successfully',
+        eventId: event.id
+      };
+    } catch (error) {
+      console.error('Error processing user feedback:', error);
+      return { 
+        success: false, 
+        message: 'Error processing feedback',
+        error: String(error)
+      };
+    }
+  });
+}
+
+/**
+ * Get numeric impact value from rating string
+ * @param rating - User rating (excellent, good, fair, poor)
+ * @returns Impact value from 1-10
+ */
+function getImpactFromRating(rating: string): number {
+  switch(rating.toLowerCase()) {
+    case 'excellent': return 3;  // Positive but low impact, system working well
+    case 'good': return 4;       // Minor positive impact
+    case 'fair': return 6;       // Medium impact, needs attention
+    case 'poor': return 8;       // High impact, needs immediate attention
+    default: return 5;           // Default medium impact
+  }
+}
+
+/**
+ * Get severity level from rating string
+ * @param rating - User rating (excellent, good, fair, poor)
+ * @returns Severity value from 1-4
+ */
+function getSeverityFromRating(rating: string): number {
+  switch(rating.toLowerCase()) {
+    case 'excellent': return 1;  // Information
+    case 'good': return 1;       // Information
+    case 'fair': return 2;       // Warning
+    case 'poor': return 3;       // Error
+    default: return 1;           // Default information
+  }
+}
+
+/**
+ * Register WebSocket message handlers for Neural Orchestration operations
+ * Using neural-quantum naming convention: synRegisterWebSocketHandlers
+ */
+function synRegisterWebSocketHandlers() {
+  // Subscribe to task updates
+  // Using neural-quantum naming convention: subscribe_task_updates (client-side convention)
+  wsHandlers.set('subscribe_task_updates', async (payload: any, clientId: string) => {
+    console.log(`Client ${clientId} subscribing to task updates`);
+    // We don't need to do anything special here as all connected clients receive broadcasts
+    return { success: true, message: 'Subscribed to task updates' };
+  });
+
+  // Add handler for subscribe_task_updates (client compatible name)
+  wsHandlers.set('subscribe_task_updates', async (payload: any, clientId: string) => {
+    console.log(`Client ${clientId} subscribing to task updates (legacy format)`);
+    // We don't need to do anything special here as all connected clients receive broadcasts
+    return { success: true, message: 'Subscribed to task updates' };
+  });
+
+  // Subscribe to system metrics updates
+  // Using neural-quantum naming convention: subscribe_system_metrics
+  wsHandlers.set('subscribe_system_metrics', async (payload: any, clientId: string) => {
+    console.log(`Client ${clientId} subscribing to system metrics updates`);
+    // We don't need to do anything special here as all connected clients receive broadcasts
+    // Send an immediate update to the client that just subscribed
+    synBroadcastSystemStatus();
+    return { success: true, message: 'Subscribed to system metrics updates' };
+  });
+
+  // Get immediate system metrics update
+  // Using neural-quantum naming convention: get_system_metrics
+  wsHandlers.set('get_system_metrics', async (payload: any, clientId: string) => {
+    console.log(`Client ${clientId} requesting immediate system metrics update`);
+    // Broadcast system status to all clients
+    synBroadcastSystemStatus();
+    return { success: true, message: 'System metrics update sent' };
+  });
+
+  // Subscribe to chunk updates
+  // Using neural-quantum naming convention: subscribe_chunk_updates (client-side convention)
+  wsHandlers.set('subscribe_chunk_updates', async (payload: any, clientId: string) => {
+    console.log(`Client ${clientId} subscribing to chunk updates`);
+    // We don't need to do anything special here as all connected clients receive broadcasts
+    return { success: true, message: 'Subscribed to chunk updates' };
+  });
+
+  // Create a new chunk
+  // Using neural-quantum naming convention: synCreateChunk
+  wsHandlers.set('synCreateChunk', async (payload: {
+    originalContent: string,
+    chunkIndex: number,
+    totalChunks: number,
+    chunkSize: number,
+    parentTaskId?: string,
+    modelType?: string,
+    status?: string,
+    metadata?: Record<string, any>
+  }, clientId: string) => {
+    console.log(`Client ${clientId} creating a new chunk with index ${payload.chunkIndex}/${payload.totalChunks}`);
+
+    try {
+      // Create a new chunk instance
+      const chunk = await storage.createChunk({
+        originalContent: payload.originalContent,
+        chunkIndex: payload.chunkIndex, 
+        totalChunks: payload.totalChunks,
+        chunkSize: payload.chunkSize,
+        parentTaskId: payload.parentTaskId || null,
+        modelType: payload.modelType || null,
+        status: payload.status || 'created',
+        metadata: payload.metadata || {}
+      });
+
+      // Broadcast the creation event to all clients
+      synBroadcastChunkCreate(chunk);
+
+      return { 
+        success: true, 
+        chunk,
+        message: `Created chunk ${chunk.id} (index ${payload.chunkIndex}/${payload.totalChunks})`
+      };
+    } catch (error) {
+      console.error('Error creating chunk:', error);
+      return { 
+        success: false,
+        error: error.message || 'Failed to create chunk'
+      };
+    }
+  });
+
+  // Update a chunk's status or content
+  // Using neural-quantum naming convention: synUpdateChunk
+  wsHandlers.set('synUpdateChunk', async (payload: {
+    chunkId: string,
+    status?: string,
+    processedContent?: string,
+    processingTime?: number,
+    modelType?: string,
+    metadata?: Record<string, any>
+  }, clientId: string) => {
+    console.log(`Client ${clientId} updating chunk ${payload.chunkId}`);
+
+    try {
+      // Retrieve the chunk to make sure it exists
+      const existingChunk = await storage.getChunk(payload.chunkId);
+
+      if (!existingChunk) {
+        return { 
+          success: false,
+          error: `Chunk ${payload.chunkId} not found`
+        };
+      }
+
+      // Prepare update payload (only include fields that are provided)
+      const updates: Partial<Chunk> = {};
+      if (payload.status) updates.status = payload.status;
+      if (payload.processedContent) updates.processedContent = payload.processedContent;
+      if (payload.processingTime !== undefined) updates.processingTime = payload.processingTime;
+      if (payload.modelType) updates.modelType = payload.modelType;
+      if (payload.metadata) updates.metadata = payload.metadata;
+
+      // Update the chunk in the database
+      const updatedChunk = await storage.updateChunk(payload.chunkId, updates);
+
+      // Broadcast the update to all clients
+      synBroadcastChunkUpdate(updatedChunk);
+
+      return { 
+        success: true, 
+        chunk: updatedChunk,
+        message: `Updated chunk ${payload.chunkId} status to ${updatedChunk.status}`
+      };
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      console.error('Error updating chunk:', error);
+      return { 
+        success: false,
+        error: errorMessage || 'Failed to update chunk'
+      };
+    }
+  });
+
+  // Apply adaptive resonance tuning to a chunk
+  // Using neural-quantum naming convention: synApplyAdaptiveResonance
+  /**
+   * Apply adaptive resonance tuning to a chunk
+   * This handler processes resonance parameter changes and updates
+   * quantum-level metrics for enhanced neural processing
+   * 
+   * Using neural-quantum naming convention: synApplyAdaptiveResonance
+   */
+  wsHandlers.set('apply_adaptive_resonance', async (payload: {
+    chunkId: string,
+    adaptiveResonanceSettings: {
+      quantumResonance: number,
+      temporalCoherence: number,
+      boundarySensitivity: number
+    }
+  }, clientId: string) => {
+    console.log(`Client ${clientId} applying adaptive resonance tuning to chunk ${payload.chunkId}`);
+
+    try {
+      // Input validation
+      if (!payload.chunkId || !payload.adaptiveResonanceSettings) {
+        const response = { 
+          success: false, 
+          error: 'Invalid payload: chunk ID and resonance settings are required'
+        };
+
+        if (activeConnections.has(clientId)) {
+          const ws = activeConnections.get(clientId);
+          if (ws.readyState === WS_OPEN) {
+            ws.send(JSON.stringify({
+              type: 'apply_adaptive_resonance_response',
+              payload: response
+            }));
+          }
+        }
+
+        return response;
+      }
+
+      // Retrieve the chunk to make sure it exists
+      const existingChunk = await storage.getChunk(payload.chunkId);
+
+      if (!existingChunk) {
+        const response = { 
+          success: false,
+          error: `Chunk ${payload.chunkId} not found`
+        };
+
+        if (activeConnections.has(clientId)) {
+          const ws = activeConnections.get(clientId);
+          if (ws.readyState === WS_OPEN) {
+            ws.send(JSON.stringify({
+              type: 'apply_adaptive_resonance_response',
+              payload: response
+            }));
+          }
+        }
+
+        return response;
+      }
+
+      // Extract the current metadata
+      const currentMetadata = existingChunk.metadata || {};
+
+      // Calculate the new quantum metrics
+      const resonanceScore = payload.adaptiveResonanceSettings.quantumResonance * 10; // Scale to 0-10
+      const temporalCoherence = payload.adaptiveResonanceSettings.temporalCoherence;
+      const boundarySensitivity = payload.adaptiveResonanceSettings.boundarySensitivity;
+
+      // Calculate the adaptability factor
+      const adaptabilityFactor = (payload.adaptiveResonanceSettings.quantumResonance + 
+                                temporalCoherence) / 2;
+
+      // Update or create the quantumChunkMetrics in the metadata
+      const updatedMetadata = {
+        ...currentMetadata,
+        quantumChunkMetrics: {
+          ...(currentMetadata.quantumChunkMetrics || {}),
+          resonanceScore,
+          temporalCoherence,
+          adaptabilityFactor,
+          boundarySensitivity
+        }
+      };
+
+      // Create a meta-cognitive event for this tuning operation
+      if (metaCognitiveEngine) {
+        // Import the MetaCognitiveEventBuilder
+        const { MetaCognitiveEventBuilder } = await import('./services/utils/MetaCognitiveEventBuilder.js');
+        
+        // Use the builder pattern to create the event with proper type handling
+        const event = new MetaCognitiveEventBuilder()
+          .withId(uuidv4())
+          .withNodeId(qrnContextManager.getDefaultQRN())
+          .withType('adaptive_resonance_tuning')
+          .withCreatedAt(new Date())
+          .withDescription(`Adaptive resonance tuning applied to chunk ${payload.chunkId}`)
+          .withDetails({
+            chunkId: payload.chunkId,
+            settings: payload.adaptiveResonanceSettings,
+            before: currentMetadata.quantumChunkMetrics,
+            after: updatedMetadata.quantumChunkMetrics
+          })
+          .withConfidence(0.95) // Changed from confidenceLevel to confidence
+          .withImpact(7)
+          .withRelatedEvents([]) // Add empty related events to ensure proper format
+          .withOutcome('') // Add empty outcome to ensure proper format
+          .withSourceContext({
+            source: 'adaptive_resonance',
+            operation: 'tune_chunk'
+          })
+          .build();
+        
+        // Process the properly formatted event
+        await metaCognitiveEngine.processEvent(event);
+      }
+
+      // Update the chunk in the database with new metadata
+      const updatedChunk = await storage.updateChunk(payload.chunkId, {
+        metadata: updatedMetadata
+      });
+
+      // Broadcast the update to all clients
+      synBroadcastChunkUpdate(updatedChunk);
+
+      // Also update any related pathways or dependencies if needed
+      const dependencies = await neuralOrchestrationEngine.updateChunkDependencies(payload.chunkId);
+
+      // Calculate metrics for the response
+      const microMacroBalance = updatedMetadata.quantumChunkMetrics.microMacroBalance || 
+                               dependencies?.microMacroBalance || 0;
+
+      const cognitiveCoherence = updatedMetadata.quantumChunkMetrics.cognitiveCoherence || 
+                                dependencies?.cognitiveCoherence || 
+                                (adaptabilityFactor * 0.8);
+
+      // Prepare the response with enhanced metrics
+      const response = { 
+        success: true, 
+        chunk: updatedChunk,
+        updatedChunkId: payload.chunkId,
+        temporalCoherence,
+        microMacroBalance,
+        cognitiveCoherence,
+        resonanceScore,
+        message: `Applied adaptive resonance tuning to chunk ${payload.chunkId}`
+      };
+
+      // Send standard format response directly to the requesting client
+      if (activeConnections.has(clientId)) {
+        const ws = activeConnections.get(clientId);
+        if (ws.readyState === WS_OPEN) {
+          ws.send(JSON.stringify({
+            type: 'apply_adaptive_resonance_response',
+            payload: response
+          }));
+
+          console.log(`Sent apply_adaptive_resonance_response to client ${clientId}`);
+        }
+      }
+
+      return response;
+    } catch (error) {
+      console.error('Error applying adaptive resonance:', error);
+      const response = { 
+        success: false,
+        error: error.message || 'Failed to apply adaptive resonance tuning'
+      };
+
+      // Send error response to the client
+      if (activeConnections.has(clientId)) {
+        const ws = activeConnections.get(clientId);
+        if (ws.readyState === WS_OPEN) {
+          ws.send(JSON.stringify({
+            type: 'apply_adaptive_resonance_response',
+            payload: response
+          }));
+        }
+      }
+
+      return response;
+    }
+  });
+
+  // Get chunk details
+  // Using neural-quantum naming convention: synGetChunk
+  wsHandlers.set('synGetChunk', async (payload: {
+    chunkId: string
+  }, clientId: string) => {
+    console.log(`Client ${clientId} retrieving chunk ${payload.chunkId}`);
+
+    try {
+      const chunk = await storage.getChunk(payload.chunkId);
+
+      if (!chunk) {
+        return { 
+          success: false,
+          error: `Chunk ${payload.chunkId} not found`
+        };
+      }
+
+      return { 
+        success: true, 
+        chunk
+      };
+    } catch (error) {
+      console.error('Error retrieving chunk:', error);
+      return { 
+        success: false,
+        error: error.message || 'Failed to retrieve chunk'
+      };
+    }
+  });
+
+  // Get all chunks for a task
+  // Using neural-quantum naming convention: synGetTaskChunks
+  wsHandlers.set('synGetTaskChunks', async (payload: {
+    taskId: string
+  }, clientId: string) => {
+    console.log(`Client ${clientId} retrieving chunks for task ${payload.taskId}`);
+
+    try {
+      const chunks = await storage.getChunksByTaskId(payload.taskId);
+
+      return { 
+        success: true, 
+        chunks,
+        count: chunks.length,
+        taskId: payload.taskId
+      };
+    } catch (error) {
+      console.error(`Error retrieving chunks for task ${payload.taskId}:`, error);
+      return { 
+        success: false,
+        error: error.message || 'Failed to retrieve task chunks'
+      };
+    }
+  });
+
+  // Recompose chunks back into a complete result
+  // Using neural-quantum naming convention: recompose_chunks (client-side convention)
+  wsHandlers.set('recompose_chunks', async (payload: {
+    taskId: string,
+    strategy?: 'concatenate' | 'merge' | 'summarize'
+  }, clientId: string) => {
+    console.log(`Client ${clientId} recomposing chunks for task ${payload.taskId}`);
+
+    try {
+      const chunks = await storage.getChunksByTaskId(payload.taskId);
+
+      if (chunks.length === 0) {
+        return { 
+          success: false,
+          error: `No chunks found for task ${payload.taskId}`
+        };
+      }
+
+      // Sort chunks by index to ensure correct order
+      const sortedChunks = [...chunks].sort((a, b) => a.chunkIndex - b.chunkIndex);
+
+      // Basic recomposition strategy (concatenate processed content)
+      const strategy = payload.strategy || 'concatenate';
+      let recomposedResult: any;
+
+      switch (strategy) {
+        case 'concatenate':
+          // Simple concatenation of processed content
+          recomposedResult = {
+            content: sortedChunks
+              .filter(chunk => chunk.processedContent) // Skip chunks without processed content
+              .map(chunk => chunk.processedContent)
+              .join('\n\n'),
+            chunkCount: sortedChunks.length,
+            strategy: 'concatenate'
+          };
+          break;
+
+        case 'merge':
+          // More complex merging logic could be implemented here
+          // This is just a placeholder implementation
+          recomposedResult = {
+            content: sortedChunks
+              .filter(chunk => chunk.processedContent)
+              .map(chunk => chunk.processedContent)
+              .join('\n\n'),
+            chunkCount: sortedChunks.length,
+            strategy: 'merge'
+          };
+          break;
+
+        case 'summarize':
+          // This would typically call a summarization model
+          // For now, we'll just return a placeholder
+          recomposedResult = {
+            content: `Summarized content from ${sortedChunks.length} chunks`,
+            chunkCount: sortedChunks.length,
+            strategy: 'summarize'
+          };
+          break;
+
+        default:
+          recomposedResult = {
+            content: sortedChunks
+              .filter(chunk => chunk.processedContent)
+              .map(chunk => chunk.processedContent)
+              .join('\n\n'),
+            chunkCount: sortedChunks.length,
+            strategy: 'concatenate'
+          };
+      }
+
+      // Update all chunks with 'recomposed' status
+      for (const chunk of sortedChunks) {
+        await storage.updateChunk(chunk.id, { status: 'recomposed' });
+      }
+
+      // Broadcast recomposition event
+      synBroadcastChunkRecom

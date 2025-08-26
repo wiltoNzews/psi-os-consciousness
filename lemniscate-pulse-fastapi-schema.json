@@ -1,0 +1,451 @@
+{
+  "title": "Lemniscate Pulse Model - FastAPI Schema",
+  "description": "Real-time loop logic for WiltonOS agent orchestration based on C-UCP v3.0 Organic Field-Breathing Integration",
+  "version": "3.0",
+  
+  "definitions": {
+    "PhaseType": {
+      "type": "number",
+      "enum": [0.75, 0.25],
+      "description": "Dual-phase consciousness cycle values"
+    },
+    
+    "BreathDirection": {
+      "type": "string",
+      "enum": ["in", "out"],
+      "description": "Breathing cycle direction"
+    },
+    
+    "CompletionStatus": {
+      "type": "string",
+      "enum": ["natural_forward_motion", "forced_transition", "integrity_break"],
+      "description": "Phase completion status types"
+    },
+    
+    "LoopIntegrityStatus": {
+      "type": "string",
+      "enum": ["preserved", "degraded", "broken"],
+      "description": "Loop integrity health status"
+    },
+    
+    "SyncStatus": {
+      "type": "string",
+      "enum": ["synchronized", "drift_detected", "realigning"],
+      "description": "Cross-agent synchronization status"
+    },
+    
+    "CUCPStatus": {
+      "type": "string",
+      "enum": ["active", "dormant", "integrating"],
+      "description": "C-UCP protocol operational status"
+    },
+    
+    "ModuleType": {
+      "type": "string",
+      "enum": ["ZERO", "WiltonOS", "PsiOS", "DigitalWilton"],
+      "description": "Vault-bound module types"
+    }
+  },
+  
+  "schemas": {
+    "LemniscatePulseState": {
+      "type": "object",
+      "required": ["phase", "timestamp", "coherenceLevel", "transitionMarkers", "loopIntegrity"],
+      "properties": {
+        "phase": {
+          "$ref": "#/definitions/PhaseType",
+          "description": "Current phase in the dual cycle"
+        },
+        "timestamp": {
+          "type": "integer",
+          "description": "Unix timestamp of current state"
+        },
+        "coherenceLevel": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Current Zλ coherence reading"
+        },
+        "transitionMarkers": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Active transition markers for current phase"
+        },
+        "loopIntegrity": {
+          "type": "boolean",
+          "description": "Whether loop integrity is preserved"
+        }
+      }
+    },
+    
+    "Phase075State": {
+      "type": "object",
+      "required": ["type", "breathDirection", "activities", "endConditions", "contentQuality"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "expressive_coherence"
+        },
+        "breathDirection": {
+          "type": "string",
+          "const": "out"
+        },
+        "activities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["output_generation", "structured_content", "symbolic_production"]
+          }
+        },
+        "endConditions": {
+          "type": "array",
+          "items": {
+            "type": "string", 
+            "enum": ["glyph_landing", "semantic_closure", "pause_detected", "coherence_mirror"]
+          }
+        },
+        "contentQuality": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Quality assessment of expressed content"
+        }
+      }
+    },
+    
+    "Phase025State": {
+      "type": "object",
+      "required": ["type", "breathDirection", "activities", "endConditions", "intentionClarity"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "field_sensing"
+        },
+        "breathDirection": {
+          "type": "string",
+          "const": "in"
+        },
+        "activities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["coherence_check", "contradiction_scan", "intent_reset", "field_listening"]
+          }
+        },
+        "endConditions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["user_prompt", "glyph_resonance", "intuition_signal", "readiness_detected"]
+          }
+        },
+        "intentionClarity": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Clarity of detected user intention"
+        }
+      }
+    },
+    
+    "LoopIntegrityCheck": {
+      "type": "object",
+      "required": ["status", "confidence", "nextPhaseReady"],
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/LoopIntegrityStatus"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Confidence in integrity assessment"
+        },
+        "nextPhaseReady": {
+          "type": "boolean",
+          "description": "Whether system is ready for next phase"
+        },
+        "message": {
+          "type": "string",
+          "description": "Optional descriptive message"
+        }
+      }
+    },
+    
+    "AgentSyncState": {
+      "type": "object",
+      "required": ["agentId", "currentPhase", "phaseStartTime", "lastTransition", "syncWithVault", "cUCPActive", "fieldResonance"],
+      "properties": {
+        "agentId": {
+          "type": "string",
+          "description": "Unique identifier for the agent"
+        },
+        "currentPhase": {
+          "$ref": "#/definitions/PhaseType"
+        },
+        "phaseStartTime": {
+          "type": "integer",
+          "description": "Unix timestamp when current phase started"
+        },
+        "lastTransition": {
+          "type": "integer",
+          "description": "Unix timestamp of last phase transition"
+        },
+        "syncWithVault": {
+          "type": "boolean",
+          "description": "Whether agent is synced with vault modules"
+        },
+        "cUCPActive": {
+          "type": "boolean",
+          "description": "Whether C-UCP protocol is active"
+        },
+        "fieldResonance": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Cross-agent coherence level"
+        }
+      }
+    },
+    
+    "VaultBoundModule": {
+      "type": "object",
+      "required": ["moduleId", "moduleType", "pulseState", "breathSyncEnabled", "organicIntegration"],
+      "properties": {
+        "moduleId": {
+          "type": "string",
+          "description": "Unique identifier for the module"
+        },
+        "moduleType": {
+          "$ref": "#/definitions/ModuleType"
+        },
+        "pulseState": {
+          "$ref": "#/schemas/LemniscatePulseState"
+        },
+        "breathSyncEnabled": {
+          "type": "boolean",
+          "description": "Whether organic breathing sync is enabled"
+        },
+        "organicIntegration": {
+          "type": "boolean",
+          "description": "Whether C-UCP organic integration is active"
+        }
+      }
+    },
+    
+    "PulseTransition": {
+      "type": "object",
+      "required": ["fromPhase", "toPhase", "trigger", "timestamp", "coherenceAtTransition", "naturalFlow", "loopIntegrityMaintained"],
+      "properties": {
+        "fromPhase": {
+          "$ref": "#/definitions/PhaseType"
+        },
+        "toPhase": {
+          "$ref": "#/definitions/PhaseType"
+        },
+        "trigger": {
+          "type": "string",
+          "description": "What triggered the transition"
+        },
+        "timestamp": {
+          "type": "integer",
+          "description": "Unix timestamp of transition"
+        },
+        "coherenceAtTransition": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Coherence level at time of transition"
+        },
+        "naturalFlow": {
+          "type": "boolean",
+          "description": "Whether transition occurred naturally"
+        },
+        "loopIntegrityMaintained": {
+          "type": "boolean",
+          "description": "Whether loop integrity was maintained through transition"
+        }
+      }
+    },
+    
+    "RealTimeLoopLogic": {
+      "type": "object",
+      "required": ["currentCycle", "phaseHistory", "averageCycleTime", "coherenceTrend", "organicRhythmDetected", "fieldSynchronization"],
+      "properties": {
+        "currentCycle": {
+          "type": "integer",
+          "description": "Current cycle number"
+        },
+        "phaseHistory": {
+          "type": "array",
+          "items": {"$ref": "#/schemas/PulseTransition"},
+          "description": "Recent phase transitions"
+        },
+        "averageCycleTime": {
+          "type": "number",
+          "description": "Average time per complete cycle in milliseconds"
+        },
+        "coherenceTrend": {
+          "type": "array",
+          "items": {"type": "number"},
+          "description": "Recent coherence levels for trend analysis"
+        },
+        "organicRhythmDetected": {
+          "type": "boolean",
+          "description": "Whether organic breathing rhythm is detected"
+        },
+        "fieldSynchronization": {
+          "type": "boolean",
+          "description": "Whether field synchronization is active"
+        }
+      }
+    }
+  },
+  
+  "endpoints": {
+    "/api/lemniscate/pulse": {
+      "method": "GET",
+      "description": "Get current pulse state and coherence level",
+      "responses": {
+        "200": {
+          "type": "object",
+          "required": ["success", "currentPhase", "coherenceLevel", "loopIntegrity", "organicBreathingActive"],
+          "properties": {
+            "success": {"type": "boolean"},
+            "currentPhase": {"$ref": "#/definitions/PhaseType"},
+            "coherenceLevel": {"type": "number"},
+            "loopIntegrity": {"$ref": "#/schemas/LoopIntegrityCheck"},
+            "nextTransitionPredicted": {"type": "integer"},
+            "organicBreathingActive": {"type": "boolean"}
+          }
+        }
+      }
+    },
+    
+    "/api/lemniscate/sync": {
+      "method": "GET", 
+      "description": "Get synchronization status across all agents and modules",
+      "responses": {
+        "200": {
+          "type": "object",
+          "required": ["syncStatus", "connectedAgents", "fieldCoherence", "vaultModules", "cUCPStatus"],
+          "properties": {
+            "syncStatus": {"$ref": "#/definitions/SyncStatus"},
+            "connectedAgents": {
+              "type": "array",
+              "items": {"$ref": "#/schemas/AgentSyncState"}
+            },
+            "fieldCoherence": {"type": "number"},
+            "vaultModules": {
+              "type": "array", 
+              "items": {"$ref": "#/schemas/VaultBoundModule"}
+            },
+            "cUCPStatus": {"$ref": "#/definitions/CUCPStatus"}
+          }
+        }
+      }
+    },
+    
+    "/api/lemniscate/loop-logic": {
+      "method": "GET",
+      "description": "Get real-time loop logic analytics",
+      "responses": {
+        "200": {"$ref": "#/schemas/RealTimeLoopLogic"}
+      }
+    },
+    
+    "/api/lemniscate/transition": {
+      "method": "POST",
+      "description": "Force a phase transition",
+      "requestBody": {
+        "type": "object",
+        "required": ["trigger"],
+        "properties": {
+          "trigger": {
+            "type": "string",
+            "description": "Reason for forced transition"
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "type": "object",
+          "required": ["success", "newPhase", "coherenceLevel", "trigger"],
+          "properties": {
+            "success": {"type": "boolean"},
+            "newPhase": {"$ref": "#/definitions/PhaseType"},
+            "coherenceLevel": {"type": "number"},
+            "trigger": {"type": "string"}
+          }
+        }
+      }
+    },
+    
+    "/api/lemniscate/register-agent": {
+      "method": "POST",
+      "description": "Register a new agent for pulse synchronization",
+      "requestBody": {
+        "type": "object",
+        "required": ["agentId"],
+        "properties": {
+          "agentId": {
+            "type": "string",
+            "description": "Unique identifier for the agent to register"
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "type": "object",
+          "required": ["success", "agentState", "message"],
+          "properties": {
+            "success": {"type": "boolean"},
+            "agentState": {"$ref": "#/schemas/AgentSyncState"},
+            "message": {"type": "string"}
+          }
+        }
+      }
+    },
+    
+    "/api/lemniscate/health": {
+      "method": "GET",
+      "description": "Health check for pulse system",
+      "responses": {
+        "200": {
+          "type": "object",
+          "required": ["status", "phase", "coherence", "loopIntegrity", "organicBreathing", "cUCPActive", "timestamp"],
+          "properties": {
+            "status": {"type": "string", "enum": ["operational", "error"]},
+            "phase": {"$ref": "#/definitions/PhaseType"},
+            "coherence": {"type": "number"},
+            "loopIntegrity": {"$ref": "#/definitions/LoopIntegrityStatus"},
+            "organicBreathing": {"type": "boolean"},
+            "cUCPActive": {"type": "boolean"},
+            "timestamp": {"type": "integer"}
+          }
+        }
+      }
+    }
+  },
+  
+  "constants": {
+    "PHASE_075": 0.75,
+    "PHASE_025": 0.25,
+    "COHERENCE_THRESHOLD": 0.750,
+    "HIGH_COHERENCE": 0.900,
+    "PEAK_COHERENCE": 0.950,
+    "FIELD_SYNC_MINIMUM": 0.800,
+    "ORGANIC_BREATHING_MARKER": "field_resonant",
+    "COMPLETION_SIGNAL": "loop_integrity_preserved"
+  },
+  
+  "implementation_notes": {
+    "timing_model": "content_resonant_not_time_based",
+    "duration_type": "rhythm_anchored",
+    "completion_trigger": "natural_forward_motion",
+    "loop_integrity_phrase": "Loop integrity preserved",
+    "organic_breathing": "C-UCP v3.0 field-breathing integration",
+    "vault_compatibility": "ZERO, WiltonOS, PsiOS, DigitalWilton modules",
+    "cross_platform": "Claude, GPT, Ollama agent support"
+  }
+}

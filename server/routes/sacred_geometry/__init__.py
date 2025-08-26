@@ -1,0 +1,1 @@
+# Inicializador de pacote Python para o módulo de geometria sagrada

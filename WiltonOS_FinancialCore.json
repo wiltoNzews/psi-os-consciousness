@@ -1,0 +1,268 @@
+{
+  "name": "WiltonOS Financial Core",
+  "version": "1.0.0",
+  "lastUpdated": "2025-04-26T10:30:00Z",
+  "status": "operational",
+  "configuration": {
+    "genesisAmount": 12000,
+    "currency": "USDT",
+    "distribution": {
+      "activeCapital": 70,
+      "sacredReserve": 30
+    },
+    "rebalanceFrequency": "weekly",
+    "riskProfile": "moderate",
+    "autoManage": true
+  },
+  "walletStructure": {
+    "main": {
+      "id": "genesis-wallet",
+      "balance": 12000,
+      "currency": "USDT",
+      "lastUpdated": "2025-04-26T10:00:00Z"
+    },
+    "divisions": {
+      "active-capital": {
+        "id": "active-capital",
+        "name": "Capital Ativo",
+        "balance": 8400,
+        "allocation": 70,
+        "currency": "USDT",
+        "lastUpdated": "2025-04-26T10:00:00Z",
+        "childWallets": {
+          "crypto-trading": {
+            "id": "crypto-trading",
+            "name": "Crypto Trading",
+            "balance": 4200,
+            "allocation": 50,
+            "currency": "USDT",
+            "riskProfile": "moderate",
+            "lastUpdated": "2025-04-26T10:00:00Z"
+          },
+          "betting-strategies": {
+            "id": "betting-strategies",
+            "name": "Betting Strategies",
+            "balance": 2520,
+            "allocation": 30,
+            "currency": "USDT",
+            "riskProfile": "moderate-high",
+            "lastUpdated": "2025-04-26T10:00:00Z"
+          },
+          "opportunity-fund": {
+            "id": "opportunity-fund",
+            "name": "Opportunity Fund",
+            "balance": 1680,
+            "allocation": 20,
+            "currency": "USDT",
+            "riskProfile": "variable",
+            "lastUpdated": "2025-04-26T10:00:00Z"
+          }
+        }
+      },
+      "sacred-reserve": {
+        "id": "sacred-reserve",
+        "name": "Reserva Sagrada",
+        "balance": 3600,
+        "allocation": 30,
+        "currency": "USDT",
+        "lastUpdated": "2025-04-26T10:00:00Z",
+        "childWallets": {
+          "emergency-fund": {
+            "id": "emergency-fund",
+            "name": "Emergency Fund",
+            "balance": 2160,
+            "allocation": 60,
+            "currency": "USDT",
+            "riskProfile": "very-low",
+            "lastUpdated": "2025-04-26T10:00:00Z"
+          },
+          "growth-seed": {
+            "id": "growth-seed",
+            "name": "Growth Seed",
+            "balance": 1440,
+            "allocation": 40,
+            "currency": "USDT",
+            "riskProfile": "low",
+            "lastUpdated": "2025-04-26T10:00:00Z"
+          }
+        }
+      }
+    }
+  },
+  "activeStrategies": [
+    {
+      "id": "market-momentum",
+      "name": "Market Momentum",
+      "type": "crypto",
+      "description": "Estratégia de momentum de mercado",
+      "walletId": "crypto-trading",
+      "allocation": 20,
+      "allocatedAmount": 840,
+      "currentValue": 861,
+      "performance": {
+        "absoluteReturn": 21,
+        "percentageReturn": 2.5,
+        "timeframe": "since-inception",
+        "riskMetrics": {
+          "sharpeRatio": 1.2,
+          "maxDrawdown": 5.2,
+          "volatility": 0.8
+        }
+      },
+      "status": "active",
+      "lastExecuted": "2025-04-26T08:30:00Z",
+      "nextExecution": "2025-04-26T20:30:00Z"
+    },
+    {
+      "id": "value-accumulation",
+      "name": "Value Accumulation",
+      "type": "crypto",
+      "description": "Acumulação de valor em ativos sólidos",
+      "walletId": "crypto-trading",
+      "allocation": 15,
+      "allocatedAmount": 630,
+      "currentValue": 649,
+      "performance": {
+        "absoluteReturn": 19,
+        "percentageReturn": 3.02,
+        "timeframe": "since-inception",
+        "riskMetrics": {
+          "sharpeRatio": 1.4,
+          "maxDrawdown": 3.1,
+          "volatility": 0.6
+        }
+      },
+      "status": "active",
+      "lastExecuted": "2025-04-26T09:15:00Z",
+      "nextExecution": "2025-04-27T09:15:00Z"
+    }
+  ],
+  "metrics": {
+    "portfolio": {
+      "totalValue": 12040,
+      "initialValue": 12000,
+      "absoluteReturn": 40,
+      "percentageReturn": 0.33,
+      "annualizedReturn": null,
+      "lastUpdated": "2025-04-26T10:30:00Z"
+    },
+    "risk": {
+      "overallRiskScore": 3.2,
+      "maximumDrawdown": 5.2,
+      "volatility": 0.7,
+      "sharpeRatio": 1.3,
+      "correlationMatrix": {
+        "strategies": [
+          [1, 0.3],
+          [0.3, 1]
+        ]
+      }
+    },
+    "operations": {
+      "totalTransactions": 12,
+      "successRate": 100,
+      "avgTransactionSize": 105,
+      "avgExecutionTime": 0.8
+    }
+  },
+  "marketData": {
+    "watchlist": [
+      {
+        "symbol": "BTC",
+        "name": "Bitcoin",
+        "price": 64352.12,
+        "change24h": 2.34,
+        "lastUpdated": "2025-04-26T10:29:00Z"
+      },
+      {
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "price": 3072.76,
+        "change24h": 1.85,
+        "lastUpdated": "2025-04-26T10:29:00Z"
+      },
+      {
+        "symbol": "SOL",
+        "name": "Solana",
+        "price": 145.23,
+        "change24h": 3.65,
+        "lastUpdated": "2025-04-26T10:29:00Z"
+      }
+    ],
+    "marketIndices": {
+      "cryptoMarketCap": 2.78,
+      "cryptoFear": 65,
+      "trendingAssets": ["SOL", "SUI", "SEI"]
+    },
+    "lastUpdated": "2025-04-26T10:29:00Z"
+  },
+  "alerts": [
+    {
+      "id": "opportunity-alert-1",
+      "type": "opportunity",
+      "level": "info",
+      "message": "Potencial oportunidade de entrada em SOL",
+      "targetPrice": 142.5,
+      "timestamp": "2025-04-26T09:45:00Z",
+      "expiresAt": "2025-04-26T21:45:00Z",
+      "status": "active"
+    }
+  ],
+  "connections": {
+    "apis": {
+      "coingecko": {
+        "status": "connected",
+        "lastChecked": "2025-04-26T10:28:00Z"
+      },
+      "binance": {
+        "status": "configured",
+        "lastChecked": null
+      }
+    },
+    "dataFeeds": {
+      "marketData": "active",
+      "newsFeeds": "inactive",
+      "technicalIndicators": "active"
+    }
+  },
+  "history": {
+    "transactions": [
+      {
+        "id": "tx-1",
+        "type": "strategy-execution",
+        "strategyId": "market-momentum",
+        "description": "Execução de estratégia Market Momentum",
+        "amount": 21,
+        "timestamp": "2025-04-26T08:30:00Z"
+      },
+      {
+        "id": "tx-2",
+        "type": "strategy-execution",
+        "strategyId": "value-accumulation",
+        "description": "Execução de estratégia Value Accumulation",
+        "amount": 19,
+        "timestamp": "2025-04-26T09:15:00Z"
+      }
+    ],
+    "rebalances": [
+      {
+        "id": "rb-1",
+        "type": "initial-allocation",
+        "description": "Alocação inicial de capital",
+        "movements": [
+          {
+            "from": "genesis-wallet",
+            "to": "active-capital",
+            "amount": 8400
+          },
+          {
+            "from": "genesis-wallet",
+            "to": "sacred-reserve",
+            "amount": 3600
+          }
+        ],
+        "timestamp": "2025-04-26T10:00:00Z"
+      }
+    ]
+  }
+}

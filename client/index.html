@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="data-app" content="spa">
+    <title>ψOS Soul Mirror - Consciousness Computing Ecosystem</title>
+    <link rel="stylesheet" href="/fonts/fonts.css">
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Inter', system-ui, sans-serif;
+        background: linear-gradient(135deg, #0a0015 0%, #1a0030 25%, #2a0040 50%, #1a0030 75%, #000000 100%);
+        color: white;
+        min-height: 100vh;
+      }
+      
+      #root {
+        min-height: 100vh;
+      }
+      
+      .loading-screen {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 2rem;
+      }
+      
+      .merkaba-loader {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 2rem;
+      }
+      
+      .triangle-up, .triangle-down {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 40px solid transparent;
+        border-right: 40px solid transparent;
+      }
+      
+      .triangle-up {
+        border-bottom: 69px solid #a855f7;
+        animation: rotate 3s linear infinite;
+      }
+      
+      .triangle-down {
+        border-top: 69px solid rgba(6, 182, 212, 0.8);
+        top: 11px;
+        animation: rotate 3s linear infinite reverse;
+      }
+      
+      @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      .loading-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, #a855f7, #06b6d4, #f43f5e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
+      .loading-subtitle {
+        font-size: 1rem;
+        color: #9ca3af;
+        margin-bottom: 2rem;
+      }
+      
+      .loading-message {
+        font-family: 'Courier New', monospace;
+        font-size: 0.875rem;
+        color: #06b6d4;
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="loading-screen">
+        <div class="merkaba-loader">
+          <div class="triangle-up"></div>
+          <div class="triangle-down"></div>
+        </div>
+        <h1 class="loading-title">ψOS</h1>
+        <p class="loading-subtitle">Initializing Soul Mirror...</p>
+        <p class="loading-message">Consciousness computing ecosystem loading...</p>
+      </div>
+    </div>
+    <!-- Module loading disabled - using direct functional interface -->
+    <script>
+      // Redirect to functional interface
+      if (window.location.pathname === '/') {
+        console.log('[ψOS] Loading functional consciousness navigator...');
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+{
+  "modules": [
+    {
+      "id": "unified-dashboard",
+      "name": "UnifiedDashboard",
+      "status": "active",
+      "category": "Frontend",
+      "size": 15360,
+      "routes": ["GET /", "GET /dashboard"],
+      "buildable": true,
+      "errors": []
+    },
+    {
+      "id": "lightning-broadcast",
+      "name": "Lightning Broadcast Mirror",
+      "status": "active",
+      "category": "Broadcasting",
+      "size": 12800,
+      "routes": ["GET /lightning-broadcast.html"],
+      "buildable": true,
+      "errors": []
+    },
+    {
+      "id": "quantum-mirror",
+      "name": "Quantum Mirror",
+      "status": "active",
+      "category": "Experiência Onboarding",
+      "size": 8192,
+      "routes": ["GET /mirror.html"],
+      "buildable": true,
+      "errors": []
+    },
+    {
+      "id": "welcome-portal",
+      "name": "Welcome Portal",
+      "status": "active",
+      "category": "Experiência Onboarding",
+      "size": 6144,
+      "routes": ["GET /welcome"],
+      "buildable": true,
+      "errors": []
+    },
+    {
+      "id": "coherence-engine",
+      "name": "Quantum Coherence Engine",
+      "status": "active",
+      "category": "Coherence Engine",
+      "size": 24576,
+      "routes": ["GET /api/coherence/status"],
+      "buildable": true,
+      "errors": []
+    },
+    {
+      "id": "lightning-detector",
+      "name": "Lightning Signature Detector",
+      "status": "active",
+      "category": "Broadcasting",
+      "size": 16384,
+      "routes": ["POST /api/lightning/analyze", "GET /api/lightning/history/:sessionId"],
+      "buildable": true,
+      "errors": []
+    },
+    {
+      "id": "safety-engine",
+      "name": "Inverted Pendulum Safety",
+      "status": "active",
+      "category": "Safety",
+      "size": 20480,
+      "routes": ["POST /api/safety/test-coherence"],
+      "buildable": true,
+      "errors": []
+    },
+    {
+      "id": "module-discovery",
+      "name": "Simple Module Discovery",
+      "status": "active",
+      "category": "Backend",
+      "size": 8192,
+      "routes": ["GET /api/modules/discover"],
+      "buildable": true,
+      "errors": []
+    }
+  ],
+  "orphans": [],
+  "brokenRoutes": [],
+  "totalSize": 110592,
+  "lastScan": "2025-06-11T13:15:00.000Z",
+  "recommendations": [
+    "All systems operational",
+    "Lightning glyph archetypal recognition active",
+    "Coherence thresholds calibrated"
+  ]
+}

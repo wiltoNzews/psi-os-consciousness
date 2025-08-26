@@ -1,0 +1,15 @@
+{
+  "nodeId": "265c79ce-c246-4183-9340-8f8446a4e3d3",
+  "state": "{\"status\":\"active\",\"coherence\":0.85,\"energy\":95,\"lastAction\":\"verification\"}",
+  "dimensionType": "TERMINAL",
+  "stabilityFactor": 0,
+  "metadata": {
+    "event": "deletion",
+    "reason": "explicit_delete",
+    "finalCoherence": 0.85
+  },
+  "id": "8f54fc9c-c9e9-4a0b-b139-046ca9d6c503",
+  "timestamp": "2025-03-23T20:58:39.322Z",
+  "createdAt": "2025-03-23T20:58:39.323Z",
+  "updatedAt": "2025-03-23T20:58:39.323Z"
+}

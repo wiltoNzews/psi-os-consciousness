@@ -1,0 +1,18 @@
+{
+  "name": "Chronos Target Test QRN",
+  "description": "A target quantum root node for testing neural pathways",
+  "state": {
+    "status": "receiving",
+    "coherence": 0.65
+  },
+  "capabilities": [
+    "target",
+    "receiver"
+  ],
+  "coherenceScore": 0.65,
+  "id": "329a8b01-5356-4a2d-8745-7f876dc20614",
+  "createdAt": "2025-03-23T21:02:49.645Z",
+  "updatedAt": "2025-03-23T21:02:49.645Z",
+  "connections": {},
+  "lastActivity": "2025-03-23T21:02:49.644Z"
+}

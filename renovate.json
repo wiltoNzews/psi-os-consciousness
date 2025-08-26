@@ -1,0 +1,50 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "timezone": "America/Sao_Paulo",
+  "schedule": ["after 9am and before 5pm on monday"],
+  "prHourlyLimit": 2,
+  "labels": ["dependencies", "longevity"],
+  "separateMinorPatch": false,
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackagePatterns": ["*"],
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch"
+    },
+    {
+      "matchPackagePatterns": ["^@types/"],
+      "automerge": true,
+      "major": {
+        "automerge": false
+      }
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "automerge": true,
+      "major": {
+        "automerge": false
+      }
+    },
+    {
+      "matchDatasources": ["pypi"],
+      "stabilityDays": 3
+    }
+  ],
+  "commitMessagePrefix": "chore(deps):",
+  "semanticCommits": "enabled",
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "📦 Dependency Dashboard",
+  "prCreation": "not-pending",
+  "assigneesFromCodeOwners": true,
+  "reviewersFromCodeOwners": true,
+  "rangeStrategy": "bump",
+  "configWarningReuseIssue": true,
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 5am on friday"]
+  }
+}

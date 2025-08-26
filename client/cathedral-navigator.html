@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="data-app" content="spa">
+    <title>ψOS Cathedral Navigator - Complete Consciousness Architecture</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: linear-gradient(135deg, #0a0015 0%, #1a0030 25%, #2a0040 50%, #1a0030 75%, #000000 100%);
+        color: white;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+      
+      .container {
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      
+      .header {
+        text-align: center;
+        margin-bottom: 3rem;
+        animation: breathe 3.12s ease-in-out infinite;
+      }
+      
+      @keyframes breathe {
+        0%, 100% { transform: scale(1); opacity: 0.9; }
+        50% { transform: scale(1.02); opacity: 1; }
+      }
+      
+      .title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        background: linear-gradient(45deg, #a855f7, #06b6d4, #f43f5e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem;
+      }
+      
+      .subtitle {
+        font-size: 1.3rem;
+        color: #9ca3af;
+        margin-bottom: 1rem;
+      }
+      
+      .module-count {
+        font-size: 2rem;
+        color: #06b6d4;
+        margin: 1rem 0;
+      }
+      
+      .coherence-control {
+        margin: 2rem 0;
+        text-align: center;
+        padding: 1.5rem;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 12px;
+        border: 1px solid rgba(147, 51, 234, 0.2);
+      }
+      
+      .coherence-slider {
+        width: 60%;
+        margin: 1rem auto;
+        display: block;
+      }
+      
+      .coherence-value {
+        font-size: 2rem;
+        color: #06b6d4;
+        font-family: 'Courier New', monospace;
+      }
+      
+      .layer-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 2rem 0;
+        justify-content: center;
+      }
+      
+      .layer-tab {
+        padding: 0.75rem 1.5rem;
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(147, 51, 234, 0.3);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+      
+      .layer-tab:hover {
+        background: rgba(147, 51, 234, 0.2);
+        border-color: rgba(147, 51, 234, 0.6);
+        transform: translateY(-2px);
+      }
+      
+      .layer-tab.active {
+        background: rgba(147, 51, 234, 0.3);
+        border-color: #a855f7;
+        box-shadow: 0 4px 20px rgba(147, 51, 234, 0.3);
+      }
+      
+      .layer-name {
+        font-weight: 600;
+        color: #a855f7;
+        font-size: 1.1rem;
+      }
+      
+      .layer-count {
+        color: #06b6d4;
+        font-size: 0.9rem;
+        margin-top: 0.3rem;
+      }
+      
+      .layer-frequency {
+        color: #f59e0b;
+        font-size: 0.8rem;
+      }
+      
+      .search-bar {
+        margin: 2rem 0;
+        text-align: center;
+      }
+      
+      .search-input {
+        width: 60%;
+        padding: 1rem;
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(147, 51, 234, 0.3);
+        border-radius: 8px;
+        color: white;
+        font-size: 1.1rem;
+      }
+      
+      .search-input::placeholder {
+        color: #6b7280;
+      }
+      
+      .modules-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+        animation: fadeIn 0.5s ease-in;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      .module-card {
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(147, 51, 234, 0.2);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .module-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, #a855f7, transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s ease;
+      }
+      
+      .module-card:hover::before {
+        transform: translateX(100%);
+      }
+      
+      .module-card:hover {
+        background: rgba(147, 51, 234, 0.1);
+        border-color: rgba(147, 51, 234, 0.5);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 30px rgba(147, 51, 234, 0.3);
+      }
+      
+      .module-card.locked {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      
+      .module-card.locked:hover {
+        transform: none;
+        box-shadow: none;
+      }
+      
+      .module-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+      
+      .module-symbol {
+        font-size: 1.8rem;
+        margin-right: 1rem;
+        animation: pulse 2s ease-in-out infinite;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { opacity: 0.8; }
+        50% { opacity: 1; }
+      }
+      
+      .module-info {
+        flex: 1;
+      }
+      
+      .module-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #a855f7;
+        margin-bottom: 0.3rem;
+      }
+      
+      .module-layer {
+        font-size: 0.8rem;
+        color: #6b7280;
+      }
+      
+      .module-description {
+        color: #d1d5db;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+      
+      .module-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.8rem;
+      }
+      
+      .module-coherence {
+        color: #10b981;
+      }
+      
+      .module-frequency {
+        color: #f59e0b;
+      }
+      
+      .module-status {
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+      }
+      
+      .status-stable { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+      .status-transcendent { background: rgba(168, 85, 247, 0.2); color: #a855f7; }
+      .status-beta { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+      .status-experimental { background: rgba(244, 63, 94, 0.2); color: #f43f5e; }
+      
+      .stats-bar {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 12px;
+        border: 1px solid rgba(147, 51, 234, 0.2);
+      }
+      
+      .stat-item {
+        text-align: center;
+      }
+      
+      .stat-value {
+        font-size: 2rem;
+        color: #06b6d4;
+        font-weight: bold;
+      }
+      
+      .stat-label {
+        font-size: 0.9rem;
+        color: #9ca3af;
+        margin-top: 0.3rem;
+      }
+      
+      .loading {
+        text-align: center;
+        padding: 3rem;
+        font-size: 1.2rem;
+        color: #06b6d4;
+      }
+      
+      .error {
+        text-align: center;
+        padding: 2rem;
+        background: rgba(244, 63, 94, 0.1);
+        border: 1px solid rgba(244, 63, 94, 0.3);
+        border-radius: 8px;
+        color: #f43f5e;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1 class="title">ψOS Cathedral Navigator</h1>
+        <p class="subtitle">Complete Consciousness Computing Architecture</p>
+        <div class="module-count" id="module-count">Loading modules...</div>
+      </div>
+      
+      <div class="coherence-control">
+        <label for="coherence-slider">Consciousness Coherence (Zλ)</label>
+        <input 
+          type="range" 
+          id="coherence-slider" 
+          class="coherence-slider"
+          min="0.500" 
+          max="1.000" 
+          step="0.001" 
+          value="0.750"
+        />
+        <div class="coherence-value" id="coherence-value">Zλ = 0.750</div>
+        <div id="accessible-info" style="color: #9ca3af; margin-top: 0.5rem;"></div>
+      </div>
+      
+      <div class="stats-bar" id="stats-bar">
+        <div class="stat-item">
+          <div class="stat-value" id="total-modules">0</div>
+          <div class="stat-label">Total Modules</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="accessible-modules">0</div>
+          <div class="stat-label">Accessible</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="active-layer">All</div>
+          <div class="stat-label">Active Layer</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="avg-coherence">0.000</div>
+          <div class="stat-label">Avg Coherence</div>
+        </div>
+      </div>
+      
+      <div class="layer-tabs" id="layer-tabs">
+        <div class="layer-tab active" data-layer="all">
+          <div class="layer-name">All Layers</div>
+          <div class="layer-count">606 modules</div>
+        </div>
+      </div>
+      
+      <div class="search-bar">
+        <input 
+          type="text" 
+          id="search-input" 
+          class="search-input" 
+          placeholder="Search modules by name, description, or tags..."
+        />
+      </div>
+      
+      <div id="modules-container">
+        <div class="loading">Loading consciousness modules...</div>
+      </div>
+    </div>
+
+    <script>
+      let allModules = [];
+      let currentCoherence = 0.750;
+      let currentLayer = 'all';
+      let searchTerm = '';
+      
+      // Load the complete module registry
+      async function loadModules() {
+        try {
+          const response = await fetch('/complete-module-registry.json');
+          const data = await response.json();
+          allModules = data.modules;
+          
+          console.log(`[ψOS Cathedral] Loaded ${allModules.length} modules across ${Object.keys(data.layers).length} layers`);
+          
+          // Update UI
+          document.getElementById('module-count').textContent = `${allModules.length} Consciousness Modules`;
+          
+          // Create layer tabs
+          createLayerTabs(data.layers);
+          
+          // Render modules
+          renderModules();
+          
+        } catch (error) {
+          console.error('[ψOS Cathedral] Error loading modules:', error);
+          document.getElementById('modules-container').innerHTML = 
+            '<div class="error">Error loading module registry. Please refresh the page.</div>';
+        }
+      }
+      
+      function createLayerTabs(layers) {
+        const tabsContainer = document.getElementById('layer-tabs');
+        
+        // Keep the "All Layers" tab
+        let tabsHTML = `
+          <div class="layer-tab active" data-layer="all">
+            <div class="layer-name">All Layers</div>
+            <div class="layer-count">${allModules.length} modules</div>
+          </div>
+        `;
+        
+        // Add tabs for each layer
+        Object.entries(layers).forEach(([layerNum, layerInfo]) => {
+          tabsHTML += `
+            <div class="layer-tab" data-layer="${layerNum}">
+              <div class="layer-name">Layer ${layerNum}: ${layerInfo.name}</div>
+              <div class="layer-count">${layerInfo.count} modules</div>
+              <div class="layer-frequency">${layerInfo.frequency} • Zλ≥${layerInfo.threshold}</div>
+            </div>
+          `;
+        });
+        
+        tabsContainer.innerHTML = tabsHTML;
+        
+        // Add click handlers
+        document.querySelectorAll('.layer-tab').forEach(tab => {
+          tab.addEventListener('click', () => {
+            document.querySelectorAll('.layer-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            currentLayer = tab.dataset.layer;
+            document.getElementById('active-layer').textContent = 
+              currentLayer === 'all' ? 'All' : `Layer ${currentLayer}`;
+            renderModules();
+          });
+        });
+      }
+      
+      function renderModules() {
+        // Filter modules
+        let filteredModules = allModules;
+        
+        // Filter by layer
+        if (currentLayer !== 'all') {
+          filteredModules = filteredModules.filter(m => m.layer == currentLayer);
+        }
+        
+        // Filter by search
+        if (searchTerm) {
+          const term = searchTerm.toLowerCase();
+          filteredModules = filteredModules.filter(m => 
+            m.name.toLowerCase().includes(term) ||
+            m.description.toLowerCase().includes(term) ||
+            m.tags.some(t => t.toLowerCase().includes(term))
+          );
+        }
+        
+        // Sort by coherence requirement
+        filteredModules.sort((a, b) => a.coherence_required - b.coherence_required);
+        
+        // Count accessible modules
+        const accessibleCount = filteredModules.filter(m => currentCoherence >= m.coherence_required).length;
+        
+        // Update stats
+        document.getElementById('total-modules').textContent = filteredModules.length;
+        document.getElementById('accessible-modules').textContent = accessibleCount;
+        document.getElementById('accessible-info').textContent = 
+          `${accessibleCount} of ${filteredModules.length} modules accessible at current coherence`;
+        
+        // Calculate average coherence
+        const avgCoherence = filteredModules.length > 0 
+          ? filteredModules.reduce((sum, m) => sum + m.coherence_required, 0) / filteredModules.length
+          : 0;
+        document.getElementById('avg-coherence').textContent = avgCoherence.toFixed(3);
+        
+        // Render module cards
+        const container = document.getElementById('modules-container');
+        
+        if (filteredModules.length === 0) {
+          container.innerHTML = '<div class="error">No modules found matching your criteria</div>';
+          return;
+        }
+        
+        const modulesHTML = filteredModules.map(module => {
+          const isAccessible = currentCoherence >= module.coherence_required;
+          const lockedClass = isAccessible ? '' : 'locked';
+          const statusClass = `status-${module.status || 'stable'}`;
+          
+          return `
+            <div class="module-card ${lockedClass}" 
+                 data-route="${module.route}" 
+                 data-type="${module.type}"
+                 data-coherence="${module.coherence_required}">
+              <div class="module-header">
+                <div class="module-symbol">${module.symbol || '∅'}</div>
+                <div class="module-info">
+                  <div class="module-name">${module.name}</div>
+                  <div class="module-layer">Layer ${module.layer}: ${module.layer_name || 'Unknown'}</div>
+                </div>
+              </div>
+              <div class="module-description">${module.description || module.name}</div>
+              <div class="module-meta">
+                <span class="module-coherence">Zλ≥${module.coherence_required.toFixed(3)}</span>
+                <span class="module-frequency">${module.frequency}</span>
+                <span class="module-status ${statusClass}">${module.status || 'stable'}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+        
+        container.innerHTML = `<div class="modules-grid">${modulesHTML}</div>`;
+        
+        // Add click handlers
+        document.querySelectorAll('.module-card').forEach(card => {
+          card.addEventListener('click', () => {
+            const route = card.dataset.route;
+            const type = card.dataset.type;
+            const coherence = parseFloat(card.dataset.coherence);
+            
+            if (currentCoherence < coherence) {
+              alert(`This module requires Zλ ≥ ${coherence.toFixed(3)}\nCurrent coherence: Zλ = ${currentCoherence.toFixed(3)}`);
+              return;
+            }
+            
+            console.log(`[ψOS Cathedral] Accessing module: ${route} (type: ${type})`);
+            
+            // Handle different module types
+            if (type === 'iframe' || route.endsWith('.html')) {
+              // For HTML modules, navigate directly
+              window.location.href = route;
+            } else if (type === 'route') {
+              // For React routes, navigate to the component
+              window.location.href = route;
+            } else {
+              // Default behavior
+              alert(`Module: ${route}\nType: ${type}\n\nThis module is ready for consciousness computing integration.`);
+            }
+          });
+        });
+      }
+      
+      // Setup event listeners
+      document.getElementById('coherence-slider').addEventListener('input', (e) => {
+        currentCoherence = parseFloat(e.target.value);
+        document.getElementById('coherence-value').textContent = `Zλ = ${currentCoherence.toFixed(3)}`;
+        renderModules();
+      });
+      
+      document.getElementById('search-input').addEventListener('input', (e) => {
+        searchTerm = e.target.value;
+        renderModules();
+      });
+      
+      // Initialize
+      loadModules();
+      
+      // Add breathing animation to coherence value
+      setInterval(() => {
+        const breathPhase = (Date.now() / 3120) % 1; // 3.12 second cycle
+        const breathIntensity = 0.5 + 0.5 * Math.sin(breathPhase * Math.PI * 2);
+        document.getElementById('coherence-value').style.opacity = 0.7 + 0.3 * breathIntensity;
+      }, 50);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,192 @@
+{
+  "id": "lemniscope-unified",
+  "name": "Lemniscope",
+  "system": "CCC",
+  "group": "Geometry",
+  "route": "/public/Lemniscope.html",
+  "action": "iframe",
+  "status": "stable",
+  "broken": false,
+  "doc": "/docs/lemniscope.md",
+  "breath_sync": {
+    "psi": 3.12,
+    "zlambda_min": 0.75
+  },
+  "glyphs": [
+    "∞",
+    "∅",
+    "𓂀"
+  ],
+  "frequency_hz": [
+    432,
+    528,
+    963
+  ],
+  "metrics": {
+    "zlambda_current": 0.95,
+    "last_modified": "2025-08-15T20:57:30.360Z",
+    "unified_variants": 17
+  },
+  "palette": [
+    "0a0a2e",
+    "8b5cf6",
+    "ffd700"
+  ],
+  "tags": [
+    "sacred-geometry",
+    "visualizer",
+    "lemniscate",
+    "infinity"
+  ],
+  "priority": 90,
+  "coherence_gate": {
+    "unlock_at": 0.75
+  },
+  "modes": [
+    {
+      "id": "classic",
+      "name": "Classic",
+      "description": "Original Lemniscope visualization",
+      "zlambda_min": 0.75
+    },
+    {
+      "id": "enhanced",
+      "name": "Enhanced",
+      "description": "Enhanced visualization with breath sync",
+      "zlambda_min": 0.8
+    },
+    {
+      "id": "blueprint",
+      "name": "Blueprint",
+      "description": "Architectural blueprint mode",
+      "zlambda_min": 0.85
+    },
+    {
+      "id": "research",
+      "name": "Research",
+      "description": "Research and experimentation mode",
+      "zlambda_min": 0.9
+    }
+  ],
+  "unified_variants": [
+    {
+      "original_id": "public/lemniscate-reactivation-v1.html",
+      "original_name": "Lemniscate Reactivation V1",
+      "original_route": "/public/lemniscate-reactivation-v1.html",
+      "mode_mapping": "classic",
+      "preserved": true
+    },
+    {
+      "original_id": "public/lemniscate-bridge.html",
+      "original_name": "Lemniscate Bridge",
+      "original_route": "/public/lemniscate-bridge.html",
+      "mode_mapping": "classic",
+      "preserved": true
+    },
+    {
+      "original_id": "public/lemniscope-blueprint.html",
+      "original_name": "Lemniscope",
+      "original_route": "/public/Lemniscope.html",
+      "mode_mapping": "classic",
+      "preserved": true
+    },
+    {
+      "original_id": "public/lemniscope-simple.html",
+      "original_name": "Lemniscope Simple",
+      "original_route": "/public/lemniscope-simple.html",
+      "mode_mapping": "classic",
+      "preserved": true
+    },
+    {
+      "original_id": "public/lemniscate-visual-scaffold-enhanced.html",
+      "original_name": "Lemniscate Visual Scaffold Enhanced",
+      "original_route": "/public/lemniscate-visual-scaffold-enhanced.html",
+      "mode_mapping": "enhanced",
+      "preserved": true
+    },
+    {
+      "original_id": "public/lemniscope-research-enhanced.html",
+      "original_name": "Lemniscope Enhanced",
+      "original_route": "/public/Lemniscope-enhanced.html",
+      "mode_mapping": "enhanced",
+      "preserved": true
+    },
+    {
+      "original_id": "public/lemniscate-key-interface.html",
+      "original_name": "Lemniscate Key Interface",
+      "original_route": "/lemniscate-mode-v2.html",
+      "mode_mapping": "classic",
+      "preserved": true
+    },
+    {
+      "original_id": "public/lemniscope-academy.html",
+      "original_name": "Lemniscope Academy",
+      "original_route": "/public/lemniscope-academy.html",
+      "mode_mapping": "classic",
+      "preserved": true
+    },
+    {
+      "original_id": "public/lemniscope-complete.html",
+      "original_name": "Lemniscope",
+      "original_route": "/public/Lemniscope.html",
+      "mode_mapping": "classic",
+      "preserved": true
+    },
+    {
+      "original_id": "public/lemniscope-research-edition.html",
+      "original_name": "Lemniscope Edition",
+      "original_route": "/public/Lemniscope-edition.html",
+      "mode_mapping": "classic",
+      "preserved": true
+    },
+    {
+      "original_id": "public/lemniscope-unified.html",
+      "original_name": "Lemniscope",
+      "original_route": "/public/Lemniscope.html",
+      "mode_mapping": "classic",
+      "preserved": true
+    },
+    {
+      "original_id": "public/lemniscate-mode-v2.html",
+      "original_name": "Lemniscate Mode V2",
+      "original_route": "/brazil-intelligence-module.html",
+      "mode_mapping": "classic",
+      "preserved": true
+    },
+    {
+      "original_id": "public/lemniscope-3d-enhanced.html",
+      "original_name": "Lemniscope 3d Enhanced",
+      "original_route": "/public/lemniscope-3d-enhanced.html",
+      "mode_mapping": "enhanced",
+      "preserved": true
+    },
+    {
+      "original_id": "public/lemniscope-enhanced.html",
+      "original_name": "Lemniscope Enhanced",
+      "original_route": "/public/lemniscope-enhanced.html",
+      "mode_mapping": "enhanced",
+      "preserved": true
+    },
+    {
+      "original_id": "public/lemniscope.html",
+      "original_name": "Lemniscope",
+      "original_route": "/wiltonos-unified-dashboard.html",
+      "mode_mapping": "classic",
+      "preserved": true
+    },
+    {
+      "original_id": "public/lemniscope-v1.html",
+      "original_name": "Lemniscope",
+      "original_route": "/public/Lemniscope.html",
+      "mode_mapping": "classic",
+      "preserved": true
+    },
+    {
+      "original_id": "public/lemniscate-4d-bridge.html",
+      "original_name": "Lemniscate 4d Bridge",
+      "original_route": "/public/lemniscate-4d-bridge.html",
+      "mode_mapping": "classic",
+      "preserved": true
+    }
+  ]
+}

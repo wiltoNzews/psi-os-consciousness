@@ -1,0 +1,1332 @@
+{
+  "events": [
+    {
+      "id": "a33071c6-0a22-4eda-acb0-414f5bcf3362",
+      "nodeId": "system",
+      "type": "insight_generated",
+      "eventType": "insight_generated",
+      "createdAt": "2025-03-26T16:28:32.196Z",
+      "timestamp": "2025-03-26T16:28:32.196Z",
+      "description": "Cyclical insight generated #1",
+      "details": {
+        "cycle": 1,
+        "position": 1,
+        "totalSteps": 5,
+        "metrics": {
+          "importance": 1,
+          "complexity": 1
+        }
+      },
+      "sourcePath": "server/services/system",
+      "sourceContext": {
+        "module": "system",
+        "function": "processInsightGenerated"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "e3d27358-9d02-4d19-a15a-1e1d8ebe2777",
+      "nodeId": "system",
+      "type": "pattern_detected",
+      "eventType": "pattern_detected",
+      "createdAt": "2025-03-26T16:32:32.196Z",
+      "timestamp": "2025-03-26T16:32:32.196Z",
+      "description": "Cyclical pattern detected #1",
+      "details": {
+        "cycle": 1,
+        "position": 2,
+        "totalSteps": 5,
+        "metrics": {
+          "importance": 2,
+          "complexity": 2
+        }
+      },
+      "sourcePath": "server/services/system",
+      "sourceContext": {
+        "module": "system",
+        "function": "processPatternDetected"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "37f66ebd-ea31-4b2f-80bb-df1b9ca5c102",
+      "nodeId": "system",
+      "type": "context_shift",
+      "eventType": "context_shift",
+      "createdAt": "2025-03-26T16:36:32.196Z",
+      "timestamp": "2025-03-26T16:36:32.196Z",
+      "description": "Cyclical context shift #1",
+      "details": {
+        "cycle": 1,
+        "position": 3,
+        "totalSteps": 5,
+        "metrics": {
+          "importance": 3,
+          "complexity": 3
+        }
+      },
+      "sourcePath": "server/services/system",
+      "sourceContext": {
+        "module": "system",
+        "function": "processContextShift"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "de3bb16f-55dd-4a73-a974-b9786fd7eaf5",
+      "nodeId": "system",
+      "type": "verification_check",
+      "eventType": "verification_check",
+      "createdAt": "2025-03-26T16:40:32.196Z",
+      "timestamp": "2025-03-26T16:40:32.196Z",
+      "description": "Cyclical verification check #1",
+      "details": {
+        "cycle": 1,
+        "position": 4,
+        "totalSteps": 5,
+        "metrics": {
+          "importance": 1,
+          "complexity": 4
+        }
+      },
+      "sourcePath": "server/services/system",
+      "sourceContext": {
+        "module": "system",
+        "function": "processVerificationCheck"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "41043565-3a58-47d9-9906-d6bfa3d39d69",
+      "nodeId": "system",
+      "type": "insight_generated",
+      "eventType": "insight_generated",
+      "createdAt": "2025-03-26T16:44:32.196Z",
+      "timestamp": "2025-03-26T16:44:32.196Z",
+      "description": "Cyclical insight generated #1",
+      "details": {
+        "cycle": 1,
+        "position": 5,
+        "totalSteps": 5,
+        "metrics": {
+          "importance": 2,
+          "complexity": 1
+        }
+      },
+      "sourcePath": "server/services/system",
+      "sourceContext": {
+        "module": "system",
+        "function": "processInsightGenerated"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "0d754d25-ab61-40d5-b790-f3fdd492cd13",
+      "nodeId": "system",
+      "type": "insight_generated",
+      "eventType": "insight_generated",
+      "createdAt": "2025-03-26T16:48:32.196Z",
+      "timestamp": "2025-03-26T16:48:32.196Z",
+      "description": "Cyclical insight generated #2",
+      "details": {
+        "cycle": 2,
+        "position": 1,
+        "totalSteps": 5,
+        "metrics": {
+          "importance": 3,
+          "complexity": 2
+        }
+      },
+      "sourcePath": "server/services/system",
+      "sourceContext": {
+        "module": "system",
+        "function": "processInsightGenerated"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "fdf1cf3e-33c9-447b-b8ed-e8bdd147f92b",
+      "nodeId": "system",
+      "type": "pattern_detected",
+      "eventType": "pattern_detected",
+      "createdAt": "2025-03-26T16:52:32.196Z",
+      "timestamp": "2025-03-26T16:52:32.196Z",
+      "description": "Cyclical pattern detected #2",
+      "details": {
+        "cycle": 2,
+        "position": 2,
+        "totalSteps": 5,
+        "metrics": {
+          "importance": 1,
+          "complexity": 3
+        }
+      },
+      "sourcePath": "server/services/system",
+      "sourceContext": {
+        "module": "system",
+        "function": "processPatternDetected"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "cb416dcf-e031-4d14-b258-a02b93986f4f",
+      "nodeId": "system",
+      "type": "context_shift",
+      "eventType": "context_shift",
+      "createdAt": "2025-03-26T16:56:32.196Z",
+      "timestamp": "2025-03-26T16:56:32.196Z",
+      "description": "Cyclical context shift #2",
+      "details": {
+        "cycle": 2,
+        "position": 3,
+        "totalSteps": 5,
+        "metrics": {
+          "importance": 2,
+          "complexity": 4
+        }
+      },
+      "sourcePath": "server/services/system",
+      "sourceContext": {
+        "module": "system",
+        "function": "processContextShift"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "83a86355-dfb0-4bc7-8434-47f2a790ad4b",
+      "nodeId": "system",
+      "type": "verification_check",
+      "eventType": "verification_check",
+      "createdAt": "2025-03-26T17:00:32.196Z",
+      "timestamp": "2025-03-26T17:00:32.196Z",
+      "description": "Cyclical verification check #2",
+      "details": {
+        "cycle": 2,
+        "position": 4,
+        "totalSteps": 5,
+        "metrics": {
+          "importance": 3,
+          "complexity": 1
+        }
+      },
+      "sourcePath": "server/services/system",
+      "sourceContext": {
+        "module": "system",
+        "function": "processVerificationCheck"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "d82007b6-a6aa-4420-b4a4-7a17413e3bb4",
+      "nodeId": "system",
+      "type": "insight_generated",
+      "eventType": "insight_generated",
+      "createdAt": "2025-03-26T17:04:32.196Z",
+      "timestamp": "2025-03-26T17:04:32.196Z",
+      "description": "Cyclical insight generated #2",
+      "details": {
+        "cycle": 2,
+        "position": 5,
+        "totalSteps": 5,
+        "metrics": {
+          "importance": 1,
+          "complexity": 2
+        }
+      },
+      "sourcePath": "server/services/system",
+      "sourceContext": {
+        "module": "system",
+        "function": "processInsightGenerated"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "b5e549f8-ace8-4ae3-8a5d-03de1f26e3d4",
+      "nodeId": "system",
+      "type": "insight_generated",
+      "eventType": "insight_generated",
+      "createdAt": "2025-03-26T17:08:32.196Z",
+      "timestamp": "2025-03-26T17:08:32.196Z",
+      "description": "Cyclical insight generated #3",
+      "details": {
+        "cycle": 3,
+        "position": 1,
+        "totalSteps": 5,
+        "metrics": {
+          "importance": 2,
+          "complexity": 3
+        }
+      },
+      "sourcePath": "server/services/system",
+      "sourceContext": {
+        "module": "system",
+        "function": "processInsightGenerated"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "3d14548c-6798-4ab2-b8d0-986832b8dc0b",
+      "nodeId": "system",
+      "type": "pattern_detected",
+      "eventType": "pattern_detected",
+      "createdAt": "2025-03-26T17:12:32.196Z",
+      "timestamp": "2025-03-26T17:12:32.196Z",
+      "description": "Cyclical pattern detected #3",
+      "details": {
+        "cycle": 3,
+        "position": 2,
+        "totalSteps": 5,
+        "metrics": {
+          "importance": 3,
+          "complexity": 4
+        }
+      },
+      "sourcePath": "server/services/system",
+      "sourceContext": {
+        "module": "system",
+        "function": "processPatternDetected"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "4953e2c8-9728-4d56-9e53-9ababf42507d",
+      "nodeId": "system",
+      "type": "context_shift",
+      "eventType": "context_shift",
+      "createdAt": "2025-03-26T17:16:32.196Z",
+      "timestamp": "2025-03-26T17:16:32.196Z",
+      "description": "Cyclical context shift #3",
+      "details": {
+        "cycle": 3,
+        "position": 3,
+        "totalSteps": 5,
+        "metrics": {
+          "importance": 1,
+          "complexity": 1
+        }
+      },
+      "sourcePath": "server/services/system",
+      "sourceContext": {
+        "module": "system",
+        "function": "processContextShift"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "e1c7fe2d-d82c-4180-9252-b185e7123882",
+      "nodeId": "system",
+      "type": "verification_check",
+      "eventType": "verification_check",
+      "createdAt": "2025-03-26T17:20:32.196Z",
+      "timestamp": "2025-03-26T17:20:32.196Z",
+      "description": "Cyclical verification check #3",
+      "details": {
+        "cycle": 3,
+        "position": 4,
+        "totalSteps": 5,
+        "metrics": {
+          "importance": 2,
+          "complexity": 2
+        }
+      },
+      "sourcePath": "server/services/system",
+      "sourceContext": {
+        "module": "system",
+        "function": "processVerificationCheck"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "adba228f-50fa-4b5f-b737-74c3ae5fc11a",
+      "nodeId": "system",
+      "type": "insight_generated",
+      "eventType": "insight_generated",
+      "createdAt": "2025-03-26T17:24:32.196Z",
+      "timestamp": "2025-03-26T17:24:32.196Z",
+      "description": "Cyclical insight generated #3",
+      "details": {
+        "cycle": 3,
+        "position": 5,
+        "totalSteps": 5,
+        "metrics": {
+          "importance": 3,
+          "complexity": 3
+        }
+      },
+      "sourcePath": "server/services/system",
+      "sourceContext": {
+        "module": "system",
+        "function": "processInsightGenerated"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "8895f34c-0df3-4caa-a595-035557f2e53f",
+      "nodeId": "orchestrator",
+      "type": "task_completed",
+      "eventType": "task_completed",
+      "createdAt": "2025-03-26T16:33:32.197Z",
+      "timestamp": "2025-03-26T16:33:32.197Z",
+      "description": "Large task decomposition completed",
+      "details": {
+        "taskId": "75147c3d-4d26-46c7-bdf3-155ff662b36c",
+        "subTasksCreated": 5,
+        "completionTime": 1200,
+        "result": "success"
+      },
+      "sourcePath": "server/services/orchestrator",
+      "sourceContext": {
+        "module": "orchestrator",
+        "function": "processTaskCompleted"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "a166dd05-8d79-4bf4-b236-fd6408243707",
+      "nodeId": "orchestrator",
+      "type": "pattern_detected",
+      "eventType": "pattern_detected",
+      "createdAt": "2025-03-26T16:38:32.197Z",
+      "timestamp": "2025-03-26T16:38:32.197Z",
+      "description": "Effect 1 from task decomposition",
+      "details": {
+        "causeId": "8895f34c-0df3-4caa-a595-035557f2e53f",
+        "effectNumber": 1,
+        "triggerEvent": "task_completed",
+        "metrics": {
+          "directness": 1,
+          "strength": 1
+        }
+      },
+      "sourcePath": "server/services/orchestrator",
+      "sourceContext": {
+        "module": "orchestrator",
+        "function": "processPatternDetected"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "68e17f6d-9bc5-4578-b28f-86f034083cc7",
+      "nodeId": "orchestrator",
+      "type": "task_completed",
+      "eventType": "task_completed",
+      "createdAt": "2025-03-26T16:43:32.197Z",
+      "timestamp": "2025-03-26T16:43:32.197Z",
+      "description": "Effect 2 from task decomposition",
+      "details": {
+        "causeId": "a166dd05-8d79-4bf4-b236-fd6408243707",
+        "effectNumber": 2,
+        "triggerEvent": "pattern_detected",
+        "metrics": {
+          "directness": 0.9,
+          "strength": 0.85
+        }
+      },
+      "sourcePath": "server/services/orchestrator",
+      "sourceContext": {
+        "module": "orchestrator",
+        "function": "processTaskCompleted"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "4231153f-735d-4d43-840e-cc485052d2a8",
+      "nodeId": "orchestrator",
+      "type": "reasoning_applied",
+      "eventType": "reasoning_applied",
+      "createdAt": "2025-03-26T16:48:32.197Z",
+      "timestamp": "2025-03-26T16:48:32.197Z",
+      "description": "Effect 3 from task decomposition",
+      "details": {
+        "causeId": "68e17f6d-9bc5-4578-b28f-86f034083cc7",
+        "effectNumber": 3,
+        "triggerEvent": "task_completed",
+        "metrics": {
+          "directness": 0.8,
+          "strength": 0.7
+        }
+      },
+      "sourcePath": "server/services/orchestrator",
+      "sourceContext": {
+        "module": "orchestrator",
+        "function": "processReasoningApplied"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "a1b1d536-fcca-4579-bbb1-046bf80660bf",
+      "nodeId": "orchestrator",
+      "type": "context_shift",
+      "eventType": "context_shift",
+      "createdAt": "2025-03-26T16:53:32.197Z",
+      "timestamp": "2025-03-26T16:53:32.197Z",
+      "description": "Effect 4 from task decomposition",
+      "details": {
+        "causeId": "4231153f-735d-4d43-840e-cc485052d2a8",
+        "effectNumber": 4,
+        "triggerEvent": "reasoning_applied",
+        "metrics": {
+          "directness": 0.7,
+          "strength": 0.55
+        }
+      },
+      "sourcePath": "server/services/orchestrator",
+      "sourceContext": {
+        "module": "orchestrator",
+        "function": "processContextShift"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "c5335bdf-fc1e-48d0-8d24-ddb7b4e1f06d",
+      "nodeId": "orchestrator",
+      "type": "verification_check",
+      "eventType": "verification_check",
+      "createdAt": "2025-03-26T16:58:32.197Z",
+      "timestamp": "2025-03-26T16:58:32.197Z",
+      "description": "Effect 5 from task decomposition",
+      "details": {
+        "causeId": "a1b1d536-fcca-4579-bbb1-046bf80660bf",
+        "effectNumber": 5,
+        "triggerEvent": "context_shift",
+        "metrics": {
+          "directness": 0.6,
+          "strength": 0.4
+        }
+      },
+      "sourcePath": "server/services/orchestrator",
+      "sourceContext": {
+        "module": "orchestrator",
+        "function": "processVerificationCheck"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "6fe35771-f00e-455b-88eb-c4aded196be4",
+      "nodeId": "orchestrator",
+      "type": "model_selection",
+      "eventType": "model_selection",
+      "createdAt": "2025-03-26T17:03:32.197Z",
+      "timestamp": "2025-03-26T17:03:32.197Z",
+      "description": "Effect 6 from task decomposition",
+      "details": {
+        "causeId": "c5335bdf-fc1e-48d0-8d24-ddb7b4e1f06d",
+        "effectNumber": 6,
+        "triggerEvent": "verification_check",
+        "metrics": {
+          "directness": 0.5,
+          "strength": 0.25
+        }
+      },
+      "sourcePath": "server/services/orchestrator",
+      "sourceContext": {
+        "module": "orchestrator",
+        "function": "processModelSelection"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "a9b21905-c800-4cd9-b0f6-ca652016b8df",
+      "nodeId": "orchestrator",
+      "type": "resource_optimization",
+      "eventType": "resource_optimization",
+      "createdAt": "2025-03-26T17:08:32.197Z",
+      "timestamp": "2025-03-26T17:08:32.197Z",
+      "description": "Effect 7 from task decomposition",
+      "details": {
+        "causeId": "6fe35771-f00e-455b-88eb-c4aded196be4",
+        "effectNumber": 7,
+        "triggerEvent": "model_selection",
+        "metrics": {
+          "directness": 0.4,
+          "strength": 0.10000000000000009
+        }
+      },
+      "sourcePath": "server/services/orchestrator",
+      "sourceContext": {
+        "module": "orchestrator",
+        "function": "processResourceOptimization"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "4228b6fd-bb4b-4e92-9885-f63bffb7a514",
+      "nodeId": "orchestrator",
+      "type": "pattern_detected",
+      "eventType": "pattern_detected",
+      "createdAt": "2025-03-26T17:13:32.197Z",
+      "timestamp": "2025-03-26T17:13:32.197Z",
+      "description": "Effect 8 from task decomposition",
+      "details": {
+        "causeId": "a9b21905-c800-4cd9-b0f6-ca652016b8df",
+        "effectNumber": 8,
+        "triggerEvent": "resource_optimization",
+        "metrics": {
+          "directness": 0.3,
+          "strength": 0.1
+        }
+      },
+      "sourcePath": "server/services/orchestrator",
+      "sourceContext": {
+        "module": "orchestrator",
+        "function": "processPatternDetected"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "a2c0eb8c-bb0c-46ef-9c64-a642ddc121ec",
+      "nodeId": "orchestrator",
+      "type": "task_completed",
+      "eventType": "task_completed",
+      "createdAt": "2025-03-26T17:18:32.197Z",
+      "timestamp": "2025-03-26T17:18:32.197Z",
+      "description": "Effect 9 from task decomposition",
+      "details": {
+        "causeId": "4228b6fd-bb4b-4e92-9885-f63bffb7a514",
+        "effectNumber": 9,
+        "triggerEvent": "pattern_detected",
+        "metrics": {
+          "directness": 0.2,
+          "strength": 0.1
+        }
+      },
+      "sourcePath": "server/services/orchestrator",
+      "sourceContext": {
+        "module": "orchestrator",
+        "function": "processTaskCompleted"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "f9b622f7-0569-4965-a6de-a793d03c21b8",
+      "nodeId": "qrn-manager",
+      "type": "reasoning_applied",
+      "eventType": "reasoning_applied",
+      "createdAt": "2025-03-26T16:43:32.197Z",
+      "timestamp": "2025-03-26T16:43:32.197Z",
+      "description": "Sequential reasoning step 1/12",
+      "details": {
+        "sequenceId": "seq-reasoning-chain-alpha",
+        "stepNumber": 1,
+        "totalSteps": 12,
+        "reasoning": {
+          "technique": "deduction",
+          "premise": "Premise for step 1",
+          "conclusion": "Conclusion for step 1"
+        }
+      },
+      "sourcePath": "server/services/qrn/manager",
+      "sourceContext": {
+        "module": "qrn-manager",
+        "function": "processReasoningApplied"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "dca22832-37a3-4815-b130-7f4b39c39787",
+      "nodeId": "qrn-manager",
+      "type": "reasoning_applied",
+      "eventType": "reasoning_applied",
+      "createdAt": "2025-03-26T16:46:32.197Z",
+      "timestamp": "2025-03-26T16:46:32.197Z",
+      "description": "Sequential reasoning step 2/12",
+      "details": {
+        "sequenceId": "seq-reasoning-chain-alpha",
+        "stepNumber": 2,
+        "totalSteps": 12,
+        "reasoning": {
+          "technique": "induction",
+          "premise": "Premise for step 2",
+          "conclusion": "Conclusion for step 2"
+        }
+      },
+      "sourcePath": "server/services/qrn/manager",
+      "sourceContext": {
+        "module": "qrn-manager",
+        "function": "processReasoningApplied"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "f178a4f0-1c25-4403-9881-c9fe8e0cf790",
+      "nodeId": "qrn-manager",
+      "type": "reasoning_applied",
+      "eventType": "reasoning_applied",
+      "createdAt": "2025-03-26T16:49:32.197Z",
+      "timestamp": "2025-03-26T16:49:32.197Z",
+      "description": "Sequential reasoning step 3/12",
+      "details": {
+        "sequenceId": "seq-reasoning-chain-alpha",
+        "stepNumber": 3,
+        "totalSteps": 12,
+        "reasoning": {
+          "technique": "abduction",
+          "premise": "Premise for step 3",
+          "conclusion": "Conclusion for step 3"
+        }
+      },
+      "sourcePath": "server/services/qrn/manager",
+      "sourceContext": {
+        "module": "qrn-manager",
+        "function": "processReasoningApplied"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "fb93e31b-5738-4747-8904-02f743a9fc13",
+      "nodeId": "qrn-manager",
+      "type": "reasoning_applied",
+      "eventType": "reasoning_applied",
+      "createdAt": "2025-03-26T16:52:32.197Z",
+      "timestamp": "2025-03-26T16:52:32.197Z",
+      "description": "Sequential reasoning step 4/12",
+      "details": {
+        "sequenceId": "seq-reasoning-chain-alpha",
+        "stepNumber": 4,
+        "totalSteps": 12,
+        "reasoning": {
+          "technique": "deduction",
+          "premise": "Premise for step 4",
+          "conclusion": "Conclusion for step 4"
+        }
+      },
+      "sourcePath": "server/services/qrn/manager",
+      "sourceContext": {
+        "module": "qrn-manager",
+        "function": "processReasoningApplied"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "d816f9a8-262f-4a92-937b-ee5dfacef9b3",
+      "nodeId": "qrn-manager",
+      "type": "reasoning_applied",
+      "eventType": "reasoning_applied",
+      "createdAt": "2025-03-26T16:55:32.197Z",
+      "timestamp": "2025-03-26T16:55:32.197Z",
+      "description": "Sequential reasoning step 5/12",
+      "details": {
+        "sequenceId": "seq-reasoning-chain-alpha",
+        "stepNumber": 5,
+        "totalSteps": 12,
+        "reasoning": {
+          "technique": "induction",
+          "premise": "Premise for step 5",
+          "conclusion": "Conclusion for step 5"
+        }
+      },
+      "sourcePath": "server/services/qrn/manager",
+      "sourceContext": {
+        "module": "qrn-manager",
+        "function": "processReasoningApplied"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "f63e82f0-213b-4211-baec-6b571aebf773",
+      "nodeId": "qrn-manager",
+      "type": "reasoning_applied",
+      "eventType": "reasoning_applied",
+      "createdAt": "2025-03-26T16:58:32.197Z",
+      "timestamp": "2025-03-26T16:58:32.197Z",
+      "description": "Sequential reasoning step 6/12",
+      "details": {
+        "sequenceId": "seq-reasoning-chain-alpha",
+        "stepNumber": 6,
+        "totalSteps": 12,
+        "reasoning": {
+          "technique": "abduction",
+          "premise": "Premise for step 6",
+          "conclusion": "Conclusion for step 6"
+        }
+      },
+      "sourcePath": "server/services/qrn/manager",
+      "sourceContext": {
+        "module": "qrn-manager",
+        "function": "processReasoningApplied"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "cb7d525f-cd60-4476-8a48-b15b93f28c18",
+      "nodeId": "qrn-manager",
+      "type": "reasoning_applied",
+      "eventType": "reasoning_applied",
+      "createdAt": "2025-03-26T17:01:32.197Z",
+      "timestamp": "2025-03-26T17:01:32.197Z",
+      "description": "Sequential reasoning step 7/12",
+      "details": {
+        "sequenceId": "seq-reasoning-chain-alpha",
+        "stepNumber": 7,
+        "totalSteps": 12,
+        "reasoning": {
+          "technique": "deduction",
+          "premise": "Premise for step 7",
+          "conclusion": "Conclusion for step 7"
+        }
+      },
+      "sourcePath": "server/services/qrn/manager",
+      "sourceContext": {
+        "module": "qrn-manager",
+        "function": "processReasoningApplied"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "12987e2b-8887-40ca-abbc-dccbe49e2835",
+      "nodeId": "qrn-manager",
+      "type": "reasoning_applied",
+      "eventType": "reasoning_applied",
+      "createdAt": "2025-03-26T17:04:32.197Z",
+      "timestamp": "2025-03-26T17:04:32.197Z",
+      "description": "Sequential reasoning step 8/12",
+      "details": {
+        "sequenceId": "seq-reasoning-chain-alpha",
+        "stepNumber": 8,
+        "totalSteps": 12,
+        "reasoning": {
+          "technique": "induction",
+          "premise": "Premise for step 8",
+          "conclusion": "Conclusion for step 8"
+        }
+      },
+      "sourcePath": "server/services/qrn/manager",
+      "sourceContext": {
+        "module": "qrn-manager",
+        "function": "processReasoningApplied"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "5073a9e1-60a6-405a-a950-64a945bea842",
+      "nodeId": "qrn-manager",
+      "type": "reasoning_applied",
+      "eventType": "reasoning_applied",
+      "createdAt": "2025-03-26T17:07:32.197Z",
+      "timestamp": "2025-03-26T17:07:32.197Z",
+      "description": "Sequential reasoning step 9/12",
+      "details": {
+        "sequenceId": "seq-reasoning-chain-alpha",
+        "stepNumber": 9,
+        "totalSteps": 12,
+        "reasoning": {
+          "technique": "abduction",
+          "premise": "Premise for step 9",
+          "conclusion": "Conclusion for step 9"
+        }
+      },
+      "sourcePath": "server/services/qrn/manager",
+      "sourceContext": {
+        "module": "qrn-manager",
+        "function": "processReasoningApplied"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "8a225434-41f8-4583-b60a-b9b09cac37af",
+      "nodeId": "qrn-manager",
+      "type": "reasoning_applied",
+      "eventType": "reasoning_applied",
+      "createdAt": "2025-03-26T17:10:32.197Z",
+      "timestamp": "2025-03-26T17:10:32.197Z",
+      "description": "Sequential reasoning step 10/12",
+      "details": {
+        "sequenceId": "seq-reasoning-chain-alpha",
+        "stepNumber": 10,
+        "totalSteps": 12,
+        "reasoning": {
+          "technique": "deduction",
+          "premise": "Premise for step 10",
+          "conclusion": "Conclusion for step 10"
+        }
+      },
+      "sourcePath": "server/services/qrn/manager",
+      "sourceContext": {
+        "module": "qrn-manager",
+        "function": "processReasoningApplied"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "7107df7d-87aa-4ba6-b835-87fd8ca71946",
+      "nodeId": "qrn-manager",
+      "type": "reasoning_applied",
+      "eventType": "reasoning_applied",
+      "createdAt": "2025-03-26T17:13:32.197Z",
+      "timestamp": "2025-03-26T17:13:32.197Z",
+      "description": "Sequential reasoning step 11/12",
+      "details": {
+        "sequenceId": "seq-reasoning-chain-alpha",
+        "stepNumber": 11,
+        "totalSteps": 12,
+        "reasoning": {
+          "technique": "induction",
+          "premise": "Premise for step 11",
+          "conclusion": "Conclusion for step 11"
+        }
+      },
+      "sourcePath": "server/services/qrn/manager",
+      "sourceContext": {
+        "module": "qrn-manager",
+        "function": "processReasoningApplied"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "1bab4a1c-259d-4acd-b346-b11fc79f5d57",
+      "nodeId": "qrn-manager",
+      "type": "reasoning_applied",
+      "eventType": "reasoning_applied",
+      "createdAt": "2025-03-26T17:16:32.197Z",
+      "timestamp": "2025-03-26T17:16:32.197Z",
+      "description": "Sequential reasoning step 12/12",
+      "details": {
+        "sequenceId": "seq-reasoning-chain-alpha",
+        "stepNumber": 12,
+        "totalSteps": 12,
+        "reasoning": {
+          "technique": "abduction",
+          "premise": "Premise for step 12",
+          "conclusion": "Conclusion for step 12"
+        }
+      },
+      "sourcePath": "server/services/qrn/manager",
+      "sourceContext": {
+        "module": "qrn-manager",
+        "function": "processReasoningApplied"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "68756cb6-76dd-4d7c-8124-4b439d82a3a2",
+      "nodeId": "meta-cognitive",
+      "type": "model_selection",
+      "eventType": "model_selection",
+      "createdAt": "2025-03-26T16:58:32.197Z",
+      "timestamp": "2025-03-26T16:58:32.197Z",
+      "description": "Anomalous model selection detected",
+      "details": {
+        "anomalyType": "statistical_outlier",
+        "severity": 0.9,
+        "impact": "high",
+        "normalRange": {
+          "min": 0.1,
+          "max": 0.7,
+          "observedValue": 0.95
+        }
+      },
+      "sourcePath": "server/services/qrn/meta-cognitive",
+      "sourceContext": {
+        "module": "meta-cognitive",
+        "function": "processModelSelection"
+      },
+      "confidence": 0.99,
+      "confidenceLevel": 0.99
+    },
+    {
+      "id": "268fdd72-4d83-4774-9f95-df4134090bb9",
+      "nodeId": "meta-cognitive",
+      "type": "task_completed",
+      "eventType": "task_completed",
+      "createdAt": "2025-03-26T17:08:32.197Z",
+      "timestamp": "2025-03-26T17:08:32.197Z",
+      "description": "Anomalous task completed detected",
+      "details": {
+        "anomalyType": "pattern_break",
+        "severity": 0.93,
+        "impact": "high",
+        "normalRange": {
+          "min": 0.1,
+          "max": 0.7,
+          "observedValue": 1
+        }
+      },
+      "sourcePath": "server/services/qrn/meta-cognitive",
+      "sourceContext": {
+        "module": "meta-cognitive",
+        "function": "processTaskCompleted"
+      },
+      "confidence": 0.99,
+      "confidenceLevel": 0.99
+    },
+    {
+      "id": "75ddb01e-5259-4f84-94af-17e5b4b77bb7",
+      "nodeId": "meta-cognitive",
+      "type": "model_selection",
+      "eventType": "model_selection",
+      "createdAt": "2025-03-26T17:18:32.197Z",
+      "timestamp": "2025-03-26T17:18:32.197Z",
+      "description": "Anomalous model selection detected",
+      "details": {
+        "anomalyType": "unexpected_value",
+        "severity": 0.96,
+        "impact": "high",
+        "normalRange": {
+          "min": 0.1,
+          "max": 0.7,
+          "observedValue": 1.05
+        }
+      },
+      "sourcePath": "server/services/qrn/meta-cognitive",
+      "sourceContext": {
+        "module": "meta-cognitive",
+        "function": "processModelSelection"
+      },
+      "confidence": 0.99,
+      "confidenceLevel": 0.99
+    },
+    {
+      "id": "ad28bc79-dc77-4476-aa8f-0ab3b6507143",
+      "nodeId": "system",
+      "type": "insight_generated",
+      "eventType": "insight_generated",
+      "createdAt": "2025-03-26T17:08:32.198Z",
+      "timestamp": "2025-03-26T17:08:32.198Z",
+      "description": "Cross-node pattern event from System QRN",
+      "details": {
+        "patternId": "cross-node-communication",
+        "nodeRole": "initiator",
+        "correlationId": "multi-node-pattern-alpha",
+        "metrics": {
+          "nodeInteraction": 0.125,
+          "patternStrength": 0.7
+        }
+      },
+      "sourcePath": "server/services/system",
+      "sourceContext": {
+        "module": "system",
+        "function": "processInsightGenerated"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "e667f105-af0e-4b3a-b5a5-723d9bceb9f1",
+      "nodeId": "orchestrator",
+      "type": "pattern_detected",
+      "eventType": "pattern_detected",
+      "createdAt": "2025-03-26T17:10:32.198Z",
+      "timestamp": "2025-03-26T17:10:32.198Z",
+      "description": "Cross-node pattern event from Neural Orchestrator",
+      "details": {
+        "patternId": "cross-node-communication",
+        "nodeRole": "processor",
+        "correlationId": "multi-node-pattern-alpha",
+        "metrics": {
+          "nodeInteraction": 0.25,
+          "patternStrength": 0.73
+        }
+      },
+      "sourcePath": "server/services/orchestrator",
+      "sourceContext": {
+        "module": "orchestrator",
+        "function": "processPatternDetected"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "c533c995-aa84-4475-9f26-65eb8711823c",
+      "nodeId": "qrn-manager",
+      "type": "task_completed",
+      "eventType": "task_completed",
+      "createdAt": "2025-03-26T17:12:32.198Z",
+      "timestamp": "2025-03-26T17:12:32.198Z",
+      "description": "Cross-node pattern event from QRN Manager",
+      "details": {
+        "patternId": "cross-node-communication",
+        "nodeRole": "responder",
+        "correlationId": "multi-node-pattern-alpha",
+        "metrics": {
+          "nodeInteraction": 0.375,
+          "patternStrength": 0.76
+        }
+      },
+      "sourcePath": "server/services/qrn/manager",
+      "sourceContext": {
+        "module": "qrn-manager",
+        "function": "processTaskCompleted"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "f36a2746-32bd-4784-ad9c-6b3e3613471b",
+      "nodeId": "meta-cognitive",
+      "type": "reasoning_applied",
+      "eventType": "reasoning_applied",
+      "createdAt": "2025-03-26T17:14:32.198Z",
+      "timestamp": "2025-03-26T17:14:32.198Z",
+      "description": "Cross-node pattern event from Meta-Cognitive Engine",
+      "details": {
+        "patternId": "cross-node-communication",
+        "nodeRole": "validator",
+        "correlationId": "multi-node-pattern-alpha",
+        "metrics": {
+          "nodeInteraction": 0.5,
+          "patternStrength": 0.7899999999999999
+        }
+      },
+      "sourcePath": "server/services/qrn/meta-cognitive",
+      "sourceContext": {
+        "module": "meta-cognitive",
+        "function": "processReasoningApplied"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "933a612b-35d2-482f-9465-151ca2b15817",
+      "nodeId": "system",
+      "type": "context_shift",
+      "eventType": "context_shift",
+      "createdAt": "2025-03-26T17:16:32.198Z",
+      "timestamp": "2025-03-26T17:16:32.198Z",
+      "description": "Cross-node pattern event from System QRN",
+      "details": {
+        "patternId": "cross-node-communication",
+        "nodeRole": "initiator",
+        "correlationId": "multi-node-pattern-alpha",
+        "metrics": {
+          "nodeInteraction": 0.625,
+          "patternStrength": 0.82
+        }
+      },
+      "sourcePath": "server/services/system",
+      "sourceContext": {
+        "module": "system",
+        "function": "processContextShift"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "6a5a36a3-16a4-4a64-8eb8-87ff17dae4c4",
+      "nodeId": "orchestrator",
+      "type": "verification_check",
+      "eventType": "verification_check",
+      "createdAt": "2025-03-26T17:18:32.198Z",
+      "timestamp": "2025-03-26T17:18:32.198Z",
+      "description": "Cross-node pattern event from Neural Orchestrator",
+      "details": {
+        "patternId": "cross-node-communication",
+        "nodeRole": "processor",
+        "correlationId": "multi-node-pattern-alpha",
+        "metrics": {
+          "nodeInteraction": 0.75,
+          "patternStrength": 0.85
+        }
+      },
+      "sourcePath": "server/services/orchestrator",
+      "sourceContext": {
+        "module": "orchestrator",
+        "function": "processVerificationCheck"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "7fcdf83d-fde0-4c24-85eb-b9abb628f520",
+      "nodeId": "qrn-manager",
+      "type": "model_selection",
+      "eventType": "model_selection",
+      "createdAt": "2025-03-26T17:20:32.198Z",
+      "timestamp": "2025-03-26T17:20:32.198Z",
+      "description": "Cross-node pattern event from QRN Manager",
+      "details": {
+        "patternId": "cross-node-communication",
+        "nodeRole": "responder",
+        "correlationId": "multi-node-pattern-alpha",
+        "metrics": {
+          "nodeInteraction": 0.875,
+          "patternStrength": 0.8799999999999999
+        }
+      },
+      "sourcePath": "server/services/qrn/manager",
+      "sourceContext": {
+        "module": "qrn-manager",
+        "function": "processModelSelection"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    },
+    {
+      "id": "cd9f3ab8-1fdc-4378-bb55-2b35a7345f4e",
+      "nodeId": "meta-cognitive",
+      "type": "resource_optimization",
+      "eventType": "resource_optimization",
+      "createdAt": "2025-03-26T17:22:32.198Z",
+      "timestamp": "2025-03-26T17:22:32.198Z",
+      "description": "Cross-node pattern event from Meta-Cognitive Engine",
+      "details": {
+        "patternId": "cross-node-communication",
+        "nodeRole": "validator",
+        "correlationId": "multi-node-pattern-alpha",
+        "metrics": {
+          "nodeInteraction": 1,
+          "patternStrength": 0.9099999999999999
+        }
+      },
+      "sourcePath": "server/services/qrn/meta-cognitive",
+      "sourceContext": {
+        "module": "meta-cognitive",
+        "function": "processResourceOptimization"
+      },
+      "confidence": 0.85,
+      "confidenceLevel": 0.85
+    }
+  ],
+  "patterns": [
+    {
+      "id": "b39378e3-82f5-46c2-8ad3-febb211a58c6",
+      "name": "Cyclical System Operations",
+      "description": "Regular cycle of operations within the System QRN",
+      "eventType": "pattern_detected",
+      "nodeIds": [
+        "system"
+      ],
+      "eventCount": 15,
+      "patternType": "cyclical",
+      "confidence": 0.92,
+      "confidenceLevel": 0.92,
+      "createdAt": "2025-03-26T17:28:32.198Z",
+      "timestamp": "2025-03-26T17:28:32.198Z"
+    },
+    {
+      "id": "539b9f71-d742-4a9e-b8ca-547fd3eb3f77",
+      "name": "Causal Chain: Task Decomposition",
+      "description": "Causal relationships between task completion and subsequent events",
+      "eventType": "pattern_detected",
+      "nodeIds": [
+        "orchestrator"
+      ],
+      "eventCount": 10,
+      "patternType": "causal",
+      "confidence": 0.87,
+      "confidenceLevel": 0.87,
+      "createdAt": "2025-03-26T17:28:32.198Z",
+      "timestamp": "2025-03-26T17:28:32.198Z"
+    },
+    {
+      "id": "82188ba4-ad25-481a-899d-b3994a0414e6",
+      "name": "Sequential Reasoning Steps",
+      "description": "Sequential application of reasoning techniques",
+      "eventType": "pattern_detected",
+      "nodeIds": [
+        "qrn-manager"
+      ],
+      "eventCount": 12,
+      "patternType": "sequential",
+      "confidence": 0.94,
+      "confidenceLevel": 0.94,
+      "createdAt": "2025-03-26T17:28:32.198Z",
+      "timestamp": "2025-03-26T17:28:32.198Z"
+    }
+  ],
+  "insights": [
+    {
+      "id": "e2975c27-2675-4840-8f73-61e967dc9329",
+      "name": "System Operation Efficiency",
+      "description": "Cyclical operations show consistent timing patterns",
+      "eventType": "insight_generated",
+      "sourcePatternIds": [
+        "b39378e3-82f5-46c2-8ad3-febb211a58c6"
+      ],
+      "actionability": "high",
+      "impact": "medium",
+      "confidence": 0.85,
+      "confidenceLevel": 0.85,
+      "createdAt": "2025-03-26T17:28:32.198Z",
+      "timestamp": "2025-03-26T17:28:32.198Z"
+    },
+    {
+      "id": "af452db4-6af7-4c97-ad2f-92aa47ccc3f3",
+      "name": "Task Decomposition Cascade",
+      "description": "Task decomposition creates predictable follow-on effects",
+      "eventType": "insight_generated",
+      "sourcePatternIds": [
+        "539b9f71-d742-4a9e-b8ca-547fd3eb3f77"
+      ],
+      "actionability": "medium",
+      "impact": "high",
+      "confidence": 0.82,
+      "confidenceLevel": 0.82,
+      "createdAt": "2025-03-26T17:28:32.198Z",
+      "timestamp": "2025-03-26T17:28:32.198Z"
+    },
+    {
+      "id": "e9c83d75-a20b-4633-b7a6-a9d7fad5bb35",
+      "name": "Reasoning Chain Effectiveness",
+      "description": "Sequential reasoning shows high coherence across steps",
+      "eventType": "insight_generated",
+      "sourcePatternIds": [
+        "82188ba4-ad25-481a-899d-b3994a0414e6"
+      ],
+      "actionability": "high",
+      "impact": "high",
+      "confidence": 0.91,
+      "confidenceLevel": 0.91,
+      "createdAt": "2025-03-26T17:28:32.198Z",
+      "timestamp": "2025-03-26T17:28:32.198Z"
+    }
+  ],
+  "generatedAt": "2025-03-26T17:28:32.198Z",
+  "stats": {
+    "totalEvents": 48,
+    "totalPatterns": 3,
+    "totalInsights": 3,
+    "eventTypes": [
+      "insight_generated",
+      "pattern_detected",
+      "context_shift",
+      "verification_check",
+      "task_completed",
+      "reasoning_applied",
+      "model_selection",
+      "resource_optimization"
+    ],
+    "nodeIds": [
+      "system",
+      "orchestrator",
+      "qrn-manager",
+      "meta-cognitive"
+    ]
+  }
+}

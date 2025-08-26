@@ -1,0 +1,606 @@
+/**
+ * WiltonOS Server Routes
+ * 
+ * Configuração de rotas e inicialização do servidor WebSocket
+ * para o sistema WiltonOS.
+ */
+
+import express from 'express';
+import { createServer, type Server } from 'http';
+import { WebSocketServer } from 'ws';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import { ollama, processTextWithOllama, chatWithOllama, getEmbeddingWithOllama } from './ollama';
+import OpenAI from 'openai';
+
+// Obter diretório atual (equivalente a __dirname em CommonJS)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Inicialização do cliente OpenAI
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+// Funções auxiliares para a Library of Alexandria
+function generateOverview(situation: string) {
+  const overviews: Record<string, string> = {
+    'signing': 'Identificamos pontos de atenção neste contrato que você deve revisar antes de assinar. Há cláusulas potencialmente desequilibradas que podem limitar seus direitos no futuro.',
+    'leaving': 'Existem algumas barreiras contratuais para sua saída que devem ser negociadas. A multa rescisória e as cláusulas de exclusividade são os principais pontos de atenção.',
+    'dispute': 'Sua posição na disputa atual possui pontos fortes e fracos. Recomendamos atenção especial às cláusulas destacadas antes de prosseguir com qualquer medida.',
+    'default': 'Encontramos alguns pontos no contrato que requerem sua atenção. Recomendamos revisar as cláusulas destacadas e considerar negociá-las.'
+  };
+  
+  return overviews[situation] || overviews.default;
+}
+
+function generateClauses(concerns: string[] = [], text: string = '') {
+  const clauseTemplates: Record<string, { title: string, explanation: string }> = {
+    'multa': {
+      title: 'Cláusula de Multa Rescisória',
+      explanation: 'A multa prevista corresponde a aproximadamente 6 meses de remuneração, o que pode ser considerado desproporcional. Há jurisprudência que limita multas a 3 meses de remuneração em contratos semelhantes.'
+    },
+    'exclusividade': {
+      title: 'Cláusula de Exclusividade',
+      explanation: 'O contrato prevê exclusividade total, incluindo plataformas e categorias não relacionadas à atividade principal. Isto limita excessivamente suas possibilidades de renda alternativa.'
+    },
+    'propriedade': {
+      title: 'Direitos de Imagem e Propriedade Intelectual',
+      explanation: 'A cláusula prevê cessão total e definitiva dos direitos de imagem, sem limitação temporal ou contextual. Recomendamos negociar uma cessão limitada ao período contratual.'
+    },
+    'prazo': {
+      title: 'Prazo e Renovação Automática',
+      explanation: 'O contrato prevê renovação automática por igual período, sem possibilidade de renegociação de valores ou termos. Isto pode ser considerado abusivo.'
+    },
+    'saida': {
+      title: 'Condições para Rescisão',
+      explanation: 'As condições para rescisão unilateral são desequilibradas. A organização pode rescindir por diversos motivos subjetivos, enquanto suas possibilidades são limitadas.'
+    },
+    'remuneracao': {
+      title: 'Remuneração e Premiações',
+      explanation: 'Os critérios para pagamento de bônus e premiações são vagos e excessivamente discricionários, o que pode gerar conflitos futuros.'
+    },
+    'confidencialidade': {
+      title: 'Confidencialidade',
+      explanation: 'A cláusula de confidencialidade é demasiadamente ampla e sem prazo definido, podendo limitar sua carreira após o término do contrato.'
+    }
+  };
+  
+  let clausesArray: Array<{ title: string, explanation: string }> = [];
+  
+  // Adicionar cláusulas com base nas preocupações selecionadas
+  if (concerns && concerns.length) {
+    concerns.forEach(concern => {
+      if (clauseTemplates[concern]) {
+        clausesArray.push(clauseTemplates[concern]);
+      }
+    });
+  }
+  
+  // Se não houver preocupações selecionadas ou texto, adicione algumas cláusulas genéricas
+  if (clausesArray.length === 0) {
+    clausesArray.push({
+      title: 'Termos Gerais do Contrato',
+      explanation: 'O contrato apresenta termos e condições gerais que poderiam ser mais claros e específicos para proteger ambas as partes.'
+    });
+  }
+  
+  return clausesArray;
+}
+
+function generateActions(situation: string, riskLevel: string) {
+  const commonActions = [
+    {
+      title: 'Buscar orientação jurídica especializada',
+      description: 'Recomendamos consultar um advogado especializado em direito esportivo ou entretenimento para analisar o contrato em detalhes.'
+    },
+    {
+      title: 'Documentar todas as interações',
+      description: 'Mantenha registros de todas as comunicações relacionadas à negociação ou execução do contrato.'
+    }
+  ];
+  
+  const situationActions: Record<string, Array<{ title: string, description: string }>> = {
+    'signing': [
+      {
+        title: 'Solicitar alterações contratuais',
+        description: 'Elaboramos um documento com sugestões de alterações para cada cláusula problemática, que você pode apresentar na negociação.'
+      },
+      {
+        title: 'Propor cláusulas de proteção',
+        description: 'Sugerimos a inclusão de cláusulas que garantam maior equilíbrio, como critérios objetivos para bônus e condições de saída mais justas.'
+      }
+    ],
+    'leaving': [
+      {
+        title: 'Enviar notificação formal',
+        description: 'Preparamos um modelo de carta formal para comunicar sua intenção de encerramento contratual.'
+      },
+      {
+        title: 'Propor acordo amigável',
+        description: 'Sugerimos iniciar uma negociação para rescisão amigável, possivelmente com redução da multa rescisória.'
+      }
+    ],
+    'dispute': [
+      {
+        title: 'Reunir evidências',
+        description: 'Colete todas as provas de comunicações, promessas e acordos verbais que possam fortalecer sua posição.'
+      },
+      {
+        title: 'Considerar mediação',
+        description: 'Antes de partir para medidas judiciais, considere propor uma mediação com um terceiro neutro.'
+      }
+    ],
+    'default': [
+      {
+        title: 'Revisar cláusulas críticas',
+        description: 'Identifique os pontos mais sensíveis do contrato e avalie se atendem às suas expectativas.'
+      }
+    ]
+  };
+  
+  let actions = [...commonActions];
+  
+  // Adicionar ações específicas para a situação
+  if (situation && situationActions[situation]) {
+    actions = [...actions, ...situationActions[situation]];
+  } else if (situationActions.default) {
+    actions = [...actions, ...situationActions.default];
+  }
+  
+  // Adicionar ação com base no nível de risco
+  if (riskLevel === 'high') {
+    actions.unshift({
+      title: 'ATENÇÃO: Risco Jurídico Elevado',
+      description: 'Este contrato apresenta múltiplas cláusulas potencialmente abusivas. Recomendamos fortemente não assinar sem revisão jurídica profissional.'
+    });
+  }
+  
+  return actions;
+}
+
+// Definição de enums
+export enum TaskType {
+  SUMMARIZATION = 'summarization',
+  ANALYSIS = 'analysis',
+  GENERATION = 'generation',
+  TRANSLATION = 'translation',
+  CLASSIFICATION = 'classification',
+  EXTRACTION = 'extraction',
+  CONVERSATION = 'conversation',
+  CALCULATION = 'calculation',
+}
+
+export enum EvaluationCriteria {
+  ACCURACY = 'accuracy',
+  RELEVANCE = 'relevance',
+  COHERENCE = 'coherence',
+  NOVELTY = 'novelty',
+  COMPREHENSIVENESS = 'comprehensiveness',
+  EFFICIENCY = 'efficiency'
+}
+
+// Mapa de conexões WebSocket ativas
+export const activeConnections = new Map();
+
+// Mapa de handlers WebSocket
+export const wsHandlers = new Map();
+
+/**
+ * Registrar rotas e inicializar WebSocket
+ */
+export async function registerRoutes(app: express.Express): Promise<Server> {
+  // Servir arquivos estáticos do diretório public
+  app.use(express.static(path.join(__dirname, '..', 'public')));
+  
+  // Servir arquivos específicos da Library of Alexandria
+  app.use('/library', express.static(path.join(__dirname, '..', 'public', 'library')));
+  
+  // Rota para o dashboard
+  app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'dashboard.html'));
+  });
+
+  // Rota para o visualizador de ZWE
+  app.get('/zwe-visualizer', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'zwe-visualizer.html'));
+  });
+
+  // Rota para o Oroboros
+  app.get('/oroboros', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'oroboros.html'));
+  });
+  
+  // Rota para o WiltonOS Vault
+  app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'dashboard.html'));
+  });
+
+  // API para verificação de saúde do sistema
+  app.get('/api/health', (req, res) => {
+    res.json({
+      status: 'online',
+      version: '1.0.0',
+      uptime: process.uptime()
+    });
+  });
+
+  // API para obter status do sistema quântico
+  app.get('/api/quantum/status', (req, res) => {
+    res.json({
+      status: 'online',
+      coherence: 0.75,
+      chaos: 0.25,
+      mode: 'balanced',
+      activeNodes: 42
+    });
+  });
+  
+  // API para interação com Ollama
+
+  // API para verificar status do Ollama
+  app.get('/api/llm/status', async (req, res) => {
+    try {
+      const status = await ollama.checkServerStatus();
+      const models = status ? await ollama.listModels() : [];
+      
+      res.json({
+        status: status ? 'online' : 'offline',
+        models,
+        defaultModel: status ? ollama.defaultModel : null
+      });
+    } catch (error) {
+      console.error('Erro ao verificar status do Ollama:', error);
+      res.status(500).json({
+        status: 'error',
+        message: 'Falha ao conectar com o servidor Ollama',
+        error: error.message
+      });
+    }
+  });
+  
+  // API para processamento de texto com Ollama
+  app.post('/api/llm/complete', async (req, res) => {
+    try {
+      const { prompt, model, system, format, options } = req.body;
+      
+      if (!prompt) {
+        return res.status(400).json({
+          status: 'error',
+          message: 'Prompt é obrigatório'
+        });
+      }
+      
+      const response = await processTextWithOllama({
+        prompt,
+        model,
+        system,
+        format,
+        options
+      });
+      
+      res.json({
+        status: 'success',
+        result: response
+      });
+    } catch (error) {
+      console.error('Erro ao processar texto com Ollama:', error);
+      res.status(500).json({
+        status: 'error',
+        message: 'Falha ao processar texto',
+        error: error.message
+      });
+    }
+  });
+  
+  // API para chat com Ollama
+  app.post('/api/llm/chat', async (req, res) => {
+    try {
+      const { messages, model } = req.body;
+      
+      if (!messages || !Array.isArray(messages) || messages.length === 0) {
+        return res.status(400).json({
+          status: 'error',
+          message: 'Mensagens são obrigatórias e devem ser um array'
+        });
+      }
+      
+      const response = await chatWithOllama(messages, model);
+      
+      res.json({
+        status: 'success',
+        result: response
+      });
+    } catch (error) {
+      console.error('Erro ao iniciar chat com Ollama:', error);
+      res.status(500).json({
+        status: 'error',
+        message: 'Falha ao iniciar chat',
+        error: error.message
+      });
+    }
+  });
+  
+  // API para obter embeddings com Ollama
+  app.post('/api/llm/embed', async (req, res) => {
+    try {
+      const { text, model } = req.body;
+      
+      if (!text) {
+        return res.status(400).json({
+          status: 'error',
+          message: 'Texto é obrigatório'
+        });
+      }
+      
+      const embedding = await getEmbeddingWithOllama(text, model);
+      
+      res.json({
+        status: 'success',
+        embedding
+      });
+    } catch (error) {
+      console.error('Erro ao obter embedding com Ollama:', error);
+      res.status(500).json({
+        status: 'error',
+        message: 'Falha ao obter embedding',
+        error: error.message
+      });
+    }
+  });
+  
+  // [DESATIVADO] Endpoint de análise de contratos do Z-LAW
+  app.post('/api/analyze-contract', async (req, res) => {
+    res.status(410).json({
+      status: 'gone',
+      message: 'Este serviço foi desativado. Por favor, use o WiltonOS Vault para suas necessidades de produtividade pessoal.'
+    });
+  });
+      const concernsMap: Record<string, string> = {
+        'multa': 'Multa rescisória',
+        'exclusividade': 'Cláusulas de exclusividade',
+        'propriedade': 'Direitos de imagem e propriedade intelectual',
+        'prazo': 'Duração e renovação de contrato',
+        'saida': 'Condições para saída',
+        'remuneracao': 'Remuneração e premiações',
+        'confidencialidade': 'Cláusulas de confidencialidade'
+      };
+      
+      const concernsList = concerns.map((c: string) => concernsMap[c] || c).join(', ');
+      
+      // Definir o contexto da situação
+      const situationContext: Record<string, string> = {
+        'signing': 'está avaliando assinar este contrato',
+        'leaving': 'está considerando sair deste contrato',
+        'dispute': 'está em disputa relacionada a este contrato',
+        'review': 'quer revisão geral deste contrato'
+      };
+      
+      // Criar prompt para análise com a API do OpenAI
+      const prompt = `
+Você é um assistente jurídico especializado em contratos para ${entityType === 'player' ? 'jogadores e atletas profissionais' : 'criadores de conteúdo e streamers'}.
+
+CONTRATO PARA ANÁLISE:
+"""
+${contractText}
+"""
+
+CONTEXTO:
+- O ${entityType === 'player' ? 'jogador/atleta' : 'criador/streamer'} ${situationContext[situationType] || situationContext.review}
+- ${organizationName ? `A organização/clube envolvida é: ${organizationName}` : 'Não foi especificada a organização'}
+- ${situationDetails ? `Detalhes adicionais: ${situationDetails}` : 'Não foram fornecidos detalhes adicionais'}
+${concernsList ? `- Preocupações específicas: ${concernsList}` : '- Não foram indicadas preocupações específicas'}
+
+ANÁLISE SOLICITADA:
+1. Identifique o nível de risco geral (baixo, médio, alto) e justifique
+2. Forneça um resumo executivo apontando os principais pontos de atenção
+3. Identifique 2-4 cláusulas específicas do contrato que merecem atenção imediata, citando trechos relevantes e explicando as preocupações
+4. Recomende 3-5 ações concretas que o ${entityType === 'player' ? 'jogador/atleta' : 'criador/streamer'} deve tomar
+
+Responda com um objeto JSON no seguinte formato:
+{
+  "riskLevel": "baixo|médio|alto",
+  "overview": "Resumo executivo do contrato...",
+  "clauses": [
+    {
+      "title": "Título da cláusula problemática",
+      "explanation": "Explicação detalhada do problema e suas implicações..."
+    },
+    ...
+  ],
+  "actions": [
+    {
+      "title": "Título da ação recomendada",
+      "description": "Descrição detalhada da ação..."
+    },
+    ...
+  ]
+}
+`;
+
+      // Determinar nível de risco com base nas preocupações (lógica simples para backup)
+      let fallbackRiskLevel = 'médio';
+      const criticalConcerns = ['multa', 'exclusividade', 'saida'];
+      
+      if (concerns.some((concern: string) => criticalConcerns.includes(concern)) || concerns.length > 2) {
+        fallbackRiskLevel = 'alto';
+      } else if (concerns.length <= 1 && !criticalConcerns.some((concern: string) => concerns.includes(concern))) {
+        fallbackRiskLevel = 'baixo';
+      }
+      
+      try {
+        // Fase de teste - Usar análise simulada
+        if (process.env.NODE_ENV === 'production') {
+          // Em produção, chamar a API do OpenAI
+          const response = await openai.chat.completions.create({
+            model: "gpt-4o", // o modelo mais recente da OpenAI é "gpt-4o" lançado em maio de 2024, não altere a menos que solicitado pelo usuário
+            messages: [
+              { role: "system", content: "Você é um assistente jurídico especializado em contratos para profissionais de esporte e entretenimento." },
+              { role: "user", content: prompt }
+            ],
+            temperature: 0.2,
+            response_format: { type: "json_object" },
+            max_tokens: 2000
+          });
+          
+          // Extrair e validar resultado
+          let result = {};
+          try {
+            const content = response.choices[0].message.content;
+            result = JSON.parse(content);
+            
+            // Se algum campo estiver faltando, preencher com o fallback
+            if (!result.riskLevel) result.riskLevel = fallbackRiskLevel;
+            if (!result.overview) result.overview = generateOverview(situationType);
+            if (!result.clauses || !result.clauses.length) result.clauses = generateClauses(concerns, contractText);
+            if (!result.actions || !result.actions.length) result.actions = generateActions(situationType, result.riskLevel);
+            
+            // Normalizar nível de risco para padrão da aplicação (baixo/médio/alto -> low/medium/high)
+            if (result.riskLevel === "baixo") result.riskLevel = "low";
+            if (result.riskLevel === "médio") result.riskLevel = "medium";
+            if (result.riskLevel === "alto") result.riskLevel = "high";
+            
+            res.json(result);
+          } catch (parseError) {
+            console.error("Erro ao processar resposta da OpenAI:", parseError);
+            // Usar valores de fallback em caso de erro de parsing
+            const fallback = {
+              riskLevel: fallbackRiskLevel === "baixo" ? "low" : fallbackRiskLevel === "médio" ? "medium" : "high",
+              overview: generateOverview(situationType),
+              clauses: generateClauses(concerns, contractText),
+              actions: generateActions(situationType, fallbackRiskLevel)
+            };
+            res.json(fallback);
+          }
+        } else {
+          // Em desenvolvimento, usar análise simulada
+          console.log("Usando análise simulada para ambiente de desenvolvimento");
+          
+          // Resposta simulada para testes
+          const analysisResult = {
+            "riskLevel": "high",
+            "overview": "Este contrato apresenta vários pontos de atenção que podem ser prejudiciais aos seus interesses. As cláusulas de exclusividade, multa rescisória e direitos de imagem são especialmente preocupantes por seu caráter desproporcional.",
+            "clauses": [
+              {
+                "title": "Cláusula de Exclusividade (Item 4)",
+                "explanation": "A exclusividade exigida é excessivamente ampla, abrangendo até mesmo criação de conteúdo não relacionado à modalidade. Isto limita significativamente suas oportunidades de renda alternativa e desenvolvimento profissional."
+              },
+              {
+                "title": "Multa Rescisória (Item 6)",
+                "explanation": "A multa de 6 meses de remuneração para o atleta versus apenas 2 meses para a organização representa um desequilíbrio contratual significativo. A jurisprudência recente tem limitado multas a no máximo 3 meses em casos semelhantes."
+              },
+              {
+                "title": "Direitos de Imagem (Item 5)",
+                "explanation": "A cessão irrevogável e por tempo indeterminado dos direitos de imagem, mesmo após o término do contrato, é potencialmente abusiva. A prática mais equilibrada é vincular os direitos de imagem ao período contratual ou prever remuneração adicional após seu término."
+              }
+            ],
+            "actions": [
+              {
+                "title": "Renegociar a cláusula de exclusividade",
+                "description": "Proponha limitar a exclusividade apenas à modalidade esportiva específica, permitindo atividades como criação de conteúdo pessoal não relacionado ao esport."
+              },
+              {
+                "title": "Equilibrar a multa rescisória",
+                "description": "Solicite que as multas rescisórias sejam igualadas para ambas as partes ou limitadas a 3 meses de remuneração para você."
+              },
+              {
+                "title": "Definir limites temporais para direitos de imagem",
+                "description": "Negocie para que os direitos de imagem sejam limitados ao período de vigência do contrato, ou preveja remuneração adicional para uso após o término."
+              },
+              {
+                "title": "Buscar assessoria jurídica especializada",
+                "description": "Antes de assinar, consulte um advogado com experiência em direito esportivo e entretenimento para revisar os termos finais."
+              }
+            ]
+          };
+          
+          res.json(analysisResult);
+        }
+      } catch (error) {
+        console.error("Erro na análise do contrato:", error);
+        
+        // Fallback para análise local em caso de erro
+        const fallbackResult = {
+          riskLevel: fallbackRiskLevel === "baixo" ? "low" : fallbackRiskLevel === "médio" ? "medium" : "high",
+          overview: generateOverview(situationType),
+          clauses: generateClauses(concerns, contractText),
+          actions: generateActions(situationType, fallbackRiskLevel)
+        };
+        
+        res.json(fallbackResult);
+      }
+      
+    } catch (error) {
+      console.error("Erro ao processar análise de contrato:", error);
+      res.status(500).json({ 
+        error: 'Erro ao processar a análise do contrato',
+        message: error instanceof Error ? error.message : 'Erro desconhecido'
+      });
+    }
+  });
+
+  // Criar servidor HTTP
+  const httpServer = createServer(app);
+
+  // Inicializar servidor WebSocket
+  const wss = new WebSocketServer({ 
+    server: httpServer,
+    path: '/ws'
+  });
+
+  // Conectar handler de WebSocket
+  wss.on('connection', (ws) => {
+    const id = Date.now().toString();
+    activeConnections.set(id, ws);
+
+    ws.on('message', (message) => {
+      try {
+        const data = JSON.parse(message.toString());
+        const { type } = data;
+
+        // Invocar handler registrado para o tipo de mensagem
+        if (wsHandlers.has(type)) {
+          wsHandlers.get(type)(ws, data);
+        } else {
+          console.warn(`Nenhum handler registrado para mensagens do tipo: ${type}`);
+        }
+      } catch (error) {
+        console.error('Erro ao processar mensagem WebSocket:', error);
+      }
+    });
+
+    ws.on('close', () => {
+      activeConnections.delete(id);
+      console.log(`Conexão WebSocket fechada: ${id}`);
+    });
+
+    // Enviar mensagem inicial
+    ws.send(JSON.stringify({
+      type: 'welcome',
+      message: 'Bem-vindo ao WiltonOS WebSocket Server',
+      timestamp: Date.now()
+    }));
+  });
+
+  return httpServer;
+}
+
+/**
+ * Inicializar e configurar o servidor principal
+ */
+export async function startServer(app: express.Express): Promise<Server> {
+  // Tratamento de erros
+  const errorHandler = (err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    console.error('Erro não tratado:', err);
+    res.status(500).json({
+      error: 'Erro interno no servidor',
+      message: err.message
+    });
+  };
+
+  app.use(errorHandler);
+
+  // Registrar rotas e inicializar WebSocket
+  return registerRoutes(app);
+}

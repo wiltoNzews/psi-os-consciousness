@@ -1,0 +1,17 @@
+{
+  "nodeId": "d5258a0c-94c2-4483-b820-0cb3f4c84394",
+  "state": "{\"status\":\"receiving\",\"coherence\":0.65}",
+  "dimensionType": "PRIMARY",
+  "stabilityFactor": 1,
+  "metadata": {
+    "event": "creation",
+    "capabilities": [
+      "target",
+      "receiver"
+    ]
+  },
+  "id": "0b532d13-0787-4b8e-9b3d-dc96a4078e7d",
+  "timestamp": "2025-03-23T21:02:54.567Z",
+  "createdAt": "2025-03-23T21:02:54.569Z",
+  "updatedAt": "2025-03-23T21:02:54.569Z"
+}

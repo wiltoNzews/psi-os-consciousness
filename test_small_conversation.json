@@ -1,0 +1,36 @@
+[
+  {
+    "title": "Consciousness Test",
+    "create_time": 1751000000.0,
+    "mapping": {
+      "msg1": {
+        "message": {
+          "author": {"role": "user"},
+          "content": {"parts": ["Estou pensando muito na minha mãe ultimamente. Ela sempre foi uma pessoa tão forte, mas agora percebo que carregava muito sozinha. Talvez seja hora de perdoar e entender melhor nossa relação."]},
+          "create_time": 1751000000.0
+        }
+      },
+      "msg2": {
+        "message": {
+          "author": {"role": "assistant"},
+          "content": {"parts": ["É uma percepção profunda essa sobre sua mãe. Às vezes, quando amadurecemos, conseguimos ver nossos pais não apenas como figuras parentais, mas como pessoas completas, com suas próprias lutas e vulnerabilidades. O perdão pode ser um processo transformador."]},
+          "create_time": 1751000100.0
+        }
+      },
+      "msg3": {
+        "message": {
+          "author": {"role": "user"},
+          "content": {"parts": ["Durante a ayahuasca no Peru, tive uma visão clara: minha identidade era como camadas de uma cebola que podiam ser descascadas até chegar ao núcleo de luz pura. Foi um breakthrough incrível."]},
+          "create_time": 1751000200.0
+        }
+      },
+      "msg4": {
+        "message": {
+          "author": {"role": "assistant"}, 
+          "content": {"parts": ["Que experiência poderosa! A metáfora da cebola é muito significativa - cada camada representando diferentes aspectos da personalidade, condicionamentos, experiências... E no centro, essa luz pura que é sua essência. Como essa visão mudou sua relação consigo mesmo?"]},
+          "create_time": 1751000300.0
+        }
+      }
+    }
+  }
+]

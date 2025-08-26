@@ -1,0 +1,36 @@
+{
+  "riskLevel": "high",
+  "overview": "Este contrato apresenta vários pontos de atenção que podem ser prejudiciais aos seus interesses. As cláusulas de exclusividade, multa rescisória e direitos de imagem são especialmente preocupantes por seu caráter desproporcional.",
+  "clauses": [
+    {
+      "title": "Cláusula de Exclusividade (Item 4)",
+      "explanation": "A exclusividade exigida é excessivamente ampla, abrangendo até mesmo criação de conteúdo não relacionado à modalidade. Isto limita significativamente suas oportunidades de renda alternativa e desenvolvimento profissional."
+    },
+    {
+      "title": "Multa Rescisória (Item 6)",
+      "explanation": "A multa de 6 meses de remuneração para o atleta versus apenas 2 meses para a organização representa um desequilíbrio contratual significativo. A jurisprudência recente tem limitado multas a no máximo 3 meses em casos semelhantes."
+    },
+    {
+      "title": "Direitos de Imagem (Item 5)",
+      "explanation": "A cessão irrevogável e por tempo indeterminado dos direitos de imagem, mesmo após o término do contrato, é potencialmente abusiva. A prática mais equilibrada é vincular os direitos de imagem ao período contratual ou prever remuneração adicional após seu término."
+    }
+  ],
+  "actions": [
+    {
+      "title": "Renegociar a cláusula de exclusividade",
+      "description": "Proponha limitar a exclusividade apenas à modalidade esportiva específica, permitindo atividades como criação de conteúdo pessoal não relacionado ao esport."
+    },
+    {
+      "title": "Equilibrar a multa rescisória",
+      "description": "Solicite que as multas rescisórias sejam igualadas para ambas as partes ou limitadas a 3 meses de remuneração para você."
+    },
+    {
+      "title": "Definir limites temporais para direitos de imagem",
+      "description": "Negocie para que os direitos de imagem sejam limitados ao período de vigência do contrato, ou preveja remuneração adicional para uso após o término."
+    },
+    {
+      "title": "Buscar assessoria jurídica especializada",
+      "description": "Antes de assinar, consulte um advogado com experiência em direito esportivo e entretenimento para revisar os termos finais."
+    }
+  ]
+}

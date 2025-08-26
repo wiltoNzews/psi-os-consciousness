@@ -1,0 +1,95 @@
+{
+  "id": "cathedral-kernel-unified",
+  "name": "Cathedral Kernel",
+  "system": "WiltonOS",
+  "group": "Cathedral",
+  "route": "/cathedral/kernel",
+  "action": "component",
+  "component": "CathedralKernel",
+  "status": "stable",
+  "broken": false,
+  "doc": "/docs/cathedral-kernel.md",
+  "breath_sync": {
+    "psi": 3.12,
+    "zlambda_min": 0.85
+  },
+  "glyphs": [
+    "🏛️",
+    "∅",
+    "⚛️"
+  ],
+  "frequency_hz": [
+    432,
+    528,
+    963
+  ],
+  "metrics": {
+    "zlambda_current": 0.95,
+    "last_modified": "2025-08-15T20:56:56.635Z",
+    "consolidated_modules": 2
+  },
+  "palette": [
+    "0a0a2e",
+    "8b5cf6",
+    "ffd700"
+  ],
+  "tags": [
+    "cathedral",
+    "kernel",
+    "unified",
+    "navigation",
+    "consciousness"
+  ],
+  "priority": 95,
+  "coherence_gate": {
+    "unlock_at": 0.85
+  },
+  "modes": [
+    {
+      "id": "navigator",
+      "name": "Navigator",
+      "description": "Module navigation and discovery",
+      "route": "/cathedral/kernel?mode=navigator",
+      "zlambda_min": 0.8
+    },
+    {
+      "id": "router",
+      "name": "Router",
+      "description": "Consciousness routing protocols",
+      "route": "/cathedral/kernel?mode=router",
+      "zlambda_min": 0.85
+    },
+    {
+      "id": "stream",
+      "name": "Stream",
+      "description": "Live consciousness stream monitoring",
+      "route": "/cathedral/kernel?mode=stream",
+      "zlambda_min": 0.9
+    },
+    {
+      "id": "compass",
+      "name": "Compass",
+      "description": "Sacred geometry orientation",
+      "route": "/cathedral/kernel?mode=compass",
+      "zlambda_min": 0.85
+    }
+  ],
+  "consolidated_modules": [
+    {
+      "original_id": "public/cathedral-modules.json",
+      "original_name": "Cathedral Modules",
+      "original_route": "/public/cathedral-modules.json",
+      "consolidated_into": "cathedral-kernel-unified",
+      "mode_mapping": "navigator",
+      "preserve_as_legacy": true
+    },
+    {
+      "original_id": "public/phase3-cathedral-seal.html",
+      "original_name": "Phase3 Cathedral Seal",
+      "original_route": "/public/phase3-cathedral-seal.html",
+      "consolidated_into": "cathedral-kernel-unified",
+      "mode_mapping": "navigator",
+      "preserve_as_legacy": true
+    }
+  ]
+}

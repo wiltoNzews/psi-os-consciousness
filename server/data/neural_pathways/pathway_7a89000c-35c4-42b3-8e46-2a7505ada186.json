@@ -1,0 +1,13 @@
+{
+  "sourceId": "2c878c35-e756-4d58-82d6-27700d136042",
+  "targetId": "62422d75-adba-42eb-9199-a41a863c74d6",
+  "weight": 0.85,
+  "type": "integration_test",
+  "metadata": {
+    "testType": "chronos_integration",
+    "importance": "high"
+  },
+  "id": "7a89000c-35c4-42b3-8e46-2a7505ada186",
+  "createdAt": "2025-03-23T21:03:42.217Z",
+  "updatedAt": "2025-03-23T21:03:42.217Z"
+}

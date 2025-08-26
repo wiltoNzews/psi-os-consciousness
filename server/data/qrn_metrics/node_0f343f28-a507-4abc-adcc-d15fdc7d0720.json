@@ -1,0 +1,23 @@
+{
+  "name": "Chronos Integration Test QRN",
+  "description": "A quantum root node for testing Chronos integration",
+  "state": {
+    "status": "connected",
+    "coherence": 0.75,
+    "energy": 95,
+    "connectedNodes": [
+      "329a8b01-5356-4a2d-8745-7f876dc20614"
+    ]
+  },
+  "capabilities": [
+    "test",
+    "chronos",
+    "integration"
+  ],
+  "coherenceScore": 0.75,
+  "id": "0f343f28-a507-4abc-adcc-d15fdc7d0720",
+  "createdAt": "2025-03-23T21:02:49.639Z",
+  "updatedAt": "2025-03-23T21:02:49.650Z",
+  "connections": {},
+  "lastActivity": "2025-03-23T21:02:49.649Z"
+}

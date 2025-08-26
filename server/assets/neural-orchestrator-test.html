@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neural Orchestration Engine Test Interface</title>
+  
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+    }
+    
+    .full-width {
+      grid-column: 1 / span 2;
+    }
+    
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    h3 {
+      margin-top: 0;
+      color: #2c3e50;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    
+    h4 {
+      color: #3498db;
+      margin-bottom: 10px;
+    }
+    
+    .toolbar {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .toolbar span {
+      margin-right: 5px;
+    }
+    
+    select, button, input[type="text"] {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    button:hover {
+      background-color: #2980b9;
+    }
+    
+    button:disabled {
+      background-color: #95a5a6;
+      cursor: not-allowed;
+    }
+    
+    textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: inherit;
+      resize: vertical;
+    }
+    
+    .log-container {
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #f5f5f5;
+      padding: 10px;
+      font-family: monospace;
+      margin-top: 15px;
+    }
+    
+    .log-item {
+      margin-bottom: 5px;
+      line-height: 1.4;
+    }
+    
+    .log-time {
+      color: #7f8c8d;
+      margin-right: 5px;
+    }
+    
+    .log-type {
+      font-weight: bold;
+      padding: 2px 5px;
+      border-radius: 3px;
+      margin-right: 5px;
+      font-size: 12px;
+    }
+    
+    .log-info { background-color: #3498db; color: white; }
+    .log-success { background-color: #2ecc71; color: white; }
+    .log-warning { background-color: #f39c12; color: white; }
+    .log-error { background-color: #e74c3c; color: white; }
+    .log-system { background-color: #9b59b6; color: white; }
+    
+    #connection-status {
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+    
+    .connected { background-color: #2ecc71; color: white; }
+    .disconnected { background-color: #e74c3c; color: white; }
+    .connecting { background-color: #f39c12; color: white; }
+    
+    .item-list {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    
+    .item {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .item:last-child {
+      border-bottom: none;
+    }
+    
+    .item:hover {
+      background-color: #f5f7fa;
+    }
+    
+    .item-selected {
+      background-color: #ecf0f1;
+    }
+    
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    
+    .item-meta {
+      font-size: 12px;
+      color: #7f8c8d;
+      margin-bottom: 5px;
+    }
+    
+    .item-details {
+      font-size: 14px;
+    }
+    
+    .badge {
+      font-size: 11px;
+      padding: 3px 6px;
+      border-radius: 3px;
+      font-weight: bold;
+      margin-right: 5px;
+    }
+    .badge-blue { background-color: #3498db; color: white; }
+    .badge-green { background-color: #2ecc71; color: white; }
+    .badge-orange { background-color: #e67e22; color: white; }
+    .badge-red { background-color: #e74c3c; color: white; }
+    .badge-purple { background-color: #9b59b6; color: white; }
+    
+    .metrics-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .metric-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 15px;
+      flex: 1 1 calc(25% - 10px);
+      min-width: 150px;
+    }
+    
+    .metric-label {
+      font-size: 14px;
+      color: #7f8c8d;
+      margin-bottom: 5px;
+    }
+    
+    .metric-value {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    
+    .range-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    input[type="range"] {
+      flex: 1;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      
+      .full-width {
+        grid-column: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Neural Orchestration Engine Test Interface</h1>
+  
+  <!-- Connection Controls -->
+  <div class="toolbar">
+    <button id="connect-btn">Connect WebSocket</button>
+    <button id="disconnect-btn" disabled>Disconnect</button>
+    <div id="connection-status" class="disconnected">Disconnected</div>
+  </div>
+  
+  <div class="container">
+    <!-- System Stats Card -->
+    <div class="card full-width">
+      <h3>Neural Orchestration Engine Status</h3>
+      <div class="toolbar">
+        <button id="refresh-status-btn">Refresh Status</button>
+      </div>
+      
+      <div class="metrics-container">
+        <div class="metric-card">
+          <div class="metric-label">Active Models</div>
+          <div class="metric-value" id="active-models-count">0</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Active Tasks</div>
+          <div class="metric-value" id="active-tasks-count">0</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Completed Tasks</div>
+          <div class="metric-value" id="completed-tasks-count">0</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Average Latency</div>
+          <div class="metric-value" id="avg-latency">0 ms</div>
+        </div>
+      </div>
+      
+      <h4>Available Models</h4>
+      <div class="item-list" id="models-list"></div>
+    </div>
+
+    <!-- Model Initialization Card -->
+    <div class="card">
+      <h3>Initialize AI Model</h3>
+      <div class="toolbar">
+        <select id="model-type">
+          <option value="gpt_4o">GPT-4o</option>
+          <option value="gemini_pro">Gemini Pro</option>
+          <option value="grok">Grok</option>
+          <option value="claude">Claude</option>
+          <option value="llama">LLaMA</option>
+          <option value="mixtral">Mixtral</option>
+        </select>
+        <button id="initialize-model-btn">Initialize Model</button>
+      </div>
+      
+      <h3>Run Model Benchmarks</h3>
+      <div class="toolbar">
+        <select id="benchmark-model-type">
+          <option value="gpt_4o">GPT-4o</option>
+          <option value="gemini_pro">Gemini Pro</option>
+          <option value="grok">Grok</option>
+          <option value="claude">Claude</option>
+          <option value="llama">LLaMA</option>
+          <option value="mixtral">Mixtral</option>
+        </select>
+        <button id="run-benchmark-btn">Run Benchmarks</button>
+      </div>
+    </div>
+    
+    <!-- Task Submission Card -->
+    <div class="card">
+      <h3>Create Task</h3>
+      <div class="toolbar">
+        <span>Task Type:</span>
+        <select id="task-type">
+          <option value="text_generation">Text Generation</option>
+          <option value="code_generation">Code Generation</option>
+          <option value="reasoning">Reasoning</option>
+          <option value="summarization">Summarization</option>
+          <option value="translation">Translation</option>
+          <option value="creative_writing">Creative Writing</option>
+          <option value="mathematics">Mathematics</option>
+          <option value="scientific_analysis">Scientific Analysis</option>
+          <option value="image_understanding">Image Understanding</option>
+          <option value="planning">Planning</option>
+          <option value="meta_cognition">Meta-Cognition</option>
+        </select>
+      </div>
+      
+      <div class="toolbar">
+        <span>Select Model:</span>
+        <select id="task-model-type">
+          <option value="">Auto-select</option>
+          <!-- Models will be dynamically populated when available -->
+        </select>
+      </div>
+      
+      <div class="toolbar">
+        <span>Complexity:</span>
+        <input type="range" id="task-complexity" min="1" max="10" step="1" value="5">
+        <span id="complexity-value">5</span>
+      </div>
+      
+      <div class="toolbar">
+        <span>Creativity:</span>
+        <input type="range" id="task-creativity" min="1" max="10" step="1" value="5">
+        <span id="creativity-value">5</span>
+      </div>
+      
+      <div class="toolbar">
+        <span>Priority:</span>
+        <input type="range" id="task-priority" min="1" max="10" step="1" value="5">
+        <span id="priority-value">5</span>
+      </div>
+      
+      <div>
+        <h4>Prompt:</h4>
+        <textarea id="task-prompt" placeholder="Enter your task prompt here..."></textarea>
+      </div>
+      
+      <div class="toolbar" style="margin-top: 10px;">
+        <button id="submit-task-btn">Submit Task</button>
+        <div id="submit-error" style="color: #e74c3c; margin-top: 5px;"></div>
+      </div>
+    </div>
+
+    <!-- Tasks List Card -->
+    <div class="card full-width">
+      <h3>Tasks</h3>
+      <div class="toolbar">
+        <select id="task-status-filter">
+          <option value="">All Tasks</option>
+          <option value="pending">Pending</option>
+          <option value="analyzing">Analyzing</option>
+          <option value="executing">Executing</option>
+          <option value="completed">Completed</option>
+          <option value="failed">Failed</option>
+        </select>
+        <button id="refresh-tasks-btn">Refresh Tasks</button>
+      </div>
+      
+      <div class="item-list" id="tasks-list"></div>
+      
+      <div id="task-result-container" style="margin-top: 20px;"></div>
+    </div>
+    
+    <!-- Log Card -->
+    <div class="card full-width">
+      <h3>System Log</h3>
+      <div class="log-container" id="log-container"></div>
+    </div>
+  </div>
+  
+  <script>
+    // Global variables
+    let socket = null;
+    let availableModels = [];
+    let tasks = [];
+    
+    // DOM Elements
+    const connectionStatus = document.getElementById('connection-status');
+    const logContainer = document.getElementById('log-container');
+    const modelsList = document.getElementById('models-list');
+    const tasksList = document.getElementById('tasks-list');
+    const taskResultContainer = document.getElementById('task-result-container');
+    
+    // Metrics Elements
+    const activeModelsCount = document.getElementById('active-models-count');
+    const activeTasksCount = document.getElementById('active-tasks-count');
+    const completedTasksCount = document.getElementById('completed-tasks-count');
+    const avgLatency = document.getElementById('avg-latency');
+    
+    // Button Elements
+    const connectBtn = document.getElementById('connect-btn');
+    const disconnectBtn = document.getElementById('disconnect-btn');
+    const refreshStatusBtn = document.getElementById('refresh-status-btn');
+    const initializeModelBtn = document.getElementById('initialize-model-btn');
+    const runBenchmarkBtn = document.getElementById('run-benchmark-btn');
+    const submitTaskBtn = document.getElementById('submit-task-btn');
+    const refreshTasksBtn = document.getElementById('refresh-tasks-btn');
+    
+    // Input elements
+    const modelTypeSelect = document.getElementById('model-type');
+    const benchmarkModelTypeSelect = document.getElementById('benchmark-model-type');
+    const taskTypeSelect = document.getElementById('task-type');
+    const taskModelTypeSelect = document.getElementById('task-model-type');
+    const taskComplexityInput = document.getElementById('task-complexity');
+    const taskCreativityInput = document.getElementById('task-creativity');
+    const taskPriorityInput = document.getElementById('task-priority');
+    const taskPromptInput = document.getElementById('task-prompt');
+    const taskStatusFilterSelect = document.getElementById('task-status-filter');
+    const submitError = document.getElementById('submit-error');
+    
+    // Display elements
+    const complexityValue = document.getElementById('complexity-value');
+    const creativityValue = document.getElementById('creativity-value');
+    const priorityValue = document.getElementById('priority-value');
+    
+    // Initialize sliders
+    taskComplexityInput.addEventListener('input', () => {
+      complexityValue.textContent = taskComplexityInput.value;
+    });
+    
+    taskCreativityInput.addEventListener('input', () => {
+      creativityValue.textContent = taskCreativityInput.value;
+    });
+    
+    taskPriorityInput.addEventListener('input', () => {
+      priorityValue.textContent = taskPriorityInput.value;
+    });
+    
+    // Log Functions
+    function addLogEntry(message, type = 'info') {
+      const logItem = document.createElement('div');
+      logItem.className = 'log-item';
+      
+      const now = new Date();
+      const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+      
+      logItem.innerHTML = `
+        <span class="log-time">${timeStr}</span>
+        <span class="log-type log-${type}">${type.toUpperCase()}</span>
+        <span class="log-message">${message}</span>
+      `;
+      
+      logContainer.appendChild(logItem);
+      logContainer.scrollTop = logContainer.scrollHeight;
+    }
+    
+    // WebSocket Functions
+    function connectWebSocket() {
+      if (socket !== null) {
+        socket.close();
+      }
+      
+      const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const wsUrl = `${protocol}//${window.location.host}/ws`;
+      
+      addLogEntry(`Connecting to WebSocket at ${wsUrl}`, 'info');
+      connectionStatus.textContent = 'Connecting...';
+      connectionStatus.className = 'connecting';
+      
+      socket = new WebSocket(wsUrl);
+      
+      socket.onopen = () => {
+        addLogEntry('WebSocket connection established', 'success');
+        connectionStatus.textContent = 'Connected';
+        connectionStatus.className = 'connected';
+        connectBtn.disabled = true;
+        disconnectBtn.disabled = false;
+        
+        // Once connected, fetch the status
+        refreshStatus();
+        refreshTasks();
+        
+        // Subscribe to task updates
+        sendWebSocketMessage('subscribe_task_updates', {});
+      };
+      
+      socket.onclose = () => {
+        addLogEntry('WebSocket connection closed', 'info');
+        connectionStatus.textContent = 'Disconnected';
+        connectionStatus.className = 'disconnected';
+        connectBtn.disabled = false;
+        disconnectBtn.disabled = true;
+      };
+      
+      socket.onerror = (error) => {
+        addLogEntry(`WebSocket error: ${error}`, 'error');
+      };
+      
+      socket.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          handleWebSocketMessage(data);
+        } catch (error) {
+          addLogEntry(`Error parsing message: ${error}`, 'error');
+        }
+      };
+    }
+    
+    function disconnectWebSocket() {
+      if (socket !== null) {
+        socket.close();
+        socket = null;
+      }
+    }
+    
+    function sendWebSocketMessage(type, payload = {}) {
+      if (socket !== null && socket.readyState === WebSocket.OPEN) {
+        const message = { type, payload };
+        socket.send(JSON.stringify(message));
+        addLogEntry(`Sent message: ${type}`, 'info');
+      } else {
+        addLogEntry('Cannot send message: WebSocket not connected', 'error');
+      }
+    }
+    
+    // Message Handlers
+    function handleWebSocketMessage(data) {
+      const { type, payload, success, error } = data;
+      
+      if (error) {
+        addLogEntry(`Received error: ${error}`, 'error');
+        return;
+      }
+      
+      // Handle different message types
+      switch (type) {
+        case 'connected':
+          addLogEntry(`Connected with client ID: ${payload.clientId}`, 'system');
+          break;
+          
+        case 'task_result_update':
+          addLogEntry(`Task result update received for task ${payload.taskId}`, 'info');
+          
+          // Update the task in our list if we have it
+          const taskIndex = tasks.findIndex(t => t.id === payload.taskId);
+          if (taskIndex !== -1) {
+            tasks[taskIndex].status = 'completed';
+            refreshTasksList();
+            
+            // If this task is currently selected, update the result view
+            const selectedTask = document.querySelector('.item-selected');
+            if (selectedTask && selectedTask.dataset.id === payload.taskId) {
+              showTaskResult(payload.taskId);
+            }
+          }
+          break;
+          
+        default:
+          addLogEntry(`Received message of type: ${type}`, 'info');
+      }
+    }
+    
+    // API Functions
+    async function refreshStatus() {
+      try {
+        const response = await fetch('/api/neural-orchestrator/status');
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch status: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        
+        // Update metrics
+        activeModelsCount.textContent = data.availableModels?.length || 0;
+        
+        // Update statistics if available
+        if (data.statistics) {
+          activeTasksCount.textContent = data.statistics.activeTasks || 0;
+          completedTasksCount.textContent = data.statistics.completedTasks || 0;
+          avgLatency.textContent = `${data.statistics.averageLatencyMs || 0} ms`;
+        }
+        
+        addLogEntry('Status refreshed successfully', 'success');
+        
+        // Also fetch models
+        fetchModels();
+        
+      } catch (error) {
+        addLogEntry(`Error refreshing status: ${error.message}`, 'error');
+      }
+    }
+    
+    async function fetchModels() {
+      try {
+        const response = await fetch('/api/neural-orchestrator/models');
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch models: ${response.statusText}`);
+        }
+        
+        const models = await response.json();
+        availableModels = models;
+        
+        // Update the models list
+        renderModelsList(models);
+        
+        addLogEntry(`Fetched ${models.length} available models`, 'success');
+        
+      } catch (error) {
+        addLogEntry(`Error fetching models: ${error.message}`, 'error');
+      }
+    }
+    
+    async function initializeModel(modelType) {
+      try {
+        addLogEntry(`Initializing model: ${modelType}`, 'info');
+        
+        const response = await fetch('/api/neural-orchestrator/models/initialize', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ modelType })
+        });
+        
+        if (!response.ok) {
+          throw new Error(`Failed to initialize model: ${response.statusText}`);
+        }
+        
+        const result = await response.json();
+        
+        addLogEntry(`Model ${modelType} initialized successfully`, 'success');
+        
+        // Refresh the status to see the new model
+        refreshStatus();
+        
+      } catch (error) {
+        addLogEntry(`Error initializing model: ${error.message}`, 'error');
+      }
+    }
+    
+    async function runBenchmark(modelType) {
+      try {
+        addLogEntry(`Running benchmarks for model: ${modelType}`, 'info');
+        
+        const response = await fetch(`/api/neural-orchestrator/models/${modelType}/benchmarks`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        
+        if (!response.ok) {
+          throw new Error(`Failed to run benchmarks: ${response.statusText}`);
+        }
+        
+        const result = await response.json();
+        
+        addLogEntry(`Benchmarks started for ${modelType}`, 'success');
+        
+      } catch (error) {
+        addLogEntry(`Error running benchmarks: ${error.message}`, 'error');
+      }
+    }
+    
+    async function submitTask() {
+      try {
+        // Clear previous error messages
+        submitError.textContent = '';
+        
+        const prompt = taskPromptInput.value.trim();
+        
+        if (!prompt) {
+          submitError.textContent = 'Please enter a task prompt';
+          addLogEntry('Please enter a task prompt', 'warning');
+          return;
+        }
+        
+        // Build the task data
+        const taskData = {
+          prompt,
+          requirements: {
+            taskType: taskTypeSelect.value,
+            complexity: parseInt(taskComplexityInput.value, 10),
+            creativityLevel: parseInt(taskCreativityInput.value, 10),
+            domainSpecificity: 5, // Default value
+            timeConstraint: 0, // No constraint
+            contextSize: prompt.length,
+            multimodalInputs: false
+          },
+          priority: parseInt(taskPriorityInput.value, 10)
+        };
+        
+        // If a specific model is selected, include it in the request
+        const selectedModel = taskModelTypeSelect.value;
+        if (selectedModel) {
+          taskData.preferredModel = selectedModel;
+          addLogEntry(`Submitting task: ${taskTypeSelect.value} (Model: ${selectedModel})`, 'info');
+        } else {
+          addLogEntry(`Submitting task: ${taskTypeSelect.value} (Auto-select model)`, 'info');
+        }
+        
+        const response = await fetch('/api/neural-orchestrator/tasks', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(taskData)
+        });
+        
+        if (!response.ok) {
+          // Try to get more detailed error information if available
+          let errorDetail = response.statusText;
+          try {
+            const errorResponse = await response.json();
+            if (errorResponse.error) {
+              errorDetail = errorResponse.error;
+            }
+          } catch (e) {
+            // If we can't parse the JSON, just use the status text
+          }
+          
+          submitError.textContent = `Failed to submit task: ${errorDetail}`;
+          throw new Error(`Failed to submit task: ${errorDetail}`);
+        }
+        
+        const result = await response.json();
+        
+        addLogEntry(`Task submitted successfully. Task ID: ${result.taskId}`, 'success');
+        
+        // Clear the prompt
+        taskPromptInput.value = '';
+        
+        // Refresh tasks list
+        refreshTasks();
+        
+      } catch (error) {
+        addLogEntry(`Error submitting task: ${error.message}`, 'error');
+      }
+    }
+    
+    async function refreshTasks() {
+      try {
+        const status = taskStatusFilterSelect.value;
+        const url = status 
+          ? `/api/neural-orchestrator/tasks?status=${status}`
+          : '/api/neural-orchestrator/tasks';
+          
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch tasks: ${response.statusText}`);
+        }
+        
+        tasks = await response.json();
+        
+        // Update the tasks list
+        refreshTasksList();
+        
+        addLogEntry(`Fetched ${tasks.length} tasks`, 'success');
+        
+      } catch (error) {
+        addLogEntry(`Error fetching tasks: ${error.message}`, 'error');
+      }
+    }
+    
+    async function showTaskResult(taskId) {
+      try {
+        const response = await fetch(`/api/neural-orchestrator/tasks/${taskId}/result`);
+        
+        if (response.status === 422) {
+          // Task not completed yet
+          const data = await response.json();
+          taskResultContainer.innerHTML = `<p>Task is currently in status: <strong>${data.status}</strong></p>`;
+          return;
+        }
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch task result: ${response.statusText}`);
+        }
+        
+        const result = await response.json();
+        
+        // Display the result
+        taskResultContainer.innerHTML = `
+          <h4>Result for Task ${taskId}</h4>
+          <div class="toolbar">
+            <span><strong>Completed at:</strong> ${new Date(result.completedAt).toLocaleString()}</span>
+            <span><strong>Execution Time:</strong> ${result.executionTime}ms</span>
+          </div>
+          <div style="margin-top: 15px; white-space: pre-wrap; background: #f8f9fa; padding: 10px; border-radius: 4px;">${result.output}</div>
+        `;
+        
+      } catch (error) {
+        addLogEntry(`Error fetching task result: ${error.message}`, 'error');
+        taskResultContainer.innerHTML = `<p>Error loading result: ${error.message}</p>`;
+      }
+    }
+    
+    // Rendering Functions
+    function renderModelsList(models) {
+      modelsList.innerHTML = '';
+      
+      // Clear and re-populate the task model dropdown
+      // Keep the auto-select option
+      taskModelTypeSelect.innerHTML = '<option value="">Auto-select</option>';
+      
+      if (models.length === 0) {
+        modelsList.innerHTML = '<div class="item">No models available. Initialize a model first.</div>';
+        return;
+      }
+      
+      models.forEach(model => {
+        const modelItem = document.createElement('div');
+        modelItem.className = 'item';
+        
+        const capabilities = model.capabilities || {};
+        
+        modelItem.innerHTML = `
+          <div class="item-header">
+            <span class="badge badge-blue">${model.modelType}</span>
+            ${capabilities.ready ? '<span class="badge badge-green">Ready</span>' : '<span class="badge badge-orange">Initializing</span>'}
+          </div>
+          <div class="item-meta">
+            <strong>Latency:</strong> ${capabilities.latency?.toFixed(2) || 'N/A'} ms | 
+            <strong>Tokens/sec:</strong> ${capabilities.tokensPerSecond?.toFixed(2) || 'N/A'} |
+            <strong>Context:</strong> ${capabilities.maxContextSize || 'Unknown'} tokens
+          </div>
+          <div class="item-details">
+            <strong>Capabilities:</strong> ${Object.keys(capabilities).filter(key => 
+              typeof capabilities[key] === 'boolean' && capabilities[key]).join(', ') || 'None reported'}
+          </div>
+        `;
+        
+        modelsList.appendChild(modelItem);
+        
+        // Add this model to the task model dropdown if it's ready
+        if (capabilities.ready) {
+          const option = document.createElement('option');
+          option.value = model.modelType;
+          option.textContent = model.modelType;
+          taskModelTypeSelect.appendChild(option);
+        }
+      });
+    }
+    
+    function refreshTasksList() {
+      tasksList.innerHTML = '';
+      
+      if (tasks.length === 0) {
+        tasksList.innerHTML = '<div class="item">No tasks available. Create a task first.</div>';
+        return;
+      }
+      
+      tasks.forEach(task => {
+        const taskItem = document.createElement('div');
+        taskItem.className = 'item';
+        taskItem.dataset.id = task.id;
+        
+        // Get task status badge color
+        let statusBadgeClass = 'badge-blue';
+        switch (task.status) {
+          case 'completed': statusBadgeClass = 'badge-green'; break;
+          case 'failed': statusBadgeClass = 'badge-red'; break;
+          case 'executing': statusBadgeClass = 'badge-orange'; break;
+          case 'analyzing': statusBadgeClass = 'badge-purple'; break;
+        }
+        
+        // Truncate prompt if too long
+        const promptPreview = task.prompt.length > 50 
+          ? task.prompt.substring(0, 50) + '...' 
+          : task.prompt;
+        
+        taskItem.innerHTML = `
+          <div class="item-header">
+            <span class="badge ${statusBadgeClass}">${task.status}</span>
+            <span class="badge badge-blue">${task.requirements?.taskType || 'unknown'}</span>
+            Priority: ${task.priority || 'normal'}
+          </div>
+          <div class="item-meta">
+            ${new Date(task.timestamp).toLocaleString()}
+          </div>
+          <div class="item-details">
+            ${promptPreview}
+          </div>
+        `;
+        
+        taskItem.addEventListener('click', () => {
+          // Remove selected class from all items
+          document.querySelectorAll('.item-selected').forEach(el => {
+            el.classList.remove('item-selected');
+          });
+          
+          // Add selected class to this item
+          taskItem.classList.add('item-selected');
+          
+          // Show task details
+          if (task.status === 'completed') {
+            showTaskResult(task.id);
+          } else {
+            taskResultContainer.innerHTML = `<p>Task is currently in status: <strong>${task.status}</strong></p>`;
+          }
+        });
+        
+        tasksList.appendChild(taskItem);
+      });
+    }
+    
+    // Event Listeners
+    connectBtn.addEventListener('click', connectWebSocket);
+    disconnectBtn.addEventListener('click', disconnectWebSocket);
+    refreshStatusBtn.addEventListener('click', refreshStatus);
+    initializeModelBtn.addEventListener('click', () => initializeModel(modelTypeSelect.value));
+    runBenchmarkBtn.addEventListener('click', () => runBenchmark(benchmarkModelTypeSelect.value));
+    submitTaskBtn.addEventListener('click', submitTask);
+    refreshTasksBtn.addEventListener('click', refreshTasks);
+    taskStatusFilterSelect.addEventListener('change', refreshTasks);
+    
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      addLogEntry('Neural Orchestration Engine Test interface loaded', 'system');
+    });
+  </script>
+</body>
+</html>

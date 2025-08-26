@@ -1,0 +1,157 @@
+{
+  "summary": {
+    "timestamp": "2025-03-25T09:33:49.101Z",
+    "memoryLayerName": "InMemoryPersistenceLayer",
+    "fileLayerName": "FileSystemPersistenceLayer",
+    "averageSpeedup": 27.953725379428487,
+    "averageOpsRatio": 27.953725379428487
+  },
+  "details": {
+    "smallPayload": {
+      "save": {
+        "memoryAverageTimeMs": 0.009857399999997938,
+        "fileAverageTimeMs": 0.46598353999997927,
+        "memoryOpsPerSecond": 101446.62892854193,
+        "fileOpsPerSecond": 2145.9985475024387,
+        "speedupFactor": 47.27245926918627,
+        "opsRatio": 47.27245926918627
+      },
+      "load": {
+        "memoryAverageTimeMs": 0.008761560000002645,
+        "fileAverageTimeMs": 0.24129702000001088,
+        "memoryOpsPerSecond": 114134.92574378285,
+        "fileOpsPerSecond": 4144.269995543065,
+        "speedupFactor": 27.540417459897327,
+        "opsRatio": 27.540417459897327
+      },
+      "getKeys": {
+        "memoryAverageTimeMs": 0.00455149999999378,
+        "fileAverageTimeMs": 0.14749700000015764,
+        "memoryOpsPerSecond": 219707.78864140756,
+        "fileOpsPerSecond": 6779.798911157049,
+        "speedupFactor": 32.40623970127633,
+        "opsRatio": 32.40623970127633
+      },
+      "saveLoad": {
+        "memoryAverageTimeMs": 0.010536280000007992,
+        "fileAverageTimeMs": 0.5460804199999985,
+        "memoryOpsPerSecond": 94910.15804432318,
+        "fileOpsPerSecond": 1831.232110464614,
+        "speedupFactor": 51.82857896711023,
+        "opsRatio": 51.82857896711024
+      }
+    },
+    "mediumPayload": {
+      "save": {
+        "memoryAverageTimeMs": 0.16779939999999555,
+        "fileAverageTimeMs": 0.8114133999998557,
+        "memoryOpsPerSecond": 5959.496875435946,
+        "fileOpsPerSecond": 1232.4174089313508,
+        "speedupFactor": 4.835615621985998,
+        "opsRatio": 4.8356156219859985
+      },
+      "load": {
+        "memoryAverageTimeMs": 0.08257754999999634,
+        "fileAverageTimeMs": 0.33692444999992405,
+        "memoryOpsPerSecond": 12109.828882063519,
+        "fileOpsPerSecond": 2968.0244339650194,
+        "speedupFactor": 4.080097435682446,
+        "opsRatio": 4.080097435682446
+      },
+      "getKeys": {
+        "memoryAverageTimeMs": 0.0032099999999957163,
+        "fileAverageTimeMs": 0.10474750000003041,
+        "memoryOpsPerSecond": 311526.47975119454,
+        "fileOpsPerSecond": 9546.767225945341,
+        "speedupFactor": 32.63161993774772,
+        "opsRatio": 32.63161993774772
+      },
+      "saveLoad": {
+        "memoryAverageTimeMs": 0.3435370499999806,
+        "fileAverageTimeMs": 1.238397449999684,
+        "memoryOpsPerSecond": 2910.894181573884,
+        "fileOpsPerSecond": 807.4952027721433,
+        "speedupFactor": 3.604843931680015,
+        "opsRatio": 3.6048439316800147
+      }
+    },
+    "largePayload": {
+      "save": {
+        "memoryAverageTimeMs": 27.56048780000001,
+        "fileAverageTimeMs": 32.662281400000026,
+        "memoryOpsPerSecond": 36.28382803877657,
+        "fileOpsPerSecond": 30.61635492491958,
+        "speedupFactor": 1.1851126016717315,
+        "opsRatio": 1.1851126016717313
+      },
+      "load": {
+        "memoryAverageTimeMs": 23.544581999999945,
+        "fileAverageTimeMs": 15.229971000000115,
+        "memoryOpsPerSecond": 42.472616417654066,
+        "fileOpsPerSecond": 65.66000683783261,
+        "speedupFactor": 0.6468567163350001,
+        "opsRatio": 0.6468567163350003
+      },
+      "getKeys": {
+        "memoryAverageTimeMs": 0.0013914999999997235,
+        "fileAverageTimeMs": 0.06263699999990421,
+        "memoryOpsPerSecond": 718648.9399929564,
+        "fileOpsPerSecond": 15965.004709700803,
+        "speedupFactor": 45.01401365426997,
+        "opsRatio": 45.014013654269974
+      },
+      "saveLoad": {
+        "memoryAverageTimeMs": 64.71152260000017,
+        "fileAverageTimeMs": 38.85077020000044,
+        "memoryOpsPerSecond": 15.453198438572938,
+        "fileOpsPerSecond": 25.739515454959722,
+        "speedupFactor": 0.6003686613920028,
+        "opsRatio": 0.6003686613920028
+      }
+    },
+    "manySmallPayloads": {
+      "save": {
+        "memoryAverageTimeMs": 0.00629949999998189,
+        "fileAverageTimeMs": 0.5025781699999515,
+        "memoryOpsPerSecond": 158742.75736215172,
+        "fileOpsPerSecond": 1989.7402228992485,
+        "speedupFactor": 79.78064449581655,
+        "opsRatio": 79.78064449581655
+      },
+      "load": {
+        "memoryAverageTimeMs": 0.004217660000017531,
+        "fileAverageTimeMs": 0.3230120299998907,
+        "memoryOpsPerSecond": 237098.29621065792,
+        "fileOpsPerSecond": 3095.8599281900997,
+        "speedupFactor": 76.58560196852001,
+        "opsRatio": 76.58560196852001
+      },
+      "getKeys": {
+        "memoryAverageTimeMs": 0.01000600000004397,
+        "fileAverageTimeMs": 0.12202695000005406,
+        "memoryOpsPerSecond": 99940.03597797379,
+        "fileOpsPerSecond": 8194.911042188278,
+        "speedupFactor": 12.195377773287811,
+        "opsRatio": 12.195377773287813
+      },
+      "saveLoad": {
+        "memoryAverageTimeMs": 0.011003700000001117,
+        "fileAverageTimeMs": 0.5792726700000185,
+        "memoryOpsPerSecond": 90878.5226787261,
+        "fileOpsPerSecond": 1726.3027444397958,
+        "speedupFactor": 52.643444477762905,
+        "opsRatio": 52.6434444777629
+      }
+    },
+    "saveLoadCycle": {
+      "saveLoadCycle": {
+        "memoryAverageTimeMs": 0.33400846666666745,
+        "fileAverageTimeMs": 0.7889409500000661,
+        "memoryOpsPerSecond": 2993.9360818597943,
+        "fileOpsPerSecond": 1267.5219862778274,
+        "speedupFactor": 2.362038776661942,
+        "opsRatio": 2.362038776661942
+      }
+    }
+  }
+}

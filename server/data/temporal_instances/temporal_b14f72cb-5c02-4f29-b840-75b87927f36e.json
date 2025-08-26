@@ -1,0 +1,18 @@
+{
+  "nodeId": "0f343f28-a507-4abc-adcc-d15fdc7d0720",
+  "state": "{\"status\":\"initializing\",\"coherence\":0.7,\"energy\":100,\"lastAction\":\"system_integration_test\"}",
+  "dimensionType": "PRIMARY",
+  "stabilityFactor": 1,
+  "metadata": {
+    "event": "creation",
+    "capabilities": [
+      "test",
+      "chronos",
+      "integration"
+    ]
+  },
+  "id": "b14f72cb-5c02-4f29-b840-75b87927f36e",
+  "timestamp": "2025-03-23T21:02:49.640Z",
+  "createdAt": "2025-03-23T21:02:49.641Z",
+  "updatedAt": "2025-03-23T21:02:49.641Z"
+}

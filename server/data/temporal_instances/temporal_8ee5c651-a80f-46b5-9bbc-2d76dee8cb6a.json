@@ -1,0 +1,18 @@
+{
+  "nodeId": "265c79ce-c246-4183-9340-8f8446a4e3d3",
+  "state": "{\"status\":\"initialized\",\"coherence\":0.75,\"energy\":100}",
+  "dimensionType": "PRIMARY",
+  "stabilityFactor": 1,
+  "metadata": {
+    "event": "creation",
+    "capabilities": [
+      "test",
+      "chronos",
+      "verification"
+    ]
+  },
+  "id": "8ee5c651-a80f-46b5-9bbc-2d76dee8cb6a",
+  "timestamp": "2025-03-23T20:58:39.204Z",
+  "createdAt": "2025-03-23T20:58:39.205Z",
+  "updatedAt": "2025-03-23T20:58:39.205Z"
+}
